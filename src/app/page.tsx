@@ -1,35 +1,50 @@
-export default async function Home() {
-const url = 'https://anime-data-scraper-api.p.rapidapi.com/v1/anime/popular';
-const options = {
-	method: 'GET',
-	headers: {
-		'x-rapidapi-key': '3d3dfb0585msh8127fea8bdc6594p11a6f7jsn1e0d8405b0ac',
-		'x-rapidapi-host': 'anime-data-scraper-api.p.rapidapi.com'
-	}
-};
 
+import HeroSection from "./components/hero-section";
+import InfoDrawer from "./components/info-drawer";
+import MovieCard from "./components/moviecard";
+
+export default async function Home() {
+
+  // const urlHero = 'https://api.rei.my.id/anime?status=ongoing&sort=-score&page=1&limit=5';
+  // const urlTv = 'https://api.rei.my.id/anime?type=tv&sort=-score&page=1&limit=5';
+  // const urlMovies = 'https://api.rei.my.id/anime?type=movie&sort=-score&page=1&limit=5';
+  // const urlUpcoming = 'https://api.rei.my.id/anime?status=upcoming&sort=-score&page=1&limit=5';
+  // const url4OVA = 'https://api.rei.my.id/anime?type=ova&sort=-score&page=1&limit=5';
+
+  let result = [];
   try {
-    // const response = await fetch(url, options);
-    // const result = await response.text();
-    // console.log(result);
+    // const response = await fetch(url);
+    // const data = await response.json();
+    // result = data.data || [];
   } catch (error) {
     console.error(error);
   }
 
   return (
-    <div>
-
+    <div className="w-full">
+      {/* <HeroSection PopularData={result} /> */}
+      <div>
+        {/* TV  */}
+        {/* <CarouselAnime data={data1} /> */}
+      </div>
       
-      {/* Popular Anime matrix of Anime Cards + more button open shadcn drawer that have anime info  */}
-      {/* some animation  */}
-      {/* TV Anime matrix of Anime Cards  */}
-      {/* some animation  */}
-      {/* Movies Anime matrix of Anime Cards  */}
-      {/* OVA  */}
+       <div>
+        {/* Movies */}
+        {/* <CarouselAnime data={data2}/> */}
+      </div>
 
+       <div>
+        {/*  */}
+        {/* <CarouselAnime data={data3}/> */}
+      </div>
+
+       <div>
+        {/* TV */}
+        {/* <CarouselAnime data={data4}/> */}
+      </div>
       
-
-      =
+      Card
+      <MovieCard/>
     </div>
   );
 }

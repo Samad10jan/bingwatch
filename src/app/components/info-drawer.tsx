@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
 
-export default function InfoDrawer({infoData}:{infoData:any}) {
+// {infoData}:{infoData:any}
+export default function InfoDrawer() {
     return (
         <Drawer>
-            <DrawerTrigger >Open</DrawerTrigger>
+            <DrawerTrigger className="ring-1 ring-emerald-400 hover:ring-3 transition-all rounded-full" >More Detail</DrawerTrigger>
             <DrawerContent>
                 <DrawerHeader>
                     <DrawerTitle>Are you absolutely sure?</DrawerTitle>
@@ -13,7 +14,7 @@ export default function InfoDrawer({infoData}:{infoData:any}) {
                 <DrawerFooter>
                     <Button>Submit</Button>
                     <DrawerClose>
-                        <Button variant="outline">Cancel</Button>
+                        Cancel
                     </DrawerClose>
                 </DrawerFooter>
             </DrawerContent>
