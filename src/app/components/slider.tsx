@@ -1,9 +1,14 @@
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, } from "@/components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import AnimeCard from "./moviecard";
 
-export default function CarouselAnime({ data }: { data: any[] }) {
-  // Divide PopularData into chunks of 7
-  const chunkSize = 6;
+export default function CarouselAnimeSlide({ data }: { data: any[] }) {
+  const chunkSize = 8; // number of cards per slide
   const slides = [];
 
   for (let i = 0; i < data.length; i += chunkSize) {
@@ -11,14 +16,19 @@ export default function CarouselAnime({ data }: { data: any[] }) {
   }
 
   return (
-    <Carousel className="w-full max-w-6xl mx-auto">
+    <Carousel className="mx-auto w-6xl ">
       <CarouselContent>
         {slides.map((group, index) => (
-          <CarouselItem key={index} className="flex justify-between gap-4">
-            {group.map((data, i) => (
-              <AnimeCard  />
-              // key={i} data={data}
-            ))}
+          <CarouselItem key={index}>
+            <div className="flex flex-wrap justify-between mt-3 gap-2 h-full">
+              {group.map((anime, i) => (
+                <div
+                  key={i}
+                >
+                  <AnimeCard data={anime} />
+                </div>
+              ))}
+            </div>
           </CarouselItem>
         ))}
       </CarouselContent>
