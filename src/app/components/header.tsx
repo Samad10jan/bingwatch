@@ -22,11 +22,12 @@ export function Header() {
   }
 
   return (
-   <div className="w-full flex justify-between h-50">
-    <div>
+   <header className={`fixed h-[6vh] md:h-[10vh] top-0 left-0 right-0 z-50 bg-gray-500/30 shadow-md backdrop-blur-sm`}>
+      <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+        <h1 className="text-xl font-semibold">My App</h1>
+           <Button onClick={handleTheme}>T</Button>
 
-    <Button onClick={handleTheme}>{theme==="dark"?<MoonIcon/>:<SunIcon/>}</Button>
-    </div>
-   </div>
+      </div>
+    </header>
   )
 }

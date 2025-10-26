@@ -44,6 +44,7 @@
 }
 
 :root {
+  scroll-behavior: smooth;
   font-family:monospace;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -121,3 +122,18 @@
     @apply bg-background text-foreground;
   }
 }
+/* styles/globals.css */
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.600);
+  }
+  .scrollbar::-webkit-scrollbar-thumb {
+    background:powderblue;
+    border-radius: 4px;
+  }
+}
+

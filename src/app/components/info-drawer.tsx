@@ -17,8 +17,8 @@ import { X, Calendar, Film, Star, Clock, TrendingUp } from "lucide-react";
 export default function InfoDrawer({ infoData }: { infoData: AnimeData }) {
   return (
     <Drawer>
-      <DrawerTrigger className="relative group overflow-hidden ring-2 ring-emerald-400 hover:ring-emerald-500 transition-all duration-300 rounded-full px-2 py-2 text-sm font-medium hover:shadow-lg hover:shadow-emerald-400/50 hover:scale-105">
-        <span className=" text-white">More Details</span>
+      <DrawerTrigger className="relative group overflow-hidden bg-emerald-400 ring-2 ring-emerald-400 hover:ring-emerald-500 transition-all duration-300 rounded-full px-2 py-2 text-sm font-medium hover:shadow-lg hover:shadow-emerald-400/50 hover:scale-105">
+        <span >More Details</span>
         {/* <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/0 via-emerald-400/20 to-emerald-400/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div> */}
       </DrawerTrigger>
 
@@ -106,7 +106,7 @@ export default function InfoDrawer({ infoData }: { infoData: AnimeData }) {
                   <div>
                     <p className="text-sm text-muted-foreground">Duration</p>
                     <p className="font-medium">
-                      {infoData.duration.value} {infoData.duration.unit || "Seconds"}
+                      {infoData.duration.value/60} Min
                     </p>
                   </div>
                 </div>

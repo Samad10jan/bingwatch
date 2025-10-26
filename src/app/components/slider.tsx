@@ -1,3 +1,4 @@
+"use client";
 import {
   Carousel,
   CarouselContent,
@@ -6,25 +7,44 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import AnimeCard from "./moviecard";
+import { useEffect, useState } from "react";
 
 export default function CarouselAnimeSlide({ data }: { data: any[] }) {
-  const chunkSize = 8; // number of cards per slide
-  const slides = [];
+  const [chunkSize, setChunkSize] = useState(8);
 
+  useEffect(() => {
+    function updateChunkSize() {
+      const width = window.innerWidth;
+
+      if (width < 640) {
+        setChunkSize(6); // Mobile
+      } else if (width < 1024) {
+        setChunkSize(6); // Tablet
+      } else if (width < 1440) {
+        setChunkSize(8); // Desktop
+      } else {
+        setChunkSize(8); // Large screens
+      }
+    }
+
+    updateChunkSize();
+    window.addEventListener("resize", updateChunkSize);
+    return () => window.removeEventListener("resize", updateChunkSize);
+  }, []);
+
+  const slides = [];
   for (let i = 0; i < data.length; i += chunkSize) {
     slides.push(data.slice(i, i + chunkSize));
   }
 
   return (
-    <Carousel className="mx-auto w-6xl ">
-      <CarouselContent>
+    <Carousel className="md:mx-auto md:w-6xl w-[95vw] mx-0">
+      <CarouselContent className=" relative px-4">
         {slides.map((group, index) => (
           <CarouselItem key={index}>
-            <div className="flex flex-wrap justify-between mt-3 gap-2 h-full">
+            <div className="flex flex-wrap justify-center mt-3 gap-2 h-full flex-1">
               {group.map((anime, i) => (
-                <div
-                  key={i}
-                >
+                <div key={i}>
                   <AnimeCard data={anime} />
                 </div>
               ))}
@@ -32,9 +52,8 @@ export default function CarouselAnimeSlide({ data }: { data: any[] }) {
           </CarouselItem>
         ))}
       </CarouselContent>
-
-      <CarouselPrevious />
-      <CarouselNext />
+      <CarouselPrevious className="m-0 absolute bottom-0 left-0" />
+      <CarouselNext className="m-0 absolute  bottom-0 right-0 " />
     </Carousel>
   );
 }

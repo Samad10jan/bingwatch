@@ -7,7 +7,7 @@ import { Star } from "lucide-react";
 
 export default function AnimeCard({ data }: { data: AnimeData }) {
     return (
-        <Card className="relative w-60 h-96 rounded-xl overflow-hidden border shadow-lg group cursor-pointer">
+        <Card className="relative w-30 h-50 md:w-60 md:h-96 rounded-xl overflow-hidden border shadow-lg group cursor-pointer">
             {/* Background Image */}
             <Image
                 src={data?.picture || data?.thumbnail || "https://th.bing.com/th/id/OIP.xvGnjTuyImLj_PlDDZ3U7wHaKx?w=207&h=301&c=7&r=0&o=7&dpr=1.2&pid=1.7&rm=3"}
@@ -27,7 +27,7 @@ export default function AnimeCard({ data }: { data: AnimeData }) {
             )}
 
             {/* Hover Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
                 {/* Title */}
                 <h2 className="text-lg font-bold text-white mb-2 line-clamp-2">
                     {data.title || "Unknown Title"}

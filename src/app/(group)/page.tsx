@@ -1,9 +1,11 @@
-import HeroSection from "./components/hero-section";
-import CarouselAnimeSlide from "./components/slider";
+
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ArrowRight } from "lucide-react";
+import CarouselAnimeSlide from "../components/slider";
+import HeroSection from "../components/hero-section";
+import Link from "next/link";
 
 export default async function Home() {
   const fetchSafe = async (url: string) => {
@@ -35,7 +37,7 @@ export default async function Home() {
     <div className="flex items-center justify-between mb-4 px-4">
       <h2 className="text-2xl font-bold">{title}</h2>
       <Badge variant="secondary" className="flex items-center space-x-1 cursor-pointer">
-        <span>See All</span>
+        <Link href={""} >See All</Link>
         <ArrowRight size={16} />
       </Badge>
     </div>
