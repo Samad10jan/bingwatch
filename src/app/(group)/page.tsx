@@ -1,16 +1,14 @@
-
-import { Separator } from "@/components/ui/separator";
-import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ArrowRight } from "lucide-react";
-import CarouselAnimeSlide from "../components/slider";
-import HeroSection from "../components/hero-section";
+import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
+import HeroSection from "../components/hero-section";
+import CarouselAnimeSlide from "../components/slider";
 
 export default async function Home() {
+  // ✅ Safe fetch helper
   const fetchSafe = async (url: string) => {
     try {
-      const res = await fetch(url, { next: { revalidate: 60 } });
+      const res = await fetch(url, { next: { revalidate: 3600 } }); // Cache for 1 hour
       if (!res.ok) return [];
       const data = await res.json();
       return data.data || [];
@@ -20,76 +18,76 @@ export default async function Home() {
     }
   };
 
-  // API URLs
-  const urlHero = 'https://api.rei.my.id/anime?status=ongoing&sort=-score&page=2&limit=10';
-  const urlTv = 'https://api.rei.my.id/anime?type=tv&sort=-score&page=4&limit=23';
-  const urlMovies = 'https://api.rei.my.id/anime?type=movie&sort=-score&page=2&limit=23';
-  const urlUpcoming = 'https://api.rei.my.id/anime?status=upcoming&sort=-score&page=5&limit=23';
-  const urlOVA = 'https://api.rei.my.id/anime?type=ova&sort=-score&page=5&limit=23';
+  // ✅ Corrected API URLs
+  const urlHero = "https://api.jikan.moe/v4/top/anime?limit=10&filter=airing&page=1";
+  const urlTv = "https://api.jikan.moe/v4/top/anime?type=tv&page=1&limit=23";
+  const urlMovies = "https://api.jikan.moe/v4/top/anime?type=movie&page=1&limit=23";
+  const urlUpcoming = "https://api.jikan.moe/v4/top/anime?filter=upcoming&page=1&limit=23";
+  const urlOVA = "https://api.jikan.moe/v4/top/anime?type=ova&page=1&limit=23";
 
-  const popularAnime = await fetchSafe(urlHero);
-  const tvAnime = await fetchSafe(urlTv);
-  const moviesAnime = await fetchSafe(urlMovies);
-  const upcomingAnime = await fetchSafe(urlUpcoming);
-  const ovaAnime = await fetchSafe(urlOVA);
-
-  const SectionHeader = ({ title }: { title: string }) => (
-    <div className="flex items-center justify-between mb-4 px-4">
-      <h2 className="text-2xl font-bold">{title}</h2>
-      <Badge variant="secondary" className="flex items-center space-x-1 cursor-pointer">
-        <Link href={""} >See All</Link>
-        <ArrowRight size={16} />
-      </Badge>
-    </div>
-  );
+  // ✅ Fetch all categories
+  const [popularAnime, tvAnime, moviesAnime, upcomingAnime, ovaAnime] = await Promise.all([
+    fetchSafe(urlHero),
+    fetchSafe(urlTv),
+    fetchSafe(urlMovies),
+    fetchSafe(urlUpcoming),
+    fetchSafe(urlOVA),
+  ]);
 
   return (
-    <div className="space-y-16 px-4 md:px-8">
-      {/* Hero Section */}
+    <div className="">
+      {/* --- Hero Section --- */}
       {popularAnime.length > 0 && <HeroSection PopularData={popularAnime} />}
 
-      {/* TV Anime */}
+      {/* --- TV Anime --- */}
       {tvAnime.length > 0 && (
         <section>
-          <SectionHeader title="Top TV Anime" />
-          <ScrollArea className="w-full overflow-x-auto">
+          <h2 className="text-2xl font-bold mb-4">Top TV Anime</h2>
+          <ScrollArea className="w-full">
             <CarouselAnimeSlide data={tvAnime} />
           </ScrollArea>
           <Separator className="my-8" />
         </section>
       )}
 
-      {/* Movies */}
+      {/* --- Movies --- */}
       {moviesAnime.length > 0 && (
         <section>
-          <SectionHeader title="Top Movies" />
-          <ScrollArea className="w-full overflow-x-auto">
+          <h2 className="text-2xl font-bold mb-4">Top Movies</h2>
+          <ScrollArea className="w-full">
             <CarouselAnimeSlide data={moviesAnime} />
           </ScrollArea>
           <Separator className="my-8" />
         </section>
       )}
 
-      {/* Upcoming */}
+      {/* --- Upcoming Anime --- */}
       {upcomingAnime.length > 0 && (
         <section>
-          <SectionHeader title="Upcoming Anime" />
-          <ScrollArea className="w-full overflow-x-auto">
+          <h2 className="text-2xl font-bold mb-4">Upcoming Anime</h2>
+          <ScrollArea className="w-full">
             <CarouselAnimeSlide data={upcomingAnime} />
           </ScrollArea>
           <Separator className="my-8" />
         </section>
       )}
 
-      {/* OVA / Specials */}
+      {/* --- OVA / Specials --- */}
       {ovaAnime.length > 0 && (
         <section>
-          <SectionHeader title="OVA / Specials" />
-          <ScrollArea className="w-full overflow-x-auto">
+          <h2 className="text-2xl font-bold mb-4">OVA & Specials</h2>
+          <ScrollArea className="w-full">
             <CarouselAnimeSlide data={ovaAnime} />
           </ScrollArea>
         </section>
       )}
+
+      {/* --- Sample Link --- */}
+      <div className="text-center py-10">
+        <Link href="/abc" className="text-blue-400 hover:text-blue-300 underline">
+          Go to ABC Page
+        </Link>
+      </div>
     </div>
   );
 }
