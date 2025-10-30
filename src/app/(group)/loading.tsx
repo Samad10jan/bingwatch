@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Loading() {
     return (
-        <div className="flex flex-col justify-center items-center bg-indigo-950 min-h-screen p-4 relative overflow-hidden">
+        <div className="flex flex-col justify-center items-center min-h-screen p-4 relative overflow-hidden">
            
             <div className="relative w-full max-w-md aspect-square mb-8 z-10">
                 <Image 

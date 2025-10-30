@@ -22,11 +22,11 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 // 🎬 Anime Dashboard Sidebar Data
 const data = {
-  user: {
-    name: "AnimeWatcher",
-    email: "otaku@example.com",
-    avatar: "/avatars/anime-user.jpg",
-  },
+  // user: {
+  //   name: "AnimeWatcher",
+  //   email: "otaku@example.com",
+  //   avatar: "/avatars/anime-user.jpg",
+  // },
   teams: [
     {
       name: "BingWatch Studio",
@@ -133,7 +133,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
 
       <SidebarFooter>
-        <NavUser user={data.user} />
+        {/* <NavUser user={data.user} /> */}
       </SidebarFooter>
 
       <SidebarRail />
