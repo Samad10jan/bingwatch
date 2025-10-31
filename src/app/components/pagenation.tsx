@@ -23,9 +23,9 @@ export function PaginationComponent({
 }) {
     // Number of middle pages shown (max page to show )
     const pagesToShow = 3;
-    // we show before , current page , nextpage so current page-1 is for before page
-    const startPage = Math.max(1, currentPage - 1);
-    //start page + show page = 4 pages so -1 at end
+    // we show before , current page , nextpage so current page-1 is for before page, at first we currentPage - 1 =0 so choose 1
+    const startPage = Math.max(1, currentPage - 1); 
+    //start page + show page = 4 pages so -1 at end, at last we startPage + pagesToShow - 1 =more  so chose lastpage
     const endPage = Math.min(lastPage, startPage + pagesToShow - 1);
 
     return (
@@ -57,7 +57,12 @@ export function PaginationComponent({
                 }
 
                 {
-                    [...Array(endPage - startPage + 1)].map((_, i) => {
+                    // Array of 3 page number but when when at last it show 2 page number , because of Endpage 
+                    // ex: 5,6,7 s-5 end-7   5-7 =2 +1= 3 
+                    // but we calculate endpaage using lastPage which will be min at last
+                    //
+                    //(latsPage taken) 340 - 339 + 1 = 2
+                    [...Array(endPage-startPage+1)].map((_, i) => {
                         const pageNum = startPage + i; // what page number will be shown
                         return (
                             <PaginationItem key={pageNum}>
@@ -73,7 +78,7 @@ export function PaginationComponent({
                     })}
 
                 {
-                    // show endpage number only if endpage is less than last given page 
+                    // show endpage number till endpage is less than last given page 
                     endPage < lastPage && (
                         <>
                             {endPage < lastPage - 1 && <PaginationEllipsis />}
