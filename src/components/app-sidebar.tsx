@@ -19,6 +19,8 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import Image from "next/image";
+import { Card } from "./ui/card";
 
 // 🎬 Anime Dashboard Sidebar Data
 const data = {
@@ -118,18 +120,21 @@ const data = {
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props} >
-      <SidebarHeader >
-       <Avatar className="size-auto max-w-15 max-h-15 min-w-5 min-h-5"  >
-        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn"  />
-        <AvatarFallback>CN</AvatarFallback>
-       
-      </Avatar>
-      
-      </SidebarHeader>
+      <header className=" flex items-center justify-between mt-5  " >
 
-      <SidebarContent>
+
+
+
+        <Image src={"/OIP.png"} alt="a" width={70} height={70} className="rounded-full " />
+        <p className="truncate text-2xl font-bold text-center mr-5 hover:text-yellow-300 ">BIngWatcH</p>
+
+
+
+      </header>
+
+      <SidebarContent className="md:**:text-lg">
         <NavMain items={data.navMain} />
-       
+
       </SidebarContent>
 
       <SidebarFooter>

@@ -14,6 +14,7 @@ import {
 import { Anime } from "@/lib/type"; // ✅ use new Anime type
 import Image from "next/image";
 import { X, Calendar, Film, Star, Clock, TrendingUp } from "lucide-react";
+import Link from "next/link";
 
 export default function InfoDrawer({ infoData }: { infoData: Anime }) {
   return (
@@ -167,8 +168,8 @@ export default function InfoDrawer({ infoData }: { infoData: Anime }) {
           </div>
         </div>
 
-        <DrawerFooter className="border-t flex justify-end">
-         
+        <DrawerFooter className="border-t flex justify-center items-center ">
+         <Link href={`/anime/${infoData.mal_id}`} className=" rounded-full ring-2 text-3xl font-bold text-center w-fit p-5 ring-emerald-400 hover:ring-3 hover:scale-110  hover:bg-gray-500 transition-all">MORE DETAILS</Link>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>

@@ -69,7 +69,7 @@ export default function AnimeCard({ data }: { data: Anime }) {
       </div>
 
       {/* Info Drawer (Mobile) */}
-      <div className="md:hidden flex mb-2 z-10">
+      <div className="md:hidden flex mb-2 z-10 ">
         <InfoDrawer infoData={data} />
       </div>
     </Card>

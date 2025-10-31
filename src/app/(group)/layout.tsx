@@ -1,7 +1,6 @@
 import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { Separator } from "@radix-ui/react-separator";
-import Breadcrumb from "../components/breadcrumbs";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -15,11 +14,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               orientation="vertical"
               className="mr-2 data-[orientation=vertical]:h-4"
             />
-            <Breadcrumb />
+          
 
           </div>
         </header>
-        <div className="w-[80vw] mx-auto   ">
+        <div className="w-[80vw] mx-auto -mt-20   ">
           {children}
         </div>
       </SidebarInset>
