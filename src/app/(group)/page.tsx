@@ -35,14 +35,14 @@ export default async function Home() {
   ]);
 
   return (
-    <div className="">
+    <div className=" *:my-10 *:text-center">
       {/* --- Hero Section --- */}
       {popularAnime.length > 0 && <HeroSection PopularData={popularAnime} />}
 
       {/* --- TV Anime --- */}
       {tvAnime.length > 0 && (
         <section>
-          <h2 className="text-2xl font-bold mb-4">Top TV Anime</h2>
+          <h2 className="text-2xl font-bold ">Top TV Anime</h2>
           <ScrollArea className="w-full">
             <CarouselAnimeSlide data={tvAnime} />
           </ScrollArea>
@@ -53,7 +53,7 @@ export default async function Home() {
       {/* --- Movies --- */}
       {moviesAnime.length > 0 && (
         <section>
-          <h2 className="text-2xl font-bold mb-4">Top Movies</h2>
+          <h2 className="text-2xl font-bold mb-4  ">Top Movies</h2>
           <ScrollArea className="w-full">
             <CarouselAnimeSlide data={moviesAnime} />
           </ScrollArea>
@@ -82,12 +82,7 @@ export default async function Home() {
         </section>
       )}
 
-      {/* --- Sample Link --- */}
-      <div className="text-center py-10">
-        <Link href="/abc" className="text-blue-400 hover:text-blue-300 underline">
-          Go to ABC Page
-        </Link>
-      </div>
+     
     </div>
   );
 }

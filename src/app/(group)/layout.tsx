@@ -1,24 +1,30 @@
-import Image from "next/image";
-import { Header } from "../components/header";
-import { Sidebar } from "lucide-react";
-import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
-import Sidebarr from "../components/sidebarr";
+import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { Separator } from "@radix-ui/react-separator";
+import Breadcrumb from "../components/breadcrumbs";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="">
-      {/* <Header /> */}
-      <Sidebarr>
+    <SidebarProvider>
+      <AppSidebar />
+      <SidebarInset>
+        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
+          <div className="flex items-center gap-2 px-4">
+            <SidebarTrigger className="-ml-1" />
+            <Separator
+              orientation="vertical"
+              className="mr-2 data-[orientation=vertical]:h-4"
+            />
+            <Breadcrumb />
 
-
-
-        <div className="w-[80vw] mx-auto ">
-
+          </div>
+        </header>
+        <div className="w-[80vw] mx-auto   ">
           {children}
         </div>
-      </Sidebarr>
+      </SidebarInset>
+    </SidebarProvider>
 
-    </div>
+   
   )
 }

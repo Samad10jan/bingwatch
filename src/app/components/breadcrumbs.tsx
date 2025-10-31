@@ -25,10 +25,7 @@ export default function Breadcrumb() {
                           
                             <>
                                 <BreadcrumbItem>  {/* path cobmining to make url and i+1 because in slice(start,end) not include end */}
-                                    <BreadcrumbLink href={
-                                        pathArray[0]==="anime"? "/":
-                                        "/" + pathArray.slice(2, i + 1).join("/")
-                                        }>
+                                    <BreadcrumbLink href={"/" + pathArray.slice(0, i + 1).join("/")}>
                                         {part}
                                     </BreadcrumbLink>
                                 </BreadcrumbItem>

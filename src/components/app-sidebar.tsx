@@ -46,15 +46,15 @@ const data = {
       items: [
         {
           title: "TV",
-          url: "/anime/tv",
+          url: "/tv",
         },
         {
           title: "OVA",
-          url: "/anime/ova",
+          url: "/ova",
         },
         {
           title: "Movies",
-          url: "/anime/movies",
+          url: "/movie",
         },
       ],
     },
