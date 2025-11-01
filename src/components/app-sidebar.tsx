@@ -1,26 +1,20 @@
 "use client";
-
 import {
-  BookOpen,
   GalleryVerticalEnd,
-  Settings2,
-  Star,
   Tv
 } from "lucide-react";
 import * as React from "react";
 
 import { NavMain } from "@/components/nav-main";
-import { NavUser } from "@/components/nav-user";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
-  SidebarHeader,
-  SidebarRail,
+  SidebarRail
 } from "@/components/ui/sidebar";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import Image from "next/image";
 import { Card } from "./ui/card";
+import { useRouter } from "next/navigation";
 
 // 🎬 Anime Dashboard Sidebar Data
 const data = {
@@ -46,6 +40,7 @@ const data = {
       icon: Tv,
       isActive: true,
       items: [
+
         {
           title: "TV",
           url: "/tv",
@@ -118,19 +113,16 @@ const data = {
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const router =useRouter()
   return (
-    <Sidebar collapsible="icon" {...props} >
-      <header className=" flex items-center justify-between mt-5  " >
+    <Sidebar collapsible="icon" {...props}  >
+      <Card className="flex !flex-row items-center justify-between mt-5 rounded-full p-0 transition-all duration-300 cursor-pointer hover:scale-[1.03] hover:bg-gradient-to-r hover:from-yellow-200/40 hover:to-transparent" onClick={() => { if (!(window.location.pathname === "/")) { router.push("/")} }}>
+        <Image src={"/OIP.png"} alt="a" width={70} height={70} className="rounded-full" priority />
+        <p className="truncate text-2xl font-bold text-center mr-5 transition-all duration-300 hover:text-yellow-500">
+          BIngWatcH
+        </p>
+      </Card>
 
-
-
-
-        <Image src={"/OIP.png"} alt="a" width={70} height={70} className="rounded-full " />
-        <p className="truncate text-2xl font-bold text-center mr-5 hover:text-yellow-300 ">BIngWatcH</p>
-
-
-
-      </header>
 
       <SidebarContent className="md:**:text-lg">
         <NavMain items={data.navMain} />
@@ -138,6 +130,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
 
       <SidebarFooter>
+
         {/* <NavUser user={data.user} /> */}
       </SidebarFooter>
 

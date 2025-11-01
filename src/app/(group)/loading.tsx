@@ -12,6 +12,7 @@ export default function Loading() {
                     alt="Loading animation" 
                     className="object-contain drop-shadow-2xl"
                     priority
+                    unoptimized
                 />
             </div>
 
