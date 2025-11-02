@@ -8,11 +8,11 @@ import Image from "next/image";
 export default async function Home() {
  
   let popularAnime, tvAnime, moviesAnime, upcomingAnime, ovaAnime
-  const urlHero = "https://api.jikan.moe/v4/top/anime?limit=10&filter=airing&page=1";
-  const urlTv = "https://api.jikan.moe/v4/top/anime?type=tv&page=1&limit=23";
-  const urlMovies = "https://api.jikan.moe/v4/top/anime?type=movie&page=1&limit=23";
-  const urlUpcoming = "https://api.jikan.moe/v4/top/anime?filter=upcoming&page=1&limit=23";
-  const urlOVA = "https://api.jikan.moe/v4/top/anime?type=ova&page=1&limit=23";
+  const urlHero = "https://api.jikan.moe/v4/top/anime?limit=10&filter=airing&page=1&sfw=";
+  const urlTv = "https://api.jikan.moe/v4/top/anime?type=tv&page=1&limit=23&sfw=1";
+  const urlMovies = "https://api.jikan.moe/v4/top/anime?type=movie&page=1&limit=23&sfw=1";
+  const urlUpcoming = "https://api.jikan.moe/v4/top/anime?filter=upcoming&page=1&limit=23&sfw=1";
+  const urlOVA = "https://api.jikan.moe/v4/top/anime?type=ova&page=1&limit=23&sfw=0";
   try {
 
     const fetchSafe = async (url: string) => {
