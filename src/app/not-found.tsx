@@ -1,9 +1,30 @@
 import Image from "next/image";
+import Link from "next/link";
 
-export default function NotFound(){
-    return(
-        <div>
-            <Image src={"https://tenor.com/view/cat-sky-galaxy-gif-25028231"} fill alt="not foun" />
-        </div>
-    )
+export default function NotFound() {
+  return (
+    <div className="flex flex-col  items-center p-4 overflow-hidden ">
+      <div className="relative w-full max-w-2xl aspect-video mb-5 ">
+        <Image
+          src="/notfound.gif"
+          fill
+          alt="not found"
+          className="object-contain "
+          priority
+          unoptimized
+        />
+      </div>
+
+      <h1 className="text-3xl font-bold text-center mb-4">Page Not Found</h1>
+      <p className="text-lg text-center text-gray-600 mb-6">
+        Sorry, we couldn’t find the page you were looking for.
+      </p>
+      <Link
+        href="/"
+        className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+      >
+        Go back home
+      </Link>
+    </div>
+  );
 }

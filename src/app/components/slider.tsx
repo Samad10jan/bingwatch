@@ -60,7 +60,7 @@ export default function CarouselAnimeSlide({ data, type }: { data: Anime[], type
               {/* Show "More Details" card only on the last slide */}
               {slideIndex === slides.length - 1 && (
                 <Card className=" w-36 h-56 md:w-50 md:h-86 rounded-xl flex justify-center items-center hover:shadow-lg transition-shadow">
-                  <Link href={`/${type}`}>
+                  <Link href={`/type/${type}`}>
                     <Button size="lg" className="font-semibold">
                       View More
                     </Button>

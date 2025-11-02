@@ -43,15 +43,15 @@ const data = {
 
         {
           title: "TV",
-          url: "/tv",
+          url: "/type/tv",
         },
         {
           title: "OVA",
-          url: "/ova",
+          url: "/type/ova",
         },
         {
           title: "Movies",
-          url: "/movie",
+          url: "/type/movie",
         },
       ],
     },
