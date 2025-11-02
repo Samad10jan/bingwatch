@@ -12,7 +12,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <Header />
 
 
-        <main className="flex flex-1 flex-col gap-4 p-4 pt-0 bg-no-repeat bg-cover bg-[url()]">
+        <main className="flex flex-1 flex-col gap-4 p-4 pt-0 ">
           <div className="w-full max-w-7xl mx-auto">
             {children}
           </div>
