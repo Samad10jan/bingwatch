@@ -1,19 +1,26 @@
 "use client"
 
-import * as React from "react"
-import { Moon, MoonIcon, SearchIcon, Sun, SunIcon } from "lucide-react"
+import { Moon, SearchIcon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
+import * as React from "react"
 
 import { Button } from "@/components/ui/button"
-import { SidebarTrigger } from "@/components/ui/sidebar"
-import { Separator } from "@radix-ui/react-separator"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
+import { SidebarTrigger } from "@/components/ui/sidebar"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
 
 
 export function Header() {
   const { theme, setTheme } = useTheme()
+  
+  // const [sugg,setSugg]= React.useState([])
+  // React.useEffect(()=>{
+  //   async function getSugg() {
+      
+      
+  //   }
+  // })
 
 
   return (
