@@ -4,14 +4,15 @@ import LoadingSkeleton from "@/app/components/laodingskleton";
 import AnimeCard from "@/app/components/moviecard";
 import { PaginationComponent } from "@/app/components/pagenation";
 import { Anime, JSONDATA } from "@/lib/type";
-import { notFound, useParams, useSearchParams } from "next/navigation";
+import { notFound, useParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function H() {
 
   const { type } = useParams();
+  const router= useRouter()
   if (!["tv", "movie", "ova", "upcoming"].includes(type as string)) {
-    return notFound();
+   router.replace("/404");
   }
 
   const search = useSearchParams();
@@ -23,14 +24,14 @@ export default function H() {
 
   const url =
     type !== "upcoming"
-      ? `https://api.jikan.moe/v4/top/anime?type=${type}&page=${page}`
-      : `https://api.jikan.moe/v4/top/anime?filter=${type}&page=${page}`;
+      ? `https://api.jikan.moe/v4/top/anime?type=${type}&page=${page}&sfw=1`
+      : `https://api.jikan.moe/v4/top/anime?filter=${type}&page=${page}&sfw=1`;
 
   useEffect(() => {
     async function getData() {
       setLoading(true);
       try {
-        const res = await fetch(url);
+        const res = await fetch(url,{next:{revalidate:3600}});
         const jsonData = await res.json();
         setJsonData(jsonData);
         setData(jsonData.data || []);

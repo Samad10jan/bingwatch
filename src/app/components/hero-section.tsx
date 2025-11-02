@@ -12,18 +12,19 @@ import { Anime } from "@/lib/type";
 import { Star } from "lucide-react";
 import Image from "next/image";
 import InfoDrawer from "./info-drawer";
+import { Card } from "@/components/ui/card";
 
 export default function CarouselAnime({ PopularData }: { PopularData: Anime[] }) {
     return (
-        <Carousel className="">
-            <CarouselContent className="mx-auto  h-full">
+        <Carousel className="backdrop-blur-3xl max-w-[90vw]">
+            <CarouselContent className="mx-auto w-full h-full pr-7 ">
                 {PopularData.map((data, index) => (
                     <CarouselItem
                         key={index}
-                        className="flex justify-center items-center mx-auto"
+                        className="flex justify-center items-center mx-auto py-5"
                     >
-                        <div className=" relative w-full max-w-8xl mx-auto overflow-hidden rounded-3xl shadow-xl border border-white/10 bg-gradient-to-br from-zinc-900/70 to-zinc-800/40 backdrop-blur-xl p-4 md:p-10">
-                            <div className=" flex flex-col md:flex-row items-center justify-between gap-6 md:gap-10 min-h-[250px] md:min-h-[350px] mx-6">
+                        <Card className=" relative w-full max-w-8xl mx-auto overflow-hidden rounded-3xl  border border-white/10 ">
+                            <div className=" flex flex-col md:flex-row items-center justify-between gap-6 md:gap-10 min-h-[250px] md:min-h-[350px] mx-5">
 
                                 {/* --- Left Section (Text + Info) --- */}
                                 <div className="flex-1 space-y-3 sm:space-y-4 md:space-y-6 text-center md:text-left z-10 order-2 md:order-1">
@@ -34,7 +35,7 @@ export default function CarouselAnime({ PopularData }: { PopularData: Anime[] })
                                     {/* Meta Info */}
                                     <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 sm:gap-3">
                                         {data.status && (
-                                            <Badge className="px-2 py-1 text-xs sm:text-sm font-medium bg-green-500/30 text-green-300 border border-green-400/20">
+                                            <Badge className="px-2 py-1 text-xs sm:text-sm font-medium bg-green-500/30  border border-green-400/20">
                                                 {data.status}
                                             </Badge>
                                         )}
@@ -60,7 +61,7 @@ export default function CarouselAnime({ PopularData }: { PopularData: Anime[] })
 
                                     {/* Synopsis */}
                                     {data.synopsis && (
-                                        <p className="text-xs sm:text-sm md:text-base text-zinc-300 max-w-2xl !line-clamp-3 mx-auto md:mx-0 hidden sm:flex">
+                                        <p className="text-xs sm:text-sm md:text-2xl !line-clamp-3 mx-auto md:mx-0 hidden sm:flex">
                                             {data.synopsis}
                                         </p>
                                     )}
@@ -72,7 +73,7 @@ export default function CarouselAnime({ PopularData }: { PopularData: Anime[] })
                                 </div>
 
                                 {/* --- Right Section (Image) --- */}
-                                <div className="relative w-[250px] md:w-[400px] h-[180px] md:h-[400px] rounded-2xl overflow-hidden z-10 shadow-2xl order-1 md:order-2">
+                                <div className="relative w-[250px] md:w-[400px]  h-[180px] md:h-[400px] rounded-2xl overflow-hidden z-10 order-1 md:order-2">
                                     <Image
                                         src={
                                             data.images?.jpg?.large_image_url ||
@@ -87,17 +88,19 @@ export default function CarouselAnime({ PopularData }: { PopularData: Anime[] })
                                         priority
                                     />
                                 </div>
-                               
+
                             </div>
-                             <CarouselPrevious className="absolute left-1" />
-                                <CarouselNext className="absolute right-1" />
-                        </div>
+
+                        </Card>
+
                     </CarouselItem>
                 ))}
+
             </CarouselContent>
 
             {/* Navigation Buttons */}
-
+            <CarouselPrevious className=" hidden lg:flex xl:flex" />
+            <CarouselNext className=" hidden lg:flex xl:flex" />
         </Carousel>
     );
 }

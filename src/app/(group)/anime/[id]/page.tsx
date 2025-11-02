@@ -1,39 +1,54 @@
+"use client";
+
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star, Calendar, Tv, Clock, Film } from "lucide-react";
 import type { Anime } from "@/lib/type";
-import { notFound } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
-export default async function AnimeDetailPage({ params }: { params: Promise<{ id: string }> }) {
-    const param = await params;
-    const id = param.id;
-    let anime: Anime;
-    
-    try {
-        const res = await fetch(`https://api.jikan.moe/v4/anime/${id}`, {
-            next: { revalidate: 3600 } // Cache for 1 hour
-        });
+export default function AnimeDetailPage() {
+  const { id } = useParams();
+  const router = useRouter();
+
+  const [anime, setAnime] = useState<Anime | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!id) return;
+
+    async function fetchAnime() {
+      setLoading(true);
+      try {
+        const res = await fetch(`https://api.jikan.moe/v4/anime/${id}`);
 
         if (!res.ok) {
-            notFound();
+          router.replace("/404"); // redirect to custom 404 page
+          return;
         }
 
         const json = await res.json();
-        anime = json.data;
-    } catch (error) {
-        console.error("Error fetching anime:", error);
-        notFound();
+        setAnime(json.data || null);
+      } catch (err) {
+        console.error("Error fetching anime:", err);
+        router.replace("/404");
+      } finally {
+        setLoading(false);
+      }
     }
 
-    if (!anime) {
-        notFound();
-    }
+    fetchAnime();
+  }, [id, router]);
+
+  if (loading) return <div className="p-6 text-center text-xl">Thinking...</div>;
+
+  if (!anime) return <div className="p-6 text-center text-xl"></div>
 
     return (
         <div className="min-h-screen">
             {/* Hero Background with Gradient */}
-            
+
             {/* Main Content */}
             <div className="max-w-7xl mx-auto px-4 relative ">
                 {/* Hero Section */}
@@ -103,7 +118,7 @@ export default async function AnimeDetailPage({ params }: { params: Promise<{ id
                                 </Badge>
                             )}
                             {anime.status && (
-                                <Badge 
+                                <Badge
                                     variant={anime.status === "Finished Airing" ? "default" : "destructive"}
                                     className="px-3 py-1"
                                 >
@@ -120,8 +135,8 @@ export default async function AnimeDetailPage({ params }: { params: Promise<{ id
                                 </h3>
                                 <div className="flex flex-wrap gap-2">
                                     {anime.genres.map((genre) => (
-                                        <Badge 
-                                            key={genre.name} 
+                                        <Badge
+                                            key={genre.name}
                                             className="bg-primary/10 text-primary hover:bg-primary/20 border border-primary/20 px-3 py-1"
                                         >
                                             {genre.name}
@@ -186,7 +201,7 @@ export default async function AnimeDetailPage({ params }: { params: Promise<{ id
                 )}
             </div>
 
-            
+
         </div>
     );
 }
