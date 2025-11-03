@@ -2,25 +2,54 @@
 
 import { Moon, SearchIcon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
-import * as React from "react"
+
 
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { SidebarTrigger } from "@/components/ui/sidebar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
+import { useParams, usePathname } from "next/navigation"
+import { Anime } from "@/lib/type"
+import { useEffect, useState } from "react"
+import { title } from "process"
+import Link from "next/link"
+import { Avatar, AvatarImage } from "@radix-ui/react-avatar"
+import { AvatarFallback } from "@/components/ui/avatar"
+import Image from "next/image"
 
 
 export function Header() {
   const { theme, setTheme } = useTheme()
-  
-  // const [sugg,setSugg]= React.useState([])
-  // React.useEffect(()=>{
-  //   async function getSugg() {
-      
-      
-  //   }
-  // })
+  const [q, setQ] = useState<string>("")
+  const [sugg, setSugg] = useState<Anime[]>([])
+  const { type } = useParams()
+
+  console.log(type);
+
+  useEffect(() => {
+    if (!q?.trim().length) {
+      setSugg([]);
+      return;
+    }
+
+    const debounceTimeout = setTimeout(async () => {
+      try {
+        const hasType = ["tv", "movie", "ova", "upcoming"].includes(type as string);
+        const url = hasType ?
+          `https://api.jikan.moe/v4/anime?q=${q}&type=${type}&limit=10`
+          : `https://api.jikan.moe/v4/anime?q=${q}&limit=10`;
+
+        const res = await fetch(url);
+        const { data } = await res.json();
+        setSugg(data);
+      } catch (err) {
+        console.error("Error fetching suggestions:", err);
+      }
+    }, 300);
+
+    return () => clearTimeout(debounceTimeout);
+  }, [q, type]);
 
 
   return (
@@ -34,14 +63,65 @@ export function Header() {
 
 
 
-      <h1 className="text-2xl flex-1  sm:text-3xl md:text-4xl font-extrabold bg-gradient-to-bl from-emerald-500 to-indigo-500 bg-clip-text text-transparent ">
+      <h1 className=" flex-1  text-sm md:text-4xl font-extrabold bg-gradient-to-bl from-emerald-500 to-indigo-500 bg-clip-text text-transparent ">
         BingWatch
       </h1>
 
 
-      <div className=" h-10 flex-2 max-w-xl w-full flex ">
-        <Input placeholder="search.." title="search bar" name="q" type="text" />
-        <Button><SearchIcon/></Button>
+      <div className="relative max-w-xl w-full">
+        {/* Search Bar */}
+        <div className="flex h-10 gap-2">
+          <Input
+            placeholder="search.."
+            title="search bar"
+            value={q}
+            type="text"
+            onChange={(e) => setQ(e.target.value)}
+            className="flex-1"
+          />
+          {/* <Button className=""><SearchIcon /></Button> */}
+        </div>
+
+        {/* Suggestions Card */}
+        {sugg?.length > 0 && (
+          <Card className="absolute top-full mt-2 md:w-full md:max-h-[50vh] max-h-[30vh] flex flex-col overflow-y-auto z-50 shadow-lg border w-[130%] ring-accent ring-2">
+            {sugg.map((anime, i) => (
+              <Link
+                href={`/anime/${anime.mal_id}`}
+                onClick={() => setQ("")}
+                key={i}
+                className="hover:bg-accent px-2 md:px-4 py-2 flex items-center gap-3 border-b "
+                
+              >
+
+
+                <div className=" relative w-12 h-12 md:w-20 md:h-29 flex-shrink-0 ">
+                  <div className=" absolute w-full h-full">
+
+                    <Image
+                      src={
+                        anime?.images?.jpg?.large_image_url ||
+                        anime?.images?.jpg?.image_url ||
+                        anime?.picture ||
+                        anime?.thumbnail ||
+                        "https://via.placeholder.com/80x80?text=No+Image"
+                      }
+                      fill
+
+                      alt={anime?.title || anime?.title_japanese || anime?.title_english || "Anime"}
+                      className="object-cover rounded"
+                    />
+
+                  </div>
+                </div>
+
+                <div className="text-sm font-medium">
+                  {anime?.title_english || anime?.title_japanese}
+                </div>
+              </Link>
+            ))}
+          </Card>
+        )}
 
       </div>
 
@@ -55,7 +135,7 @@ export function Header() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="">
-            <Card className="*:hover:cursor-pointer size-40 *:p-3 gap-0 *:mx-1  *:rounded-full *:transition-all h-full *:border-1 gap-y-2 **:text-center  ">
+            <Card className="*:hover:cursor-pointer size-40 *:hover:ring-1 *:p-3 gap-0 *:mx-1  *:rounded-full *:transition-all h-full *:border-1 gap-y-2 **:text-center  ">
 
               <DropdownMenuItem onClick={() => setTheme("light")} className="hover:bg-amber-100 hover:text-black">
                 Light
@@ -70,6 +150,6 @@ export function Header() {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-    </header>
+    </header >
   )
 }

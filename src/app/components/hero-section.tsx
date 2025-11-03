@@ -23,8 +23,8 @@ export default function CarouselAnime({ PopularData }: { PopularData: Anime[] })
                         key={index}
                         className="flex justify-center items-center mx-auto py-5"
                     >
-                        <Card className=" relative w-full max-w-8xl mx-auto overflow-hidden rounded-3xl  border border-white/10 ">
-                            <div className=" flex flex-col md:flex-row items-center justify-between gap-6 md:gap-10 min-h-[250px] md:min-h-[350px] mx-5">
+                        <div className=" relative w-full h-full max-w-8xl mx-auto overflow-hidden rounded-3xl  border ">
+                            <div className=" flex flex-col md:flex-row items-center justify-between gap-6 md:gap-10 min-h-[250px] md:min-h-[350px] px-5">
 
                                 {/* --- Left Section (Text + Info) --- */}
                                 <div className="flex-1 space-y-3 sm:space-y-4 md:space-y-6 text-center md:text-left z-10 order-2 md:order-1">
@@ -73,7 +73,7 @@ export default function CarouselAnime({ PopularData }: { PopularData: Anime[] })
                                 </div>
 
                                 {/* --- Right Section (Image) --- */}
-                                <div className="relative w-[250px] md:w-[400px]  h-[180px] md:h-[400px] rounded-2xl overflow-hidden z-10 order-1 md:order-2">
+                                <div className="relative w-[400px] md:w-[300px]  h-[180px] md:h-[400px]  overflow-hidden z-10 order-1 md:order-2  ">
                                     <Image
                                         src={
                                             data.images?.jpg?.large_image_url ||
@@ -84,14 +84,14 @@ export default function CarouselAnime({ PopularData }: { PopularData: Anime[] })
                                         }
                                         alt={data.title || "Anime"}
                                         fill
-                                        className="object-cover rounded-2xl"
+                                        className="object-cover rounded-2xl md:rounded-none"
                                         priority
                                     />
                                 </div>
 
                             </div>
 
-                        </Card>
+                        </div>
 
                     </CarouselItem>
                 ))}

@@ -13,7 +13,7 @@ export default function RootLayout({ children }: {children:React.ReactNode}) {
     <>
       <html lang="en" suppressHydrationWarning>
         <head />
-        <body className="scrollbar">
+        <body className="">
           <ThemeProvider
             attribute="class"
             defaultTheme="system"

@@ -31,7 +31,7 @@ export default function AnimeCard({ data }: { data: Anime }) {
       {data.score && (
         <Badge
           variant="secondary"
-          className="absolute top-2 right-2 sm:top-3 sm:right-3 flex items-center gap-1 bg-yellow-400/90 text-yellow-950 border border-yellow-400/40 shadow-lg z-20 font-semibold px-2 py-1"
+          className="absolute top-2 right-2 sm:top-3 sm:right-3 flex items-center gap-1 bg-yellow-400/90 text-yellow-950 border border-yellow-400/40 shadow-lg  font-semibold px-2 py-1"
         >
           <Star className="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" />
           <span className="text-xs sm:text-sm">{data.score}</span>

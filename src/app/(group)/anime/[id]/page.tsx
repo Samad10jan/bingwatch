@@ -21,7 +21,7 @@ export default function AnimeDetailPage() {
     async function fetchAnime() {
       setLoading(true);
       try {
-        const res = await fetch(`https://api.jikan.moe/v4/anime/${id}`);
+        const res = await fetch(`https://api.jikan.moe/v4/anime/${id}`,{next:{revalidate:30}});
 
         if (!res.ok) {
           router.replace("/404"); // redirect to custom 404 page
