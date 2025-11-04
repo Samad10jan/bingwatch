@@ -58,15 +58,7 @@ export default function HomeClient() {
     };
 
     fetchAllAnime();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <p className="text-xl font-semibold">Loading anime data...</p>
-      </div>
-    );
-  }
+  }, [])
 
   return (
     <div className="*:my-10 *:text-center">
