@@ -38,7 +38,7 @@ export default function HomeClient() {
         ovaAnime: 'https://api.jikan.moe/v4/top/anime?type=ova&page=1&sfw=1',
       };
 
-      const results = await Promise.all([
+      const [popularAnime, tvAnime, moviesAnime, upcomingAnime, ovaAnime] = await Promise.all([
         fetchSafe(urls.popularAnime),
         fetchSafe(urls.tvAnime),
         fetchSafe(urls.moviesAnime),
@@ -46,25 +46,28 @@ export default function HomeClient() {
         fetchSafe(urls.ovaAnime),
       ]);
 
-      setAnimeData({
-        popularAnime: results[0],
-        tvAnime: results[1],
-        moviesAnime: results[2],
-        upcomingAnime: results[3],
-        ovaAnime: results[4],
-      });
-
+      setAnimeData({ popularAnime, tvAnime, moviesAnime, upcomingAnime, ovaAnime });
       setLoading(false);
     };
 
     fetchAllAnime();
-  }, [])
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-xl font-semibold">Loading anime data...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="*:my-10 *:text-center">
-      {animeData.popularAnime.length > 0 && <HeroSection PopularData={animeData.popularAnime} />}
+      {animeData.popularAnime.length >= 5 && (
+        <HeroSection PopularData={animeData.popularAnime} />
+      )}
 
-      {animeData.tvAnime.length > 0 && (
+      {animeData.tvAnime.length >= 5 && (
         <section>
           <h2 className="text-2xl font-bold">Top TV Anime</h2>
           <ScrollArea className="w-full">
@@ -74,7 +77,7 @@ export default function HomeClient() {
         </section>
       )}
 
-      {animeData.moviesAnime.length > 0 && (
+      {animeData.moviesAnime.length >= 5 && (
         <section>
           <h2 className="text-2xl font-bold mb-4">Top Movies</h2>
           <ScrollArea className="w-full">
@@ -84,7 +87,7 @@ export default function HomeClient() {
         </section>
       )}
 
-      {animeData.upcomingAnime.length > 0 && (
+      {animeData.upcomingAnime.length >= 5 && (
         <section>
           <h2 className="text-2xl font-bold mb-4">Upcoming Anime</h2>
           <ScrollArea className="w-full">
@@ -94,7 +97,7 @@ export default function HomeClient() {
         </section>
       )}
 
-      {animeData.ovaAnime.length > 0 && (
+      {animeData.ovaAnime.length >= 5 && (
         <section>
           <h2 className="text-2xl font-bold mb-4">OVA & Specials</h2>
           <ScrollArea className="w-full">
