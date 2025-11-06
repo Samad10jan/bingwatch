@@ -9,96 +9,85 @@ import {
     CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Anime } from "@/lib/type";
-import { Star } from "lucide-react";
+import { Star, Calendar, Tv } from "lucide-react";
 import Image from "next/image";
 import InfoDrawer from "./info-drawer";
-import { Card } from "@/components/ui/card";
 
 export default function CarouselAnime({ PopularData }: { PopularData: Anime[] }) {
     return (
-        <Carousel className="backdrop-blur-3xl max-w-[90vw]">
-            <CarouselContent className="mx-auto w-full h-full pr-7 ">
+        <Carousel className="w-full max-w-[95%] mx-auto">
+            <CarouselContent>
                 {PopularData.map((data, index) => (
-                    <CarouselItem
-                        key={index}
-                        className="flex justify-center items-center mx-auto py-5"
-                    >
-                        <div className=" relative w-full h-full max-w-8xl mx-auto overflow-hidden rounded-3xl  border ">
-                            <div className=" flex flex-col md:flex-row items-center justify-between gap-6 md:gap-10 min-h-[250px] md:min-h-[350px] px-5">
+                    <CarouselItem key={index} className="py-2">
+                        <div className="relative w-full aspect-[16/9] lg:aspect-[30/9] rounded-xl overflow-hidden border border-white/10">
 
-                                {/* --- Left Section (Text + Info) --- */}
-                                <div className="flex-1 space-y-3 sm:space-y-4 md:space-y-6 text-center md:text-left z-10 order-2 md:order-1">
-                                    <h2 className="text-2xl sm:text-3xl md:text-5xl font-extrabold bg-gradient-to-r from-yellow-300 to-pink-500 bg-clip-text text-transparent drop-shadow-lg leading-snug">
-                                        {data.title || "Unknown Title"}
+                            {/* Background Image */}
+                            <Image
+                                src={
+                                    data.images?.jpg?.large_image_url ||
+                                    data.images?.jpg?.image_url ||
+                                    data?.picture ||
+                                    data?.thumbnail ||
+                                    "https://via.placeholder.com/1920x1080?text=No+Image"
+                                }
+                                alt={data.title || "Anime"}
+                                fill
+                                className="object-cover object-center"
+                                priority
+                            />
+
+                            {/* Gradient Overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent" />
+
+
+                            {/* Content */}
+                            <div className="absolute inset-0 flex flex-col justify-end items-center p-4 lg:p-10">
+                                <div className="max-w-3xl space-y-3 lg:space-y-5">
+                                    <h2 className="text-lg sm:text-2xl lg:text-4xl font-extrabold bg-gradient-to-r from-white via-yellow-200 to-pink-300 bg-clip-text text-transparent">
+                                        {data.title_english || data.title || "Unknown Title"}
                                     </h2>
 
-                                    {/* Meta Info */}
-                                    <div className="flex flex-wrap items-center justify-center md:justify-start gap-2 sm:gap-3">
-                                        {data.status && (
-                                            <Badge className="px-2 py-1 text-xs sm:text-sm font-medium bg-green-500/30  border border-green-400/20">
-                                                {data.status}
-                                            </Badge>
-                                        )}
-
+                                    {/* Info Badges */}
+                                    <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                                         {data.score && (
-                                            <div className="flex items-center gap-1 px-2 sm:px-3 py-1 bg-yellow-400/20 rounded-full border border-yellow-300/30 text-xs sm:text-sm">
-                                                <Star color="gold" fill="gold" size={16} className="" />
-                                                <span className="text-yellow-300 font-semibold">
-                                                    {data.score}
+                                            <div className="flex items-center gap-1 px-2.5 py-1 bg-yellow-400/25 backdrop-blur-md rounded-full border border-yellow-300/30">
+                                                <Star className="w-3.5 h-3.5" fill="gold" color="gold" />
+                                                <span className="text-yellow-300 font-semibold text-xs sm:text-sm">
+                                                    {data.score.toFixed(1)}
                                                 </span>
                                             </div>
                                         )}
 
+                                        {data.status && (
+                                            <Badge className="px-2.5 py-1 text-[11px] sm:text-xs font-medium bg-emerald-500/30 text-emerald-200 border border-emerald-400/40 backdrop-blur-md">
+                                                {data.status}
+                                            </Badge>
+                                        )}
+
                                         {data.year && (
-                                            <Badge
-                                                variant="outline"
-                                                className="text-xs sm:text-sm border-yellow-300/30 text-yellow-200"
-                                            >
+                                            <Badge className="px-2.5 py-1 text-[11px] sm:text-xs font-medium bg-white/15 text-white border border-white/30 backdrop-blur-md flex items-center gap-1">
+                                                <Calendar className="w-3 h-3" />
                                                 {data.year}
+                                            </Badge>
+                                        )}
+
+                                        {data.type && (
+                                            <Badge className="px-2.5 py-1 text-[11px] sm:text-xs font-medium bg-blue-500/25 text-blue-200 border border-blue-400/40 backdrop-blur-md flex items-center gap-1">
+                                                <Tv className="w-3 h-3" />
+                                                {data.type}
                                             </Badge>
                                         )}
                                     </div>
 
-                                    {/* Synopsis */}
-                                    {data.synopsis && (
-                                        <p className="text-xs sm:text-sm md:text-2xl !line-clamp-3 mx-auto md:mx-0 hidden sm:flex">
-                                            {data.synopsis}
-                                        </p>
-                                    )}
-
-                                    {/* Info Drawer Button */}
-                                    <div className="pt-2">
-                                        <InfoDrawer infoData={data} />
-                                    </div>
+                                    {/* Info Drawer */}
+                                    <InfoDrawer infoData={data} />
                                 </div>
-
-                                {/* --- Right Section (Image) --- */}
-                                <div className="relative w-[400px] md:w-[300px]  h-[180px] md:h-[400px]  overflow-hidden z-10 order-1 md:order-2  ">
-                                    <Image
-                                        src={
-                                            data.images?.jpg?.large_image_url ||
-                                            data.images?.jpg?.image_url ||
-                                            data.picture ||
-                                            data.thumbnail ||
-                                            "https://via.placeholder.com/800x600?text=No+Image"
-                                        }
-                                        alt={data.title || "Anime"}
-                                        fill
-                                        className="object-cover rounded-2xl md:rounded-none"
-                                        priority
-                                    />
-                                </div>
-
                             </div>
-
                         </div>
-
                     </CarouselItem>
                 ))}
-
             </CarouselContent>
 
-            {/* Navigation Buttons */}
             <CarouselPrevious className=" hidden lg:flex xl:flex" />
             <CarouselNext className=" hidden lg:flex xl:flex" />
         </Carousel>

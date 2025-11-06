@@ -18,12 +18,12 @@ import Link from "next/link";
 
 export default function InfoDrawer({ infoData }: { infoData: Anime }) {
   return (
-    <Drawer>
-      <DrawerTrigger className="relative group overflow-hidden rounded-2xl ring-1 hover:ring-2 hover:ring-emerald-500 transition-all duration-300 text-white px-3 py-2 text-sm md:text-base font-medium hover:shadow-lg hover:shadow-emerald-400/50 hover:scale-105">
+    <Drawer >
+      <DrawerTrigger className="relative group overflow-hidden rounded-2xl ring-1 hover:ring-2 hover:ring-emerald-500 transition-all duration-300 text-white px-3 py-2 text-sm md:text-base font-medium hover:shadow-lg hover:shadow-emerald-400 hover:scale-105">
         Info
       </DrawerTrigger>
 
-      <DrawerContent className="max-h-[90vh] bg-zinc-900 text-white">
+      <DrawerContent className="max-h-[90vh] ">
         <DrawerHeader className="relative border-b pb-4">
           <DrawerTitle className="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent pr-8">
             {infoData.title || "Unknown Title"}

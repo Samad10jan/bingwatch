@@ -70,7 +70,7 @@ export default function AnimeCard({ data }: { data: Anime }) {
         </div>
 
         {/* Info Drawer Visible on Mobile, on Hover on Desktop */}
-        <div className="mt-2 md:mt-3 md:opacity-0 md:group-hover:opacity-100 transition-all duration-300">
+        <div className="mt-2 lg:mt-3 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300">
           <InfoDrawer infoData={data} />
         </div>
       

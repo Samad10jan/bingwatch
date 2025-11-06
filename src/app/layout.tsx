@@ -5,8 +5,21 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "BingWatch",
   description: "All About Anime",
+  openGraph:{
+    images:[
+      {
+        url:"/OIP.png",
+        width: 1200,
+          height: 630,
+                
+
+      }
+    ]
+      
+    }
+  }
   
-};
+
 
 export default function RootLayout({ children }: {children:React.ReactNode}) {
   return (

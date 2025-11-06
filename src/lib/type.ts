@@ -19,7 +19,18 @@ export type Anime = {
   } | null;
 
   duration?: number
-
+  trailer: {
+    youtube_id: string | null
+    url: string | null
+    embed_url: string | null
+    images: {
+      image_url: string | null
+      small_image_url: string | null
+      medium_image_url: string | null
+      large_image_url: string | null
+      maximum_image_url: string | null
+    }
+  }
   images?: {
     jpg?: {
       image_url: string;
@@ -38,12 +49,12 @@ export type Anime = {
   thumbnail?: string;
 
   tags?: string[];
-  studios?: {name:string}[];
-  genres?: {name:string}[];
-  producers?:{name:string}[] ;
+  studios?: { name: string }[];
+  genres?: { name: string }[];
+  producers?: { name: string }[];
   relatedAnime?: string[];
 };
-export type JSONDATA={
+export type JSONDATA = {
   pagination: {
     last_visible_page: number
     has_next_page: boolean,
@@ -54,6 +65,6 @@ export type JSONDATA={
       per_page: number
     }
   },
-  data:Anime[]
+  data: Anime[]
 }
 
