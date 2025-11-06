@@ -19,7 +19,7 @@ export default function Genre() {
     const [jsonData, setJsonData] = useState<JSONDATA | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
 
-    const url = `https://api.jikan.moe/v4/anime?genre=${genre}&sfw=1`
+    const url = `https://api.jikan.moe/v4/anime?genre=${genre}&page=${page}&sfw=1`
 
     useEffect(() => {
         async function getData() {
