@@ -21,15 +21,15 @@ export default function CarouselAnimeSlide({ data, type }: { data: Anime[], type
       const width = window.innerWidth;
 
       if (width < 480) {
-        setChunkSize(4); // Small mobile
+        setChunkSize(2); // Small mobile
       } else if (width < 640) {
-        setChunkSize(6); // Mobile
+        setChunkSize(2); // Mobile
       } else if (width < 768) {
-        setChunkSize(6); // Large mobile
+        setChunkSize(2); // Large mobile
       } else if (width < 1024) {
-        setChunkSize(6); // Tablet
+        setChunkSize(2); // Tablet
       } else if (width < 1280) {
-        setChunkSize(8); // Small desktop
+        setChunkSize(6); // Small desktop
       } else if (width < 1536) {
         setChunkSize(10); // Desktop
       } else {
@@ -57,16 +57,8 @@ export default function CarouselAnimeSlide({ data, type }: { data: Anime[], type
                 <AnimeCard key={i} data={anime} />
               ))}
 
-              {/* Show "More Details" card only on the last slide */}
-              {slideIndex === slides.length - 1 && (
-                <Card className=" w-36 h-56 md:w-50 md:h-86 rounded-xl flex justify-center items-center hover:shadow-lg transition-shadow">
-                  <Link href={`/type/${type}`}>
-                    <Button size="lg" className="font-semibold">
-                      View More
-                    </Button>
-                  </Link>
-                </Card>
-              )}
+          
+              
             </div>
           </CarouselItem>
         ))}

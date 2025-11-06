@@ -66,25 +66,21 @@ export function Header() {
   }, [q, type])
 
   return (
-    <header className="sticky flex justify-between gap-2 top-0 z-10 md:h-16 shrink-0 items-center transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 md:p-8 p-5 ">
+    <header className="sticky  flex justify-between gap-2 top-0 z-10 md:h-16 shrink-0 items-center transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 md:p-8 p-5 ">
       {/* Mobile Sidebar Trigger */}
-      <div className="flex items-center px-4 md:hidden lg:hidden xl:hidden">
-        <SidebarTrigger className="rounded-full border p-2 hover:bg-accent transition size-10" />
+      <div className="flex items-center px-4 md:hidden lg:hidden xl:hidden ">
+        <SidebarTrigger className="rounded-full border p-5 hover:bg-accent transition size-10 bg-accent" />
       </div>
 
-      {/* Mobile Logo */}
-      <h1 className="flex md:hidden flex-1 text-sm md:text-4xl font-extrabold bg-gradient-to-bl from-emerald-500 to-indigo-500 bg-clip-text text-transparent">
-        BingWatch
-      </h1>
 
       {/* Floating Search */}
-      <div className="relative max-w-xl md:max-w-full w-full flex-2   " ref={searchRef}>
+      <div className="relative max-w-2xl md:max-w-full w-full flex-2   " ref={searchRef}>
         <div className="relative flex items-center gap-2 flex-1 ">
-        
+
 
           {/* Search Input */}
           <Input
-            placeholder=" 🔍 Search anime..."
+            placeholder="Search anime..."
             value={q}
             type="text"
             onChange={(e) => {
@@ -92,18 +88,18 @@ export function Header() {
               setIsSearchOpen(true)
             }}
             onFocus={() => setIsSearchOpen(true)}
-            className="w-full h-10 pl-10 pr-10 rounded-full  px-3 py-2 text-sm   transition-all bg-accent"
+            className="w-full h-10 px-10 rounded-full py-2 text-sm   transition-all !bg-accent"
           />
 
           {/* Clear Button */}
           {q && (
             <Button
-            
+
               onClick={() => {
                 setQ("")
                 setSugg([])
               }}
-              className="absolute rounded-4xl right-3  hover:text-accent transition-colors"
+              className="absolute rounded-4xl right-3 !bg-accent !text-white hover:!bg-white transition-colors"
             >
               <X className="h-4 w-4" />
             </Button>
@@ -113,68 +109,71 @@ export function Header() {
         {/* Floating Suggestions Dropdown */}
         {isSearchOpen && q && (
           <Card className="absolute top-full mt-2 w-full max-h-[60vh] overflow-y-auto z-50 shadow-xl border-2 rounded-2xl animate-in fade-in slide-in-from-top-2 duration-200">
-            
+
             {
-            isLoading ? (
-              <div className="p-8 text-center">
-                <div className="inline-block h-6 w-6 animate-spin rounded-full border-2 border-solid border-current border-r-transparent motion-reduce:animate-[spin_1.5s_linear_infinite]" />
-                <p className="mt-2 text-sm text-muted-foreground">Searching...</p>
-              </div>
-            ) : sugg.length === 0 ? (
-              <div className="p-8 text-center">
-                <SearchIcon className="mx-auto h-12 w-12 text-muted-foreground/50" />
-                <p className="mt-2 text-sm font-medium">No anime found</p>
-                <p className="text-xs text-muted-foreground">Try a different search term</p>
-              </div>
-            ) : (
-              <div >
-                {sugg.map((anime, i) => (
-                  <Link
-                    href={`/anime/${anime.mal_id}`}
-                    onClick={() => {
-                      setQ("")
-                      setIsSearchOpen(false)
-                    }}
-                    key={i}
-                    className="flex items-center gap-4 p-3 hover:bg-accent/50 transition-colors first:rounded-t-2xl last:rounded-b-2xl group"
-                  >
-                    {/* Anime Image */}
-                    <div className="relative w-12 h-16 md:w-16 md:h-20 flex-shrink-0 overflow-hidden rounded-md ring-2 ring-border group-hover:ring-primary transition-all">
-                      <Image
-                        src={
-                          anime?.images?.jpg?.small_image_url ||
-                          anime?.images?.jpg?.image_url ||
-                          "/no-img.png"
-                        }
-                        fill
-                        alt={anime?.title || "Anime"}
-                        className="object-cover"
-                        sizes="(max-width: 768px) 48px, 64px"
-                      />
+              isLoading ? (
+                <div className="p-8 text-center">
+                  <div className="inline-block h-6 w-6 animate-spin rounded-full border-2 border-solid border-current border-r-transparent motion-reduce:animate-[spin_1.5s_linear_infinite]" />
+                  <p className="mt-2 text-sm text-muted-foreground">Searching...</p>
+                </div>
+              ) :
+                sugg.length === 0 ?
+                  (
+                    <div className="p-8 text-center">
+                      <SearchIcon className="mx-auto h-12 w-12 text-muted-foreground/50" />
+                      <p className="mt-2 text-sm font-medium">No anime found</p>
+                      <p className="text-xs text-muted-foreground">Try a different search term</p>
                     </div>
+                  ) :
+                  (
+                    <div >
+                      {sugg.map((anime, i) => (
+                        <Link
+                          href={`/anime/${anime.mal_id}`}
+                          onClick={() => {
+                            setQ("")
+                            setIsSearchOpen(false)
+                          }}
+                          key={i}
+                          className="flex items-center gap-4 p-3 hover:bg-accent/50 transition-colors first:rounded-t-2xl last:rounded-b-2xl group"
+                        >
+                          {/* Anime Image */}
+                          <div className="relative w-12 h-16 md:w-16 md:h-20 flex-shrink-0 overflow-hidden rounded-md ring-2 ring-border group-hover:ring-primary transition-all">
+                            <Image
+                              src={
+                                anime?.images?.jpg?.small_image_url ||
+                                anime?.images?.jpg?.image_url ||
+                                "/no-img.png"
+                              }
+                              fill
+                              alt={anime?.title || "Anime"}
+                              className="object-cover"
+                              sizes="(max-width: 768px) 48px, 64px"
+                            />
+                          </div>
 
-                    {/* Anime Info */}
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-semibold truncate group-hover:text-primary transition-colors">
-                        {anime?.title_english || anime?.title_japanese || anime?.title}
-                      </p>
-                      {anime?.type && (
-                        <p className="text-xs text-muted-foreground mt-1">
-                          {anime.type} {anime?.episodes && `• ${anime.episodes} episodes`}
-                        </p>
-                      )}
+                          {/* Anime Info */}
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-semibold truncate group-hover:text-primary transition-colors">
+                              {anime?.title_english || anime?.title_japanese || anime?.title}
+                            </p>
+                            {anime?.type && (
+                              <p className="text-xs text-muted-foreground mt-1">
+                                {anime.type} {anime?.episodes && `• ${anime.episodes} episodes`}
+                              </p>
+                            )}
+                          </div>
+
+                          {/* Score Badge */}
+                          {anime?.score && (
+                            <div className="flex-shrink-0 px-2 py-1 rounded-full bg-accent text-primary text-xs font-bold">
+                              ⭐ {anime.score}
+                            </div>
+                          )}
+                        </Link>
+                      ))}
                     </div>
-
-                    {/* Score Badge */}
-                    {anime?.score && (
-                      <div className="flex-shrink-0 px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold">
-                        ⭐ {anime.score}
-                      </div>
-                    )}
-                  </Link>
-                ))}
-              </div>
-            )}
+                  )}
           </Card>
         )}
       </div>
@@ -182,7 +181,7 @@ export function Header() {
       {/* Theme Toggle */}
       <div className="flex flex-1 justify-end">
         <DropdownMenu>
-          <DropdownMenuTrigger asChild className="rounded-full">
+          <DropdownMenuTrigger asChild className="rounded-full !bg-accent">
             <Button variant="outline" size="icon" className="hover:bg-amber-100 transition-colors p-6">
               <Sun className="h-[1.2rem] w-[1.2rem] hover:bg-amber-100 scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
               <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />

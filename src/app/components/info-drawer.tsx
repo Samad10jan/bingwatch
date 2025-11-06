@@ -36,7 +36,7 @@ export default function InfoDrawer({ infoData }: { infoData: Anime }) {
         <div className="relative flex flex-col md:flex-row gap-6 p-6 overflow-y-auto max-h-[calc(95vh-160px)]">
           {/* --- Left: Anime Image --- */}
           <div className="w-full md:w-80 flex-shrink-0">
-            <div className="relative w-full aspect-[3/4] rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10">
+            <div className="relative w-full aspect-[6/4] md:aspect-[3/6] rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10">
               <Image
                 src={
                   infoData.images?.jpg?.large_image_url ||
@@ -45,7 +45,9 @@ export default function InfoDrawer({ infoData }: { infoData: Anime }) {
                 }
                 alt={infoData.title || "Unknown Title"}
                 fill
-                className="object-cover transition-transform duration-500"
+                className="object-cover transition-transform duration-500 "
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
+
               />
               {infoData.score && (
                 <div className="absolute top-4 right-4 bg-gradient-to-br from-yellow-400 to-orange-500 text-black px-3 py-1.5 rounded-full font-bold text-sm shadow-lg flex items-center gap-1">
@@ -142,7 +144,7 @@ export default function InfoDrawer({ infoData }: { infoData: Anime }) {
                 <div>
                   <p className="text-sm text-muted-foreground mb-3">Genres</p>
                   <div className="flex flex-wrap gap-2">
-                    {infoData.genres.slice(0, 6).map((genre,index) => (
+                    {infoData.genres.slice(0, 6).map((genre, index) => (
                       <Badge
                         key={index}
                         variant="outline"
@@ -157,9 +159,9 @@ export default function InfoDrawer({ infoData }: { infoData: Anime }) {
 
               {/* Synopsis */}
               {infoData.synopsis && (
-                <div className="pt-4 border-t border-white/10">
+                <div className="pt-4 border-t border-white/10 ">
                   <p className="text-sm text-muted-foreground mb-2">Synopsis</p>
-                  <p className="text-sm leading-relaxed text-zinc-300">
+                  <p className="text-sm leading-relaxed text-zinc-300 line-clamp-2">
                     {infoData.synopsis}
                   </p>
                 </div>
@@ -169,7 +171,7 @@ export default function InfoDrawer({ infoData }: { infoData: Anime }) {
         </div>
 
         <DrawerFooter className="border-t flex justify-center items-center ">
-         <Link href={`/anime/${infoData.mal_id}`} className=" rounded-full ring-2 text-3xl font-bold text-center w-fit p-5 ring-emerald-400 hover:ring-3 hover:scale-110  hover:bg-gray-500 transition-all">MORE DETAILS</Link>
+          <Link href={`/anime/${infoData.mal_id}`} className=" rounded-full ring-2 md:text-3xl text-xl font-bold text-center w-fit p-5 ring-emerald-400 hover:ring-3 hover:scale-110  hover:bg-gray-500 transition-all">MORE DETAILS</Link>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>

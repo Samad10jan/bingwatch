@@ -5,16 +5,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import CarouselAnimeSlide from "./slider";
 import { Spinner } from "@/components/ui/spinner";
-
-type SectionConfig = {
-  title: string;
-  url: string;
-  type: string;
-};
-
-type LazyAnimeSectionsProps = {
-  sections: SectionConfig[];
-};
+import { LazyAnimeSectionsProps } from "@/lib/type";
 
 export default function LazyAnimeSections({ sections }: LazyAnimeSectionsProps) {
   const ref = useRef<HTMLDivElement | null>(null);

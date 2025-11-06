@@ -68,3 +68,13 @@ export type JSONDATA = {
   data: Anime[]
 }
 
+
+export type SectionConfig = {
+  title: string;
+  url: string;
+  type: string;
+};
+
+export type LazyAnimeSectionsProps = {
+  sections: SectionConfig[];
+};
