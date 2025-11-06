@@ -6,17 +6,6 @@ import LazyHomeSections from "../components/lazyloadcomponents";
 import LazyAnimeSections from "../components/lazyloadcomponents";
 
 export default async function Home() {
-<<<<<<< HEAD
-=======
-
-  let popularAnime, tvAnime, moviesAnime, upcomingAnime, ovaAnime
-  const urlHero = "https://api.jikan.moe/v4/top/anime?limit=10&filter=airing&page=1&sfw=1";
-  const urlTv = "https://api.jikan.moe/v4/top/anime?type=tv&page=1&sfw=1";
-  const urlMovies = "https://api.jikan.moe/v4/top/anime?type=movie&page=1&sfw=1";
-  const urlUpcoming = "https://api.jikan.moe/v4/top/anime?filter=upcoming&page=1&sfw=1";
-  const urlOVA = "https://api.jikan.moe/v4/top/anime?type=ova&page=1&sfw=1";
-  try {
->>>>>>> 648581da3c3a3c83d19fcf3ff6c943ef24eef08a
 
   const fetchSafe = async (url: string) => {
     try {
@@ -29,25 +18,11 @@ export default async function Home() {
     }
   };
 
-<<<<<<< HEAD
   const [popularAnime, tvAnime, moviesAnime] = await Promise.all([
     fetchSafe("https://api.jikan.moe/v4/top/anime?limit=10&filter=airing&page=1&sfw=1"),
     fetchSafe("https://api.jikan.moe/v4/top/anime?type=tv&page=1&sfw=1"),
     fetchSafe("https://api.jikan.moe/v4/top/anime?type=movie&page=1&sfw=1"),
   ]);
-=======
-     [popularAnime, tvAnime, moviesAnime, upcomingAnime, ovaAnime] = await Promise.all([
-      fetchSafe(urlHero),
-      fetchSafe(urlTv),
-      fetchSafe(urlMovies),
-      fetchSafe(urlUpcoming),
-      fetchSafe(urlOVA),
-    ]);
-  } catch (err:any) {
-    console.log(err);
-
-   }
->>>>>>> 648581da3c3a3c83d19fcf3ff6c943ef24eef08a
 
   return (
     <div className="*:my-10 *:text-center">
