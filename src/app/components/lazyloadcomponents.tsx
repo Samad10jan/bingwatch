@@ -18,7 +18,7 @@ export default function LazyAnimeSections({ sections }: LazyAnimeSectionsProps) 
     const observer = new IntersectionObserver(
       async ([entry]) => {
         if (entry.isIntersecting && !hasLoaded) {
-          setHasLoaded(true);
+
 
           const results = await Promise.all(
             sections.map(section =>
@@ -34,6 +34,7 @@ export default function LazyAnimeSections({ sections }: LazyAnimeSectionsProps) 
             newData[section.type] = results[i];
           });
 
+          setHasLoaded(true);
           setDataList(newData);
         }
       },
@@ -48,7 +49,7 @@ export default function LazyAnimeSections({ sections }: LazyAnimeSectionsProps) 
   return (
 
     <div ref={ref} className="opacity-100 transition-all duration-700">
-
+      {!hasLoaded && <Spinner className="mx-auto" />}
       {hasLoaded &&
         sections.map(({ title, type }) =>
 
