@@ -74,7 +74,7 @@ export function Header() {
 
 
       {/* Floating Search */}
-      <div className="relative max-w-full md:max-w-3xl w-full  " ref={searchRef}>
+      <div className="relative max-w-full md:max-w-3xl w-full " ref={searchRef}>
         <div className="relative flex items-center gap-2  ">
 
 

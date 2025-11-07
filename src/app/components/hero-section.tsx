@@ -65,7 +65,7 @@ export default function CarouselAnime({ PopularData }: { PopularData: Anime[] })
 
                                         {/* Status Badge */}
                                         {data.status && (
-                                            <Badge className="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold bg-emerald-500/30 text-emerald-200 border border-emerald-400/40 backdrop-blur-md shadow-lg transition-all hover:bg-emerald-500/40 hover:scale-105">
+                                            <Badge className=" md:flex hidden px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold bg-emerald-500/30 text-emerald-200 border border-emerald-400/40 backdrop-blur-md shadow-lg transition-all hover:bg-emerald-500/40 hover:scale-105">
                                                 {data.status}
                                             </Badge>
                                         )}
