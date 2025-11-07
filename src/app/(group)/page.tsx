@@ -1,11 +1,13 @@
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
-import HeroSection from "../components/hero-section";
-import CarouselAnimeSlide from "../components/slider";
-import LazyAnimeSections from "../components/lazyloadcomponents";
-import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
 import { genres } from "@/lib/constants";
+import Link from "next/link";
+import Footer from "../components/footer";
+import HeroSection from "../components/hero-section";
+import LazyAnimeSections from "../components/lazyloadcomponents";
+import CarouselAnimeSlide from "../components/slider";
 
 export default async function Home() {
   const fetchSafe = async (url: string) => {
@@ -21,11 +23,11 @@ export default async function Home() {
 
   const [popularAnime, tvAnime, moviesAnime] = await Promise.all([
     fetchSafe(
-      "https://api.jikan.moe/v4/top/anime?limit=10&filter=airing&page=1&sfw=1"
+      "https://api.jikan.moe/v4/top/anime?type=tv&limit=10&page=1&sfw=1&filter=bypopularity"
     ),
-    fetchSafe("https://api.jikan.moe/v4/top/anime?type=tv&limit=10&page=1&sfw=1"),
+    fetchSafe("https://api.jikan.moe/v4/top/anime?type=tv&limit=10&page=1&sfw=1&order_by=popularity"),
     fetchSafe(
-      "https://api.jikan.moe/v4/top/anime?type=movie&limit=10&page=1&sfw=1"
+      "https://api.jikan.moe/v4/top/anime?type=movie&limit=10&page=1&sfw=1&order_by=popularity"
     ),
   ]);
 
@@ -41,7 +43,13 @@ export default async function Home() {
       {/* TV Anime */}
       {tvAnime.length > 0 && (
         <section>
-          <h2 className="text-2xl font-bold">Top TV Anime</h2>
+          <div className="flex flex-col justify-center">
+
+            <h2 className="text-2xl font-bold">Top TV Anime</h2>
+            <Link href="/type/tv" className="self-end">
+              <Button variant="ghost" className="text-sm">View All →</Button>
+            </Link>
+          </div>
           <ScrollArea>
             <CarouselAnimeSlide data={tvAnime} type="tv" />
           </ScrollArea>
@@ -72,7 +80,13 @@ export default async function Home() {
       {/* Movies */}
       {moviesAnime.length > 0 && (
         <section>
-          <h2 className="text-2xl font-bold mb-4">Top Movies</h2>
+          <div className="flex flex-col justify-center">
+
+            <h2 className="text-2xl font-bold">Top Movies</h2>
+            <Link href="/type/movie" className="self-end">
+              <Button variant="ghost" className="text-sm">View All →</Button>
+            </Link>
+          </div>
           <ScrollArea>
             <CarouselAnimeSlide data={moviesAnime} type="movie" />
           </ScrollArea>
@@ -101,23 +115,8 @@ export default async function Home() {
         ]}
       />
 
-      {/* Browse by Genre */}
-
-
-      <Separator className="my-8" />
-
       {/* Footer */}
-      <footer className="flex flex-col md:flex-row justify-between items-center py-6 px-4 border-t gap-4">
-        <div className="flex gap-4">
-          <Link href="/about">About</Link>
-          <Link href="/contact">Contact</Link>
-          <Link href="https://github.com/your-repo">GitHub</Link>
-          <Link href="https://jikan.moe/">API Credits to Jikan</Link>
-        </div>
-        <div className="flex gap-4">
-          {/* Socials icons/links */}
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

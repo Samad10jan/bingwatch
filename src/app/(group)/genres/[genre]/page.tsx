@@ -3,6 +3,7 @@
 import LoadingSkeleton from "@/app/components/laodingskleton";
 import AnimeCard from "@/app/components/moviecard";
 import { PaginationComponent } from "@/app/components/pagenation";
+import { genres } from "@/lib/constants";
 import { Anime, JSONDATA } from "@/lib/type";
 import { useParams, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -18,8 +19,13 @@ export default function Genre() {
     const [data, setData] = useState<Anime[]>([]);
     const [jsonData, setJsonData] = useState<JSONDATA | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
+    const params = useParams();
+    const genreId = Number(params.genre);
 
-    const url = `https://api.jikan.moe/v4/anime?genre=${genre}&page=${page}&sfw=1`
+    const url = `https://api.jikan.moe/v4/anime?genres=${genreId}&page=${page}&order_by=popularity&sort=asc`
+
+    const genreName = genres.find(g => g.mal_id === genreId)?.name || "Unknown";
+
 
     useEffect(() => {
         async function getData() {
@@ -41,7 +47,7 @@ export default function Genre() {
 
     return (
         <div className="p-6">
-            <h1 className="text-2xl font-bold mb-4 capitalize">{genre} Anime</h1>
+            <h1 className="text-2xl font-bold mb-4 capitalize">{genreName} Anime</h1>
 
             {loading ? (
                 <LoadingSkeleton />

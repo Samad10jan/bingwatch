@@ -5,18 +5,6 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "BingWatch",
   description: "All About Anime",
-  openGraph:{
-    images:[
-      {
-        url:"/OIP.png",
-        width: 1200,
-          height: 630,
-                
-
-      }
-    ]
-      
-    }
   }
   
 

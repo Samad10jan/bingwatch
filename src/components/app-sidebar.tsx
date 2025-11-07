@@ -1,5 +1,6 @@
 "use client";
 import {
+  BookOpen,
   GalleryVerticalEnd,
   Tv
 } from "lucide-react";
@@ -61,29 +62,25 @@ const data = {
 
       ],
     },
-    // {
-    //   title: "Genres",
-    //   url: "/genres",
-    //   icon: BookOpen,
-    //   items: [
-    //     {
-    //       title: "Adventure",
-    //       url: "/anime/adventure",
-    //     },
-    //     {
-    //       title: "Award Winning",
-    //       url: "/anime/award-winning",
-    //     },
-    //     {
-    //       title: "Action",
-    //       url: "/anime/action",
-    //     },
-    //     {
-    //       title: "Comedy",
-    //       url: "/anime/comedy",
-    //     },
-    //   ],
-    // },
+    {
+  title: "Genres",
+  url: "/genres",
+  icon: BookOpen,
+  items: [
+    { title: "Action", url: "/genres/1" },
+    { title: "Adventure", url: "/genres/2" },
+    { title: "Comedy", url: "/genres/4" },
+    { title: "Drama", url: "/genres/8" },
+    { title: "Fantasy", url: "/genres/10" },
+    { title: "Horror", url: "/genres/14" },
+    { title: "Romance", url: "/genres/22" },
+    { title: "Sci-Fi", url: "/genres/24" },
+    { title: "Slice of Life", url: "/genres/36" },
+    { title: "Sports", url: "/genres/30" },
+    { title: "Supernatural", url: "/genres/37" },
+  ],
+}
+
     // {
     //   title: "Favorites",
     //   url: "/favorites",

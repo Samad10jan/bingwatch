@@ -48,10 +48,10 @@ export default function CarouselAnimeSlide({ data, type }: { data: Anime[], type
   }
 
   return (
-    <Carousel className="relative w-full  mx-auto px-2 sm:px-4">
+    <Carousel className="relative w-full  mx-auto px-3 sm:px-4">
       <CarouselContent>
         {slides.map((group, slideIndex) => (
-          <CarouselItem key={slideIndex} className=" ">
+          <CarouselItem key={slideIndex} className="px-5 ">
             <div className="grid grid-cols-2  sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 sm:gap-3 md:gap-4 mt-3 w-full md:*:mx-5">
               {group.map((anime, i) => (
                 <AnimeCard key={i} data={anime} />
@@ -65,8 +65,8 @@ export default function CarouselAnimeSlide({ data, type }: { data: Anime[], type
       </CarouselContent>
 
       {/* Navigation Arrows - Hidden on mobile, visible on tablet+ */}
-      <CarouselPrevious className="absolute top-1/2 -translate-y-1/2 -left-0 md:flex  hidden  " />
-      <CarouselNext className="absolute top-1/2 -translate-y-1/2 -right-0 hidden  md:flex" />
+      <CarouselPrevious className="absolute top-1/2 -translate-y-1/2 -left-0 hidden  " />
+      <CarouselNext className="absolute top-1/2 -translate-y-1/2 -right-0 md:hidden  flex" />
     </Carousel>
   );
 }

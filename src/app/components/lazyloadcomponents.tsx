@@ -6,6 +6,8 @@ import { Separator } from "@/components/ui/separator";
 import CarouselAnimeSlide from "./slider";
 import { Spinner } from "@/components/ui/spinner";
 import { LazyAnimeSectionsProps } from "@/lib/type";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function LazyAnimeSections({ sections }: LazyAnimeSectionsProps) {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -35,30 +37,39 @@ export default function LazyAnimeSections({ sections }: LazyAnimeSectionsProps) 
           setDataList(newData);
         }
       },
-      { threshold: 0.1 }
+      { root: null, threshold: 0.1 }
     );
 
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, [hasLoaded, sections]);
-  
+
 
   return (
+
     <div ref={ref} className="opacity-100 transition-all duration-700">
-      {hasLoaded ?
+
+      {hasLoaded &&
         sections.map(({ title, type }) =>
 
           dataList[type]?.length > 0 ? (
 
             <section key={type}>
-              <h2 className="text-2xl font-bold mb-4">{title}</h2>
+              <div className="flex flex-col justify-center">
+
+                <h2 className="text-2xl font-bold">{title}</h2>
+                <Link href="/type/movie" className="self-end">
+                  <Button variant="ghost" className="text-sm">View All →</Button>
+                </Link>
+              </div>
               <ScrollArea>
                 <CarouselAnimeSlide data={dataList[type]} type={type} />
               </ScrollArea>
               <Separator className="my-8" />
             </section>
           ) : null
-        ):<Spinner className="mx-auto"/>}
+        )}
     </div>
+
   );
 }

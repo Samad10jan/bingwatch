@@ -74,8 +74,8 @@ export function Header() {
 
 
       {/* Floating Search */}
-      <div className="relative max-w-2xl md:max-w-full w-full flex-2   " ref={searchRef}>
-        <div className="relative flex items-center gap-2 flex-1 ">
+      <div className="relative max-w-full md:max-w-3xl w-full  " ref={searchRef}>
+        <div className="relative flex items-center gap-2  ">
 
 
           {/* Search Input */}
@@ -164,12 +164,7 @@ export function Header() {
                             )}
                           </div>
 
-                          {/* Score Badge */}
-                          {anime?.score && (
-                            <div className="flex-shrink-0 px-2 py-1 rounded-full bg-accent text-primary text-xs font-bold">
-                              ⭐ {anime.score}
-                            </div>
-                          )}
+                          
                         </Link>
                       ))}
                     </div>
