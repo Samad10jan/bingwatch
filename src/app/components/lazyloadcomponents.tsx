@@ -19,7 +19,7 @@ export default function LazyAnimeSections({ sections }: LazyAnimeSectionsProps) 
       async ([entry]) => {
         if (entry.isIntersecting && !hasLoaded) {
 
-
+          //fetch
           const results = await Promise.all(
             sections.map(section =>
               fetch(section.url)
@@ -33,7 +33,7 @@ export default function LazyAnimeSections({ sections }: LazyAnimeSectionsProps) 
           sections.forEach((section, i) => {
             newData[section.type] = results[i];
           });
-
+          // show on screen
           setHasLoaded(true);
           setDataList(newData);
         }
@@ -49,7 +49,7 @@ export default function LazyAnimeSections({ sections }: LazyAnimeSectionsProps) 
   return (
 
     <div ref={ref} className="opacity-100 transition-all duration-700">
-      {!hasLoaded && <Spinner className="mx-auto" />}
+      {!hasLoaded && <Spinner className="mx-auto bg-accent" />}
       {hasLoaded &&
         sections.map(({ title, type }) =>
 
