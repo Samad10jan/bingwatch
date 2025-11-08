@@ -160,7 +160,7 @@ export default function InfoDrawer({ infoData }: { infoData: Anime }) {
               {/* Synopsis */}
               {infoData.synopsis && (
                 <div className="pt-4 border-t border-white/10 ">
-                  <p className="text-sm text-muted-foreground mb-2">Synopsis</p>
+                  <p className="text-sm text-muted-foreground mb-2 -ml-1">|Synopsis</p>
                   <p className="text-sm leading-relaxed text-zinc-300 line-clamp-2">
                     {infoData.synopsis}
                   </p>
@@ -171,7 +171,7 @@ export default function InfoDrawer({ infoData }: { infoData: Anime }) {
         </div>
 
         <DrawerFooter className="border-t flex justify-center items-center ">
-          <Link href={`/anime/${infoData.mal_id}`} className=" rounded-full ring-2 md:text-3xl text-xl font-bold text-center w-fit p-5 ring-emerald-400 hover:ring-3 hover:scale-110  hover:bg-gray-500 transition-all">MORE DETAILS</Link>
+          <Link href={`/anime/${infoData.mal_id}`} className=" rounded-full ring-2 md:text-3xl text-xl font-bold text-center w-fit p-5 ring-emerald-400 hover:ring-3 hover:scale-110  hover:bg-accent active:ring-3 active:scale-110  activ:bg-accent transition-all">MORE DETAILS</Link>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>

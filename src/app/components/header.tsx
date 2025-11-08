@@ -12,6 +12,7 @@ import { useEffect, useState, useRef } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Input } from "@/components/ui/input"
+import { Spinner } from "@/components/ui/spinner"
 
 export function Header() {
   const { theme, setTheme } = useTheme()
@@ -45,7 +46,7 @@ export function Header() {
     setIsLoading(true)
     const debounceTimeout = setTimeout(async () => {
       try {
-        const hasType = ["tv", "movie", "ova", "upcoming"].includes(type as string)
+        const hasType = ["tv", "movie", "ova", "upcoming","special"].includes(type as string)
         const hasFilter = type === "upcoming" ? "filter" : "type"
         const url = hasType
           ? `https://api.jikan.moe/v4/anime?q=${q}&${hasFilter}=${type}&limit=10`
@@ -68,8 +69,8 @@ export function Header() {
   return (
     <header className="sticky  flex justify-between gap-2 top-0 z-10 md:h-16 shrink-0 items-center transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 md:p-8 p-5 ">
       {/* Mobile Sidebar Trigger */}
-      <div className="flex items-center px-4 md:hidden lg:hidden xl:hidden ">
-        <SidebarTrigger className="rounded-full border p-5 hover:bg-accent transition size-10 bg-accent" />
+      <div className="flex items-center md:hidden lg:hidden xl:hidden ">
+        <SidebarTrigger className="rounded-full border p-5 hover:bg-accent transition size-10 bg-accent h-[1.2rem] w-[1.2rem] " />
       </div>
 
 
@@ -88,7 +89,7 @@ export function Header() {
               setIsSearchOpen(true)
             }}
             onFocus={() => setIsSearchOpen(true)}
-            className="w-full h-10 px-10 rounded-full py-2 text-sm   transition-all !bg-accent"
+            className="w-full h-10 px-10 rounded-full py-2 text-sm  transition-all !bg-accent"
           />
 
           {/* Clear Button */}
@@ -99,7 +100,7 @@ export function Header() {
                 setQ("")
                 setSugg([])
               }}
-              className="absolute rounded-4xl right-3 !bg-accent !text-white hover:!bg-white transition-colors"
+              className="absolute rounded-4xl right-3 !bg-accent text-accent-foreground transition-colors"
             >
               <X className="h-4 w-4" />
             </Button>
@@ -112,9 +113,9 @@ export function Header() {
 
             {
               isLoading ? (
-                <div className="p-8 text-center">
-                  <div className="inline-block h-6 w-6 animate-spin rounded-full border-2 border-solid border-current border-r-transparent motion-reduce:animate-[spin_1.5s_linear_infinite]" />
-                  <p className="mt-2 text-sm text-muted-foreground">Searching...</p>
+                <div className="p-8 flex justify-center items-center gap-1">
+                  <Spinner/>
+                  <p className=" text-sm text-muted-foreground">Searching...</p>
                 </div>
               ) :
                 sugg.length === 0 ?
@@ -135,10 +136,11 @@ export function Header() {
                             setIsSearchOpen(false)
                           }}
                           key={i}
-                          className="flex items-center gap-4 p-3 hover:bg-accent/50 transition-colors first:rounded-t-2xl last:rounded-b-2xl group"
+                          title={anime.title}
+                          className="flex items-center gap-4 p-3 hover:bg-accent/50 transition-colors "
                         >
                           {/* Anime Image */}
-                          <div className="relative w-12 h-16 md:w-16 md:h-20 flex-shrink-0 overflow-hidden rounded-md ring-2 ring-border group-hover:ring-primary transition-all">
+                          <div className="relative w-15 h-18 md:w-16 md:h-20 flex-shrink-0 overflow-hidden rounded-md ring-2 ring-border  transition-all">
                             <Image
                               src={
                                 anime?.images?.jpg?.small_image_url ||
@@ -154,7 +156,7 @@ export function Header() {
 
                           {/* Anime Info */}
                           <div className="flex-1 min-w-0">
-                            <p className="text-sm font-semibold truncate group-hover:text-primary transition-colors">
+                            <p className="text-sm font-semibold truncate  transition-colors">
                               {anime?.title_english || anime?.title_japanese || anime?.title}
                             </p>
                             {anime?.type && (

@@ -7,6 +7,7 @@ import { Star, Calendar, Tv, Clock, Film } from "lucide-react";
 import type { Anime } from "@/lib/type";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Recommendations from "@/app/components/recommendation-view";
 
 export default function AnimeDetailPage() {
   const { id } = useParams();
@@ -200,7 +201,7 @@ export default function AnimeDetailPage() {
                     </Card>
                 )}
             </div>
-
+<Recommendations id={id as string}/>
 
         </div>
     );

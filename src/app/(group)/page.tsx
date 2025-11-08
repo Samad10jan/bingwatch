@@ -50,9 +50,9 @@ export default async function Home() {
               <Button variant="ghost" className="text-sm">View All →</Button>
             </Link>
           </div>
-          <ScrollArea>
+         
             <CarouselAnimeSlide data={tvAnime} type="tv" />
-          </ScrollArea>
+          
           <Separator className="mt-8" />
         </section>
       )}
@@ -87,9 +87,9 @@ export default async function Home() {
               <Button variant="ghost" className="text-sm">View All →</Button>
             </Link>
           </div>
-          <ScrollArea>
+         
             <CarouselAnimeSlide data={moviesAnime} type="movie" />
-          </ScrollArea>
+         
           <Separator className="mt-8" />
         </section>
       )}

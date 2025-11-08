@@ -14,7 +14,7 @@ export default function Footer() {
                             BingWatch
                         </h3>
 
-                        <div className="space-x-2 text-sm felx flex-wrap ">
+                        <div className=" text-sm flex flex-wrap ">
 
                             <Badge variant={"secondary"} className="cursor-pointer  transition-colors">
                                 About Us
@@ -27,7 +27,7 @@ export default function Footer() {
 
                     </div>
 
-                    <div>
+                    <div className="flex flex-col justify-center items-center self-end">
                         <h4 className="font-semibold mb-3">Connect</h4>
                         <div className="flex gap-3 mb-4">
                             <Button variant="outline" size="icon" className="hover:bg-primary hover:text-primary-foreground transition-all">

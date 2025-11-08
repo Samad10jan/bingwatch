@@ -1,5 +1,6 @@
 "use client";
 import {
+  ArrowLeft,
   BookOpen,
   GalleryVerticalEnd,
   Tv
@@ -16,7 +17,8 @@ import {
 } from "@/components/ui/sidebar";
 import Image from "next/image";
 import { Card } from "./ui/card";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { Button } from "./ui/button";
 
 // 🎬 Anime Dashboard Sidebar Data
 const data = {
@@ -63,23 +65,23 @@ const data = {
       ],
     },
     {
-  title: "Genres",
-  url: "/genres",
-  icon: BookOpen,
-  items: [
-    { title: "Action", url: "/genres/1" },
-    { title: "Adventure", url: "/genres/2" },
-    { title: "Comedy", url: "/genres/4" },
-    { title: "Drama", url: "/genres/8" },
-    { title: "Fantasy", url: "/genres/10" },
-    { title: "Horror", url: "/genres/14" },
-    { title: "Romance", url: "/genres/22" },
-    { title: "Sci-Fi", url: "/genres/24" },
-    { title: "Slice of Life", url: "/genres/36" },
-    { title: "Sports", url: "/genres/30" },
-    { title: "Supernatural", url: "/genres/37" },
-  ],
-}
+      title: "Genres",
+      url: "/genres",
+      icon: BookOpen,
+      items: [
+        { title: "Action", url: "/genres/1" },
+        { title: "Adventure", url: "/genres/2" },
+        { title: "Comedy", url: "/genres/4" },
+        { title: "Drama", url: "/genres/8" },
+        { title: "Fantasy", url: "/genres/10" },
+        { title: "Horror", url: "/genres/14" },
+        { title: "Romance", url: "/genres/22" },
+        { title: "Sci-Fi", url: "/genres/24" },
+        { title: "Slice of Life", url: "/genres/36" },
+        { title: "Sports", url: "/genres/30" },
+        { title: "Supernatural", url: "/genres/37" },
+      ],
+    }
 
     // {
     //   title: "Favorites",
@@ -117,6 +119,8 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const router = useRouter()
+  const path = usePathname()
+
   return (
     <Sidebar collapsible="icon" {...props} className="overflow-hidden"  >
       <div className="items-center justify-between px-3 py-2 hidden md:flex lg:flex xl:flex">
@@ -140,7 +144,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
         {/* <NavUser user={data.user} /> */}
       </SidebarFooter>
-
+     
       <SidebarRail />
     </Sidebar >
   );

@@ -20,16 +20,12 @@ export default function CarouselAnimeSlide({ data, type }: { data: Anime[], type
     function updateChunkSize() {
       const width = window.innerWidth;
 
-      if (width < 480) {
-        setChunkSize(2); // Small mobile
-      } else if (width < 640) {
+     if (width < 640) {
         setChunkSize(2); // Mobile
-      } else if (width < 768) {
-        setChunkSize(2); // Large mobile
-      } else if (width < 1024) {
-        setChunkSize(2); // Tablet
+     } else if (width < 1024) {
+        setChunkSize(3); // Tablet
       } else if (width < 1280) {
-        setChunkSize(6); // Small desktop
+        setChunkSize(4); // Small desktop
       } else if (width < 1536) {
         setChunkSize(10); // Desktop
       } else {
@@ -66,7 +62,7 @@ export default function CarouselAnimeSlide({ data, type }: { data: Anime[], type
 
       {/* Navigation Arrows - Hidden on mobile, visible on tablet+ */}
       <CarouselPrevious className="absolute top-1/2 -translate-y-1/2 -left-0 hidden  " />
-      <CarouselNext className="absolute top-1/2 -translate-y-1/2 -right-0 md:hidden  flex" />
+      <CarouselNext className="absolute top-1/2 -translate-y-1/2 -right-0 xl:hidden  flex" />
     </Carousel>
   );
 }

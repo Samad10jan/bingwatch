@@ -59,13 +59,13 @@ export default function LazyAnimeSections({ sections }: LazyAnimeSectionsProps) 
               <div className="flex flex-col justify-center">
 
                 <h2 className="text-2xl font-bold">{title}</h2>
-                <Link href="/type/movie" className="self-end">
+                <Link href={`/type/${type}`} className="self-end">
                   <Button variant="ghost" className="text-sm">View All →</Button>
                 </Link>
               </div>
-              <ScrollArea>
+             
                 <CarouselAnimeSlide data={dataList[type]} type={type} />
-              </ScrollArea>
+             
               <Separator className="my-8" />
             </section>
           ) : null

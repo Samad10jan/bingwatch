@@ -11,7 +11,7 @@ export default function H() {
 
   const { type } = useParams();
   const router= useRouter()
-  if (!["tv", "movie", "ova", "upcoming"].includes(type as string)) {
+  if (!["tv", "movie", "ova", "upcoming","special"].includes(type as string)) {
    router.replace("/404");
   }
 
