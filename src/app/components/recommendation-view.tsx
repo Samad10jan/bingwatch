@@ -66,7 +66,7 @@ export default function Recommendations({ id }: { id: string }) {
 
                 <div className=" absolute inset-0 w-full h-full bg-gradient-to-t lg:group-hover:bg-gradient-to-t from-black to-transparent  transition-all duration-300"/>
               
-                  <h3 className=" flex flex-col justify-end absolute bottom-0   w-full h-full  line-clamp-2 md:opacity-0 text-accent font-extrabold text-xl md: group-hover:opacity-100 p-5 transition-all duration-300">{item.entry.title}</h3>
+                  <h3 className=" flex  justify-end items-center flex-col absolute bottom-0   w-full h-full  line-clamp-2 md:opacity-0 text-white font-extrabold text-lg md: group-hover:opacity-100 p-5 transition-all duration-300">{item.entry.title}</h3>
                 
               </CardContent>
             </Link>

@@ -1,12 +1,12 @@
 "use client"
 
-import { Bold, Moon, SearchIcon, Sun, X } from "lucide-react"
+import { Bold, Home, HomeIcon, Moon, SearchIcon, Sun, X } from "lucide-react"
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { SidebarTrigger } from "@/components/ui/sidebar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
-import { useParams } from "next/navigation"
+import { useParams, usePathname } from "next/navigation"
 import { Anime } from "@/lib/type"
 import { useEffect, useState, useRef } from "react"
 import Link from "next/link"
@@ -22,6 +22,9 @@ export function Header() {
   const [isLoading, setIsLoading] = useState(false)
   const { type } = useParams()
   const searchRef = useRef<HTMLDivElement>(null)
+  const path = usePathname()
+
+
 
   // Close search on outside click
   useEffect(() => {
@@ -46,7 +49,7 @@ export function Header() {
     setIsLoading(true)
     const debounceTimeout = setTimeout(async () => {
       try {
-        const hasType = ["tv", "movie", "ova", "upcoming","special"].includes(type as string)
+        const hasType = ["tv", "movie", "ova", "upcoming", "special"].includes(type as string)
         const hasFilter = type === "upcoming" ? "filter" : "type"
         const url = hasType
           ? `https://api.jikan.moe/v4/anime?q=${q}&${hasFilter}=${type}&limit=10`
@@ -69,8 +72,12 @@ export function Header() {
   return (
     <header className="sticky  flex justify-between gap-2 top-0 z-10 md:h-16 shrink-0 items-center transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 md:p-8 p-5 ">
       {/* Mobile Sidebar Trigger */}
-      <div className="flex items-center md:hidden lg:hidden xl:hidden ">
-        <SidebarTrigger className="rounded-full border p-5 hover:bg-accent transition size-10 bg-accent h-[1.2rem] w-[1.2rem] " />
+      <div className="flex items-center md:hidden lg:hidden xl:hidden gap-3 ">
+        <SidebarTrigger className="rounded-full border p-6 hover:bg-accent transition size-10 bg-accent h-[1.2rem] w-[1.2rem] " />
+        {path !== "/" &&
+          <Button variant={"secondary"} className="bg-accent rounded-full ring-accent " onClick={() => { window.location.href = "/" }}>
+            <HomeIcon className="m-0  " />
+          </Button>}
       </div>
 
 
@@ -114,7 +121,7 @@ export function Header() {
             {
               isLoading ? (
                 <div className="p-8 flex justify-center items-center gap-1">
-                  <Spinner/>
+                  <Spinner />
                   <p className=" text-sm text-muted-foreground">Searching...</p>
                 </div>
               ) :
@@ -166,7 +173,7 @@ export function Header() {
                             )}
                           </div>
 
-                          
+
                         </Link>
                       ))}
                     </div>
@@ -177,28 +184,17 @@ export function Header() {
 
       {/* Theme Toggle */}
       <div className="flex flex-1 justify-end">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild className="rounded-full !bg-accent">
-            <Button variant="outline" size="icon" className="hover:bg-amber-100 transition-colors p-6">
-              <Sun className="h-[1.2rem] w-[1.2rem] hover:bg-amber-100 scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-              <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
-              <span className="sr-only">Toggle theme</span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <Card className="*:hover:cursor-pointer size-40 *:hover:ring-1 *:p-3 gap-0 *:mx-1 *:rounded-full *:transition-all h-full *:border-1 gap-y-2 **:text-center">
-              <DropdownMenuItem onClick={() => setTheme("light")} className="hover:bg-amber-100 hover:text-black">
-                Light
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setTheme("dark")} className="hover:bg-black hover:text-white">
-                Dark
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setTheme("system")} className="hover:bg-gradient-to-r from-black to-white">
-                System
-              </DropdownMenuItem>
-            </Card>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <Button
+          variant="secondary"
+
+          size="icon"
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          className="rounded-full p-6 transition-all duration-300 bg-accent "
+        >
+          <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 " />
+          <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 " />
+
+        </Button>
       </div>
     </header>
   )

@@ -15,12 +15,13 @@ import { Anime } from "@/lib/type"; // ✅ use new Anime type
 import Image from "next/image";
 import { X, Calendar, Film, Star, Clock, TrendingUp } from "lucide-react";
 import Link from "next/link";
+import { ReactNode } from "react";
 
-export default function InfoDrawer({ infoData }: { infoData: Anime }) {
+export default function InfoDrawer({ infoData,children }: { infoData: Anime,children:ReactNode }) {
   return (
     <Drawer >
-      <DrawerTrigger className="relative group overflow-hidden rounded-2xl ring-1 hover:ring-2 hover:ring-emerald-500 transition-all duration-300 text-white px-3 py-2 text-sm md:text-base font-medium hover:shadow-lg hover:shadow-emerald-400 hover:scale-105">
-        Info
+      <DrawerTrigger >
+        {children}
       </DrawerTrigger>
 
       <DrawerContent className="max-h-[90vh] ">

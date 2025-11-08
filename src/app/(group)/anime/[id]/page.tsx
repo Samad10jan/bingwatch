@@ -10,41 +10,41 @@ import { useEffect, useState } from "react";
 import Recommendations from "@/app/components/recommendation-view";
 
 export default function AnimeDetailPage() {
-  const { id } = useParams();
-  const router = useRouter();
+    const { id } = useParams();
+    const router = useRouter();
 
-  const [anime, setAnime] = useState<Anime | null>(null);
-  const [loading, setLoading] = useState(true);
+    const [anime, setAnime] = useState<Anime | null>(null);
+    const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (!id) return;
+    useEffect(() => {
+        if (!id) return;
 
-    async function fetchAnime() {
-      setLoading(true);
-      try {
-        const res = await fetch(`https://api.jikan.moe/v4/anime/${id}`,{next:{revalidate:30}});
+        async function fetchAnime() {
+            setLoading(true);
+            try {
+                const res = await fetch(`https://api.jikan.moe/v4/anime/${id}`, { next: { revalidate: 30 } });
 
-        if (!res.ok) {
-          router.replace("/404"); // redirect to custom 404 page
-          return;
+                if (!res.ok) {
+                    router.replace("/404"); // redirect to custom 404 page
+                    return;
+                }
+
+                const json = await res.json();
+                setAnime(json.data || null);
+            } catch (err) {
+                console.error("Error fetching anime:", err);
+                router.replace("/404");
+            } finally {
+                setLoading(false);
+            }
         }
 
-        const json = await res.json();
-        setAnime(json.data || null);
-      } catch (err) {
-        console.error("Error fetching anime:", err);
-        router.replace("/404");
-      } finally {
-        setLoading(false);
-      }
-    }
+        fetchAnime();
+    }, [id, router]);
 
-    fetchAnime();
-  }, [id, router]);
+    if (loading) return <div className="p-6 text-center text-xl">Thinking...</div>;
 
-  if (loading) return <div className="p-6 text-center text-xl">Thinking...</div>;
-
-  if (!anime) return <div className="p-6 text-center text-xl"></div>
+    if (!anime) return <div className="p-6 text-center text-xl"></div>
 
     return (
         <div className="min-h-screen">
@@ -200,8 +200,10 @@ export default function AnimeDetailPage() {
                         </CardContent>
                     </Card>
                 )}
+                <Recommendations id={id as string} />
             </div>
-<Recommendations id={id as string}/>
+
+
 
         </div>
     );
