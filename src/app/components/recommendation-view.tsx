@@ -48,7 +48,7 @@ export default function Recommendations({ id }: { id: string }) {
   return (
     <section className="mt-5">
       <h2 className="text-2xl font-semibold mb-4">Recommendations</h2>
-      <div className="grid gap-3 grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5">
+      <div className="flex justify-center flex-wrap gap-5">
         {recs.slice(0,5).map((item) => (
           <Card key={item.entry.mal_id} className=" relative  group p-0 w-36 md:w-46 m-3 cursor-pointer overflow-hidden ">
             <Link href={`/anime/${item.entry.mal_id}`}>
