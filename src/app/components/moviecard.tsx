@@ -26,7 +26,7 @@ export default function AnimeCard({ data }: { data: Anime }) {
         />
 
         {/*Always  Overlay on Mobile) */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300" />
 
         {/*  Score Badge */}
         {data.score && (

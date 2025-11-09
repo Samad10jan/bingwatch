@@ -48,9 +48,9 @@ export default function Recommendations({ id }: { id: string }) {
   return (
     <section className="mt-5">
       <h2 className="text-2xl font-semibold mb-4">Recommendations</h2>
-      <div className="grid gap-3 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+      <div className="grid gap-3 grid-cols-3 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5">
         {recs.slice(0,5).map((item) => (
-          <Card key={item.entry.mal_id} className=" relative  group p-0 w-46  cursor-pointer overflow-hidden ">
+          <Card key={item.entry.mal_id} className=" relative  group p-0 w-36 md:w-46 m-3 cursor-pointer overflow-hidden ">
             <Link href={`/anime/${item.entry.mal_id}`}>
               <CardContent className="relative w-full h-60 p-0 ">
                 <div className=" absolute w-full h-60 group-hover:scale-110 transition-transform duration-300">
@@ -64,9 +64,9 @@ export default function Recommendations({ id }: { id: string }) {
             
                 </div>
 
-                <div className=" absolute inset-0 w-full h-full bg-gradient-to-t lg:group-hover:bg-gradient-to-t from-black to-transparent  transition-all duration-300"/>
+                <div className=" absolute inset-0 w-full h-full bg-gradient-to-t xl:group-hover:bg-gradient-to-t from-black to-transparent  transition-all duration-300"/>
               
-                  <h3 className=" flex  justify-end items-center flex-col absolute bottom-0   w-full h-full  line-clamp-2 md:opacity-0 text-white font-extrabold text-lg md: group-hover:opacity-100 p-5 transition-all duration-300">{item.entry.title}</h3>
+                  <h3 className=" flex  justify-end items-center flex-col absolute bottom-0  xl:opacity-0 text-white font-extrabold text-lg xl:group-hover:opacity-100 pl-1 p-5 transition-all duration-300 truncate overflow-clip">{item.entry.title}</h3>
                 
               </CardContent>
             </Link>
