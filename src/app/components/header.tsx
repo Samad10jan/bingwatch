@@ -73,10 +73,10 @@ export function Header() {
     <header className="sticky  flex justify-between gap-2 top-0 z-10 md:h-16 shrink-0 items-center transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 md:p-8 p-5 ">
       {/* Mobile Sidebar Trigger */}
       <div className="flex items-center md:hidden lg:hidden xl:hidden gap-3 ">
-        <SidebarTrigger className="rounded-full border p-6 hover:bg-accent transition size-10 bg-accent h-[1.2rem] w-[1.2rem] " />
+        <SidebarTrigger className="rounded-full border p-6  transition size-10 bg-accent h-[1.2rem] w-[1.2rem] " />
         {path !== "/" &&
-          <Button variant={"secondary"} className="bg-accent rounded-full ring-accent " onClick={() => { window.location.href = "/" }}>
-            <HomeIcon className="m-0  " />
+          <Button variant={"secondary"} className="bg-accent border rounded-full py-5   " onClick={() => { window.location.href = "/" }}>
+            <HomeIcon className="m-0 " />
           </Button>}
       </div>
 
@@ -189,7 +189,7 @@ export function Header() {
 
           size="icon"
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-          className="rounded-full p-6 transition-all duration-300 bg-accent "
+          className="rounded-full p-6 transition-all duration-300 bg-accent border "
         >
           <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 " />
           <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 " />
