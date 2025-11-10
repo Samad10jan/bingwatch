@@ -44,12 +44,13 @@ export default function Platforms({ id }: {
             <h2 className="text-2xl font-semibold mb-6">Streaming On</h2>
             <div className="flex  flex-wrap gap-5">
                 {platforms.map((platform, index) => (
-                    <div key={index} className=" flex flex-col justify-center items-center gap-2 ">
+                    
                         <Link
                             href={platform.url}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-sm font-medium hover:underline"
+                             key={index}
                         >
                             <div className="relative w-20 h-20   ">
 
@@ -62,7 +63,7 @@ export default function Platforms({ id }: {
                             </div>
                           
                         </Link>
-                    </div>
+                   
                 ))}
             </div>
         </section >
