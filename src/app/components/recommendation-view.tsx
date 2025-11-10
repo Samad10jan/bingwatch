@@ -52,8 +52,8 @@ export default function Recommendations({ id }: { id: string }) {
         {recs.slice(0,5).map((item) => (
           <Card key={item.entry.mal_id} className=" relative group p-0 w-36 md:w-46 mx-1 cursor-pointer overflow-hidden ">
             <Link href={`/anime/${item.entry.mal_id}`}>
-              <CardContent className="relative w-full h-60 p-1.5 ">
-                <div className=" absolute w-full h-60 group-hover:scale-110 transition-transform duration-300">
+              <CardContent className="relative w-full h-60 group-hover:scale-110 transition-transform duration-300  ">
+                <div className="">
                   <Image
                     src={item.entry.images.webp.large_image_url || item.entry.images.jpg.large_image_url}
                     alt={item.entry.title}
@@ -63,11 +63,7 @@ export default function Recommendations({ id }: { id: string }) {
                   />
             
                 </div>
-
-                <div className=" absolute inset-0 w-full h-full bg-gradient-to-t xl:group-hover:bg-gradient-to-t from-black to-transparent  transition-all duration-300 xl:hidden"/>
-              
-                 
-                
+ 
               </CardContent>
             </Link>
              <div className=" line-clamp-2 mx-auto group-hover:scale-110 transition-transform duration-300  !px-5">{item.entry.title}</div>
