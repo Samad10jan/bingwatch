@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 
 export default function Genre() {
 
-    const { genre } = useParams();
+    // const { genre } = useParams();
 
 
     const search = useSearchParams();

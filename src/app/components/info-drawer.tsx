@@ -17,7 +17,7 @@ import { X, Calendar, Film, Star, Clock, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import { ReactNode } from "react";
 
-export default function InfoDrawer({ infoData,children }: { infoData: Anime,children:ReactNode }) {
+export default function InfoDrawer({ infoData, children }: { infoData: Anime, children: ReactNode }) {
   return (
     <Drawer >
       <DrawerTrigger >
@@ -172,7 +172,10 @@ export default function InfoDrawer({ infoData,children }: { infoData: Anime,chil
         </div>
 
         <DrawerFooter className="border-t flex justify-center items-center ">
-          <Link href={`/anime/${infoData.mal_id}`} className=" rounded-full ring-2 md:text-3xl text-xl font-bold text-center w-fit p-5 ring-emerald-400 hover:ring-3 hover:scale-110  hover:bg-accent active:ring-3 active:scale-110  activ:bg-accent transition-all">MORE DETAILS</Link>
+          <Button variant={"secondary"} className=" rounded-full ring-2 md:text-3xl text-lg font-bold text-center w-fit p-5 ring-emerald-400 hover:ring-3 hover:scale-110  hover:bg-accent active:ring-3 active:scale-110  active:bg-accent transition-all">
+
+            <Link href={`/anime/${infoData.mal_id}`} >MORE DETAILS</Link>
+          </Button>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>

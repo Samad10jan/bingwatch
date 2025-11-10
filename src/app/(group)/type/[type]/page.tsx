@@ -4,14 +4,14 @@ import LoadingSkeleton from "@/app/components/laodingskleton";
 import AnimeCard from "@/app/components/moviecard";
 import { PaginationComponent } from "@/app/components/pagenation";
 import { Anime, JSONDATA } from "@/lib/type";
-import { notFound, useParams, useRouter, useSearchParams } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function H() {
 
   const { type } = useParams();
   const router= useRouter()
-  if (!["tv", "movie", "ova", "upcoming","special"].includes(type as string)) {
+  if (!["tv", "movie", "ova", "upcoming","special"].includes((type as string).toLowerCase())) {
    router.replace("/404");
   }
 

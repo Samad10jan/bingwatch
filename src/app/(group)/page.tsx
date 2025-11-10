@@ -1,6 +1,5 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { genres } from "@/lib/constants";
 import Link from "next/link";
@@ -58,8 +57,8 @@ export default async function Home() {
       )}
       <section>
         <h2 className=" text-2xl font-bold mb-4 mx-auto">Browse by Genre</h2>
-        <div className="flex w-full flex-wrap gap-2 justify-center">
-          {genres.map((genre, i) => (
+        <div className="flex w-full flex-wrap gap-2 justify-center max-w-6xl mx-auto">
+          {genres.splice(0,20).map((genre, i) => (
 
 
             <Link

@@ -1,18 +1,17 @@
 "use client"
 
-import { Bold, Home, HomeIcon, Moon, SearchIcon, Sun, X } from "lucide-react"
-import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { SidebarTrigger } from "@/components/ui/sidebar"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu"
-import { useParams, usePathname } from "next/navigation"
-import { Anime } from "@/lib/type"
-import { useEffect, useState, useRef } from "react"
-import Link from "next/link"
-import Image from "next/image"
 import { Input } from "@/components/ui/input"
+import { SidebarTrigger } from "@/components/ui/sidebar"
 import { Spinner } from "@/components/ui/spinner"
+import { Anime } from "@/lib/type"
+import { HomeIcon, Moon, SearchIcon, Sun, X } from "lucide-react"
+import { useTheme } from "next-themes"
+import Image from "next/image"
+import Link from "next/link"
+import { useParams, usePathname } from "next/navigation"
+import { useEffect, useRef, useState } from "react"
 
 export function Header() {
   const { theme, setTheme } = useTheme()

@@ -100,3 +100,8 @@ export type AnimeRecommendationItem= {
   url: string;
   votes: number;
 }
+
+export type PlatformType = {
+  name: string
+  url: string
+}

@@ -8,6 +8,9 @@ import type { Anime } from "@/lib/type";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Recommendations from "@/app/components/recommendation-view";
+import Link from "next/link";
+import { genres } from "@/lib/constants";
+import Platforms from "@/app/components/streamingplatforms";
 
 export default function AnimeDetailPage() {
     const { id } = useParams();
@@ -48,7 +51,6 @@ export default function AnimeDetailPage() {
 
     return (
         <div className="min-h-screen">
-            {/* Hero Background with Gradient */}
 
             {/* Main Content */}
             <div className="max-w-7xl mx-auto px-4 relative ">
@@ -101,10 +103,12 @@ export default function AnimeDetailPage() {
                                 </Badge>
                             )}
                             {anime.type && (
-                                <Badge variant="secondary" className="gap-1 px-3 py-1">
-                                    <Tv className="w-4 h-4" />
-                                    {anime.type}
-                                </Badge>
+                                <Link href={`/type/${anime.type}`}>
+                                    <Badge variant="secondary" className="gap-1 px-3 py-1">
+                                        <Tv className="w-4 h-4" />
+                                        {anime.type}
+                                    </Badge>
+                                </Link>
                             )}
                             {anime.episodes && (
                                 <Badge variant="secondary" className="gap-1 px-3 py-1">
@@ -136,12 +140,14 @@ export default function AnimeDetailPage() {
                                 </h3>
                                 <div className="flex flex-wrap gap-2">
                                     {anime.genres.map((genre) => (
-                                        <Badge
-                                            key={genre.name}
-                                            className="bg-primary/10 text-primary hover:bg-primary/20 border border-primary/20 px-3 py-1"
-                                        >
-                                            {genre.name}
-                                        </Badge>
+                                        <Link href={`/genres/${genres.find(g => g.name === genre.name)?.mal_id}`} key={genre.name}>
+                                            <Badge
+                                                
+                                                className="bg-primary/10 text-primary hover:bg-primary/20 border border-primary/20 px-3 py-1"
+                                            >
+                                                {genre.name}
+                                            </Badge>
+                                        </Link>
                                     ))}
                                 </div>
                             </div>
@@ -201,6 +207,7 @@ export default function AnimeDetailPage() {
                     </Card>
                 )}
                 <Recommendations id={id as string} />
+                <Platforms id={id as string}/>
             </div>
 
 
