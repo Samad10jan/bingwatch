@@ -71,7 +71,7 @@ export function Header() {
   return (
     <header className="sticky  flex justify-between gap-2 top-0 z-10 md:h-16 shrink-0 items-center transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 md:p-8 p-5  ">
       {/* Mobile Sidebar Trigger */}
-      <div className="flex items-center md:hidden lg:hidden xl:hidden gap-3 ">
+      <div className="flex items-center md:hidden lg:hidden xl:hidden gap-3 animate-in fade-in slide-in-from-top-2 duration-200">
         <SidebarTrigger className="rounded-full border p-6  transition size-10 bg-accent h-[1.2rem] w-[1.2rem] " />
         {path !== "/" &&
           <Button variant={"secondary"} className="bg-accent border rounded-full py-5   " onClick={() => { window.location.href = "/" }}>
