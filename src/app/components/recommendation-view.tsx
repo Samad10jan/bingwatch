@@ -66,14 +66,14 @@ export default function Recommendations({ id }: { id: string }) {
   return (
     <section className="mt-5 slide-in-from-bottom-50 animate-in duration-300 transition-all">
       <h2 className="text-2xl font-semibold mb-4">Recommendations</h2>
-      <div className="flex flex-wrap gap-5">
+      <div className="flex flex-wrap  ">
         {recs.slice(0, 5).map((item) => (
           <Card
             key={item.entry.mal_id}
-            className="relative group p-0 w-46 md:w-46 cursor-pointer overflow-hidden"
+            className="relative group p-0 w-26 md:w-46 cursor-pointer overflow-hidden mx-1"
           >
             <Link href={`/anime/${item.entry.mal_id}`}>
-              <CardContent className="relative w-full h-60 group-hover:scale-110 transition-transform duration-300">
+              <CardContent className="relative w-full h-50 group-hover:scale-110 transition-transform duration-300">
                 <Image
                   src={
                     item.entry.images.webp.large_image_url ||

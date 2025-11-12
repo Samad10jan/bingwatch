@@ -43,7 +43,7 @@ export default function AnimeCard({ data }: { data: Anime }) {
 
 
         <h2 className="text-sm sm:text-base md:text-lg font-bold text-white -mb-4 sm:mb-2 line-clamp-2 drop-shadow-lg md:opacity-0 md:group-hover:opacity-100 transition-all duration-300">
-          {data.title || "Unknown Title"}
+          {data.title_english ||data.title||data.title_japanese|| "Unknown Title"}
         </h2>
 
 
