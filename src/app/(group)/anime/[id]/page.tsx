@@ -31,9 +31,22 @@ export default function AnimeDetailPage() {
                     router.replace("/404"); // redirect to custom 404 page
                     return;
                 }
+                
+
+
 
                 const json = await res.json();
+                const genres = json.data.genres?.map((g: any) => g.name.toLowerCase()) || [];
+                const isNSFW = genres.includes("hentai") || genres.includes("ecchi");
+
+                if (isNSFW) {
+                    router.replace("/404"); // redirect to custom 404 page on nfw
+                    return;
+                }
+
                 setAnime(json.data || null);
+
+
             } catch (err) {
                 console.error("Error fetching anime:", err);
                 router.replace("/404");
@@ -103,15 +116,15 @@ export default function AnimeDetailPage() {
                                 </Badge>
                             )}
                             {anime.type && (
-                                <Link href={`/type/${anime.type}`}>
-                                    <Badge variant="secondary" className="gap-1 px-3 py-1">
-                                        <Tv className="w-4 h-4" />
+                                <Link href={`/type/${anime.type}`} >
+                                    <Badge variant="secondary" className="!flex !items-center !justify-center">
+                                        <Tv className="-mt-0.5" />
                                         {anime.type}
                                     </Badge>
                                 </Link>
                             )}
                             {anime.episodes && (
-                                <Badge variant="secondary" className="gap-1 px-3 py-1">
+                                <Badge variant="secondary" >
                                     <Film className="w-4 h-4" />
                                     {anime.episodes} Episodes
                                 </Badge>
@@ -142,7 +155,7 @@ export default function AnimeDetailPage() {
                                     {anime.genres.map((genre) => (
                                         <Link href={`/genres/${genres.find(g => g.name === genre.name)?.mal_id}`} key={genre.name}>
                                             <Badge
-                                                
+
                                                 className="bg-primary/10 text-primary hover:bg-primary/20 border border-primary/20 px-3 py-1"
                                             >
                                                 {genre.name}
@@ -207,7 +220,7 @@ export default function AnimeDetailPage() {
                     </Card>
                 )}
                 <Recommendations id={id as string} />
-                <Platforms id={id as string}/>
+                <Platforms id={id as string} />
             </div>
 
 

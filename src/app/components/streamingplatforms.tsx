@@ -34,8 +34,8 @@ export default function Platforms({ id }: {
         fetchPlatforms();
     }, [id]);
 
-    if (loading) return <p className="text-sm text-muted-foreground flex">Loading platforms <Spinner /></p>;
-    if (platforms.length === 0) return <p className="text-sm text-muted-foreground">No platforms available.</p>;
+    if (loading) return <p className="text-sm text-muted-foreground flex mb-5 mt-8">Loading platforms <Spinner /></p>;
+    if (platforms.length === 0) return null
 
     return (
 

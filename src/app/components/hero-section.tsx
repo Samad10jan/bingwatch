@@ -19,9 +19,9 @@ export default function CarouselAnime({ PopularData }: { PopularData: Anime[] })
             <CarouselContent>
                 {PopularData.map((data, index) => (
 
-                    <CarouselItem key={index} className="py-2 sm:py-4 cursor-pointer">
+                    <CarouselItem key={index} className="py-2 sm:py-4 cursor-pointer relative w-full aspect-[16/9] sm:aspect-[21/9] lg:aspect-[2.5/1] rounded-xl lg:rounded-2xl overflow-hidden border border-white/10 !shadow-none group">
 
-                        <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] lg:aspect-[2.5/1] rounded-xl lg:rounded-2xl overflow-hidden border border-white/10 !shadow-none group">
+                       
                             <InfoDrawer infoData={data} >
                                 {/* Background Image */}
                                 <Image
@@ -40,11 +40,11 @@ export default function CarouselAnime({ PopularData }: { PopularData: Anime[] })
                                 />
 
                                 {/* Multi-layer Gradient Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent w-full" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent w-full" />
 
 
                                 {/* Content */}
-                                <div className="absolute inset-0 flex flex-col justify-end items-center p-4 sm:p-6 lg:p-10">
+                                <div className="absolute inset-0 flex flex-col justify-end  items-center p-4 sm:p-6 lg:p-10">
                                     <div className="max-w-4xl space-y-2 sm:space-y-3 lg:space-y-5">
 
                                         {/* Title */}
@@ -119,7 +119,7 @@ export default function CarouselAnime({ PopularData }: { PopularData: Anime[] })
                                     </div>
                                 </div>
                             </InfoDrawer>
-                        </div>
+                       
                     </CarouselItem>
                 ))}
             </CarouselContent>

@@ -51,8 +51,8 @@ export function Header() {
         const hasType = ["tv", "movie", "ova", "upcoming", "special"].includes(type as string)
         const hasFilter = type === "upcoming" ? "filter" : "type"
         const url = hasType
-          ? `https://api.jikan.moe/v4/anime?q=${q}&${hasFilter}=${type}&limit=10`
-          : `https://api.jikan.moe/v4/anime?q=${q}&limit=10`
+          ? `https://api.jikan.moe/v4/anime?q=${q}&${hasFilter}=${type}&limit=10&sfw=1`
+          : `https://api.jikan.moe/v4/anime?q=${q}&limit=10&sfw=1`
 
         const res = await fetch(url)
         const { data } = await res.json()
@@ -69,7 +69,7 @@ export function Header() {
   }, [q, type])
 
   return (
-    <header className="sticky  flex justify-between gap-2 top-0 z-10 md:h-16 shrink-0 items-center transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 md:p-8 p-5 ">
+    <header className="sticky  flex justify-between gap-2 top-0 z-10 md:h-16 shrink-0 items-center transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 md:p-8 p-5  ">
       {/* Mobile Sidebar Trigger */}
       <div className="flex items-center md:hidden lg:hidden xl:hidden gap-3 ">
         <SidebarTrigger className="rounded-full border p-6  transition size-10 bg-accent h-[1.2rem] w-[1.2rem] " />
@@ -95,7 +95,7 @@ export function Header() {
               setIsSearchOpen(true)
             }}
             onFocus={() => setIsSearchOpen(true)}
-            className="w-full h-10 px-10 rounded-full py-2 text-sm  transition-all !bg-accent"
+            className="w-full h-10 px-10 rounded-full py-2 text-sm  transition-all !bg-accent slide-in-from-top-full animate-in duration-800 "
           />
 
           {/* Clear Button */}
@@ -146,27 +146,28 @@ export function Header() {
                           className="flex items-center gap-4 p-3 hover:bg-accent/50 transition-colors "
                         >
                           {/* Anime Image */}
-                          <div className="relative w-15 h-18 md:w-16 md:h-20 flex-shrink-0 overflow-hidden rounded-md ring-2 ring-border  transition-all">
+                          <div className="relative w-25 h-38 md:w-20 md:h-35 flex-shrink-0 overflow-hidden rounded-md ring-2 ring-border  transition-all">
                             <Image
-                              src={
-                                anime?.images?.jpg?.small_image_url ||
-                                anime?.images?.jpg?.image_url ||
+                              src={anime.images?.jpg?.large_image_url ||
+                                anime.picture ||
+                                anime.thumbnail ||
+                             
                                 "/no-img.png"
                               }
                               fill
                               alt={anime?.title || "Anime"}
                               className="object-cover"
-                              sizes="(max-width: 768px) 48px, 64px"
+
                             />
                           </div>
 
                           {/* Anime Info */}
-                          <div className="flex-1 min-w-0">
-                            <p className="text-sm font-semibold truncate  transition-colors">
+                          <div className="flex flex-col ">
+                            <p className="text-md font-semibold  transition-colors line-clamp-2">
                               {anime?.title_english || anime?.title_japanese || anime?.title}
                             </p>
                             {anime?.type && (
-                              <p className="text-xs text-muted-foreground mt-1">
+                              <p className="text-sm text-muted-foreground mt-1">
                                 {anime.type} {anime?.episodes && `• ${anime.episodes} episodes`}
                               </p>
                             )}
@@ -182,7 +183,7 @@ export function Header() {
       </div>
 
       {/* Theme Toggle */}
-      <div className="flex flex-1 justify-end">
+      <div className="flex flex-1 justify-end slide-in-from-top-full animate-in duration-800">
         <Button
           variant="secondary"
 

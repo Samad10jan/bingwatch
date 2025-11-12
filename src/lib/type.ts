@@ -68,17 +68,6 @@ export type JSONDATA = {
   data: Anime[]
 }
 
-
-export type SectionConfig = {
-  title: string;
-  url: string;
-  type: string;
-};
-
-export type LazyAnimeSectionsProps = {
-  sections: SectionConfig[];
-};
-
 export type AnimeRecommendationItem= {
   entry: {
     mal_id: number;
@@ -104,4 +93,10 @@ export type AnimeRecommendationItem= {
 export type PlatformType = {
   name: string
   url: string
+}
+export type LazySectionProps= {
+  title: string;
+  url: string;
+  type?: string; // for "View All" link
+  limit?: number; // optional limit
 }

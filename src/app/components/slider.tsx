@@ -43,7 +43,7 @@ export default function CarouselAnimeSlide({ data, type }: { data: Anime[], type
   }
 
   return (
-    <Carousel className="relative w-full mx-auto px-3 sm:px-4">
+    <Carousel className="relative w-full mx-auto px-3 sm:px-4 ">
       <CarouselContent>
         {slides.map((group, slideIndex) => (
           <CarouselItem key={slideIndex} className="px-5">
