@@ -44,7 +44,7 @@ export default function LazySection({ title, url, type, limit = 10 }: LazySectio
     }, [hasLoaded, url, limit]);
 
     return (
-        <div ref={ref} className="space-y-6">
+        <div ref={ref} >
 
             {loading && (
                 <div className="flex justify-center py-10">

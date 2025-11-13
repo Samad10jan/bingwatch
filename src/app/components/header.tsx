@@ -71,7 +71,7 @@ export function Header() {
   return (
     <header className="sticky  flex justify-between gap-2 top-0 z-10 md:h-16 shrink-0 items-center transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 md:p-8 p-5  ">
       {/* Mobile Sidebar Trigger */}
-      <div className="flex items-center md:hidden lg:hidden xl:hidden gap-3 animate-in fade-in slide-in-from-top-2 duration-200">
+      <div className="flex items-center md:hidden lg:hidden xl:hidden gap-3 ">
         <SidebarTrigger className="rounded-full border p-6  transition size-10 bg-accent h-[1.2rem] w-[1.2rem] " />
         {path !== "/" &&
           <Button variant={"secondary"} className="bg-accent border rounded-full py-5   " onClick={() => { window.location.href = "/" }}>
@@ -95,7 +95,7 @@ export function Header() {
               setIsSearchOpen(true)
             }}
             onFocus={() => setIsSearchOpen(true)}
-            className="w-full h-10 px-10 rounded-full py-2 text-sm  transition-all !bg-accent slide-in-from-top-full animate-in duration-800 "
+            className="w-full h-10 px-10 rounded-full py-2 text-sm  transition-all !bg-accent "
           />
 
           {/* Clear Button */}
@@ -115,7 +115,7 @@ export function Header() {
 
         {/* Floating Suggestions Dropdown */}
         {isSearchOpen && q && (
-          <Card className="absolute top-full mt-2 w-full max-h-[60vh] overflow-y-auto z-50 shadow-xl border-2 rounded-2xl animate-in fade-in slide-in-from-top-2 duration-200">
+          <Card className="absolute top-full mt-2 w-full max-h-[60vh] overflow-y-auto z-50 shadow-xl border-2 rounded-2xl ">
 
             {
               isLoading ? (
@@ -183,7 +183,7 @@ export function Header() {
       </div>
 
       {/* Theme Toggle */}
-      <div className="flex flex-1 justify-end slide-in-from-top-full animate-in duration-800">
+      <div className="flex flex-1 justify-end ">
         <Button
           variant="secondary"
 
