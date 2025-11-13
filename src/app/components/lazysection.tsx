@@ -65,7 +65,7 @@ export default function LazySection({ title, url, type, limit = 10 }: LazySectio
 
                     <CarouselAnimeSlide data={animeList} type={type as string} />
 
-                    <Separator className="my-8" />
+                    <Separator className="mt-8" />
                 </section>
 
             )}

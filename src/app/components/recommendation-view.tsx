@@ -70,7 +70,7 @@ export default function Recommendations({ id }: { id: string }) {
         {recs.slice(0, 5).map((item) => (
           <Card
             key={item.entry.mal_id}
-            className="relative group p-0 w-34 md:w-46 cursor-pointer overflow-hidden ml-2"
+            className="relative group p-0 w-34 md:w-46 cursor-pointer overflow-hidden m-2"
           >
             <Link href={`/anime/${item.entry.mal_id}`}>
               <CardContent className="relative w-full h-50 group-hover:scale-110 transition-transform duration-300">
