@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import CarouselAnimeSlide from "./slider";
 import { LazySectionProps } from "@/lib/type";
+import LoadingSkeleton from "./laodingskleton";
 
 
 
@@ -47,9 +48,7 @@ export default function LazySection({ title, url, type, limit = 10 }: LazySectio
         <div ref={ref} >
 
             {loading && (
-                <div className="flex justify-center py-10">
-                    <Spinner className="bg-accent" />
-                </div>
+                <LoadingSkeleton cardNumber={4}/>
             )}
 
             {!loading && animeList.length > 0 && (
@@ -65,7 +64,7 @@ export default function LazySection({ title, url, type, limit = 10 }: LazySectio
 
                     <CarouselAnimeSlide data={animeList} type={type as string} />
 
-                    <Separator className="mt-8" />
+                  
                 </section>
 
             )}

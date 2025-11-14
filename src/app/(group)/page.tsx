@@ -7,7 +7,6 @@ import Footer from "../components/footer";
 import HeroSection from "../components/hero-section";
 import LazySection from "../components/lazysection";
 import CarouselAnimeSlide from "../components/slider";
-
 export default async function Home() {
   const fetchSafe = async (url: string) => {
     try {
@@ -28,6 +27,20 @@ export default async function Home() {
 
   return (
     <div className="*:my-5 *:text-center flex flex-col ">
+
+      <div className="container mx-auto m-0 p-0 flex items-center md:justify-between justify-center ">
+
+        <div className="relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-indigo-500 blur-xl opacity-50" />
+          <h1 className="relative text-3xl md:text-4xl font-black bg-gradient-to-r from-emerald-400 via-cyan-400 to-indigo-500 bg-clip-text text-transparent">
+            BingWatch
+          </h1>
+        </div>
+        <div className="hidden md:block">
+          <p className="text-sm text-gray-400 font-medium">Your Gateway to Endless Anime</p>
+        </div>
+      </div>
+
       {/* Hero Section */}
       {popularAnime.length > 0 && <HeroSection PopularData={popularAnime} />}
 
@@ -47,6 +60,7 @@ export default async function Home() {
           <Separator className="mt-8" />
         </section>
       )}
+
       <section>
         <h2 className=" text-2xl font-bold mb-4 mx-auto">Browse by Genre</h2>
         <div className="flex w-full flex-wrap gap-2 justify-center max-w-6xl mx-auto">
@@ -85,31 +99,32 @@ export default async function Home() {
         </section>
       )}
 
-     
+
       <LazySection
         title="Top Ranked "
         url="https://api.jikan.moe/v4/top/anime?limit=10"
         type="top"
       />
+      <Separator className="mt-8" />
 
       <LazySection
         title="Upcoming Anime"
         url="https://api.jikan.moe/v4/top/anime?filter=upcoming&page=1&limit=10&sfw=1"
         type="upcoming"
       />
-
+      <Separator className="mt-8" />
       <LazySection
         title="OVA & Specials"
         url="https://api.jikan.moe/v4/top/anime?type=ova&page=1&limit=10&sfw=1"
       />
-
+      <Separator className="mt-8" />
       <LazySection
-        title= "Specials"
-      url= "https://api.jikan.moe/v4/top/anime?type=special&limit=10&page=1&sfw=1"
-      type= "special"
+        title="Specials"
+        url="https://api.jikan.moe/v4/top/anime?type=special&limit=10&page=1&sfw=1"
+        type="special"
       />
 
-
+      <Separator className="mt-8" />
       {/* Footer */}
       <Footer />
     </div>

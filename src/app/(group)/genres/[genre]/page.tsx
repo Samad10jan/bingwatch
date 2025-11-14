@@ -50,7 +50,7 @@ export default function Genre() {
             <h1 className="text-2xl font-bold mb-4 capitalize">{genreName} Anime</h1>
 
             {loading ? (
-                <LoadingSkeleton />
+                <LoadingSkeleton cardNumber={5} />
             ) : (
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3 mt-3">
                     {data.map((anime, i) => (
