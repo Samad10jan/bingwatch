@@ -1,11 +1,5 @@
 "use client";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, } from "@/components/ui/carousel";
 import AnimeCard from "./moviecard";
 import { useEffect, useState } from "react";
 import { Anime } from "@/lib/type";
@@ -57,8 +51,8 @@ export default function CarouselAnimeSlide({ data, type }: { data: Anime[], type
       </CarouselContent>
 
       {/* Navigation Arrows - Hidden on mobile, visible on sm+ */}
-      <CarouselPrevious className="absolute top-1/2 -translate-y-1/2 -left-0 lg:hidden flex" />
-      <CarouselNext className="absolute top-1/2 -translate-y-1/2 -right-0 lg:hidden flex" />
+      <CarouselPrevious className="absolute top-1/2 -translate-y-1/2 -left-0 lg:hidden flex  p-5" />
+      <CarouselNext className="absolute top-1/2 -translate-y-1/2 -right-0 lg:hidden flex  p-5" />
     </Carousel>
   );
 }

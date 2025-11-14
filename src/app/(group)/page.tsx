@@ -7,6 +7,8 @@ import Footer from "../components/footer";
 import HeroSection from "../components/hero-section";
 import LazySection from "../components/lazysection";
 import CarouselAnimeSlide from "../components/slider";
+
+// helper function
 export default async function Home() {
   const fetchSafe = async (url: string) => {
     try {
@@ -18,7 +20,7 @@ export default async function Home() {
       return [];
     }
   };
-
+  // only can do 3 request per sec
   const [popularAnime, tvAnime, moviesAnime] = await Promise.all([
     fetchSafe("https://api.jikan.moe/v4/top/anime?type=tv&limit=10&page=1&sfw=1&order_by=bypopularity"),
     fetchSafe("https://api.jikan.moe/v4/top/anime?type=tv&limit=10&page=1&sfw=1&order_by=popularity"),

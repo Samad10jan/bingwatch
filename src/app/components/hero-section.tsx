@@ -50,7 +50,7 @@ export default function CarouselAnime({ PopularData }: { PopularData: Anime[] })
 
 
                             {/* Content */}
-                            <div className="absolute inset-0 flex flex-col justify-end  items-center p-4 sm:p-6 lg:p-10">
+                            <div className="absolute inset-0 flex flex-col justify-end  items-center p-4 sm:p-6 lg:p-10 mx-auto">
                                 <div className="max-w-4xl space-y-2 sm:space-y-3 lg:space-y-5">
 
                                     {/* Title */}
@@ -131,8 +131,8 @@ export default function CarouselAnime({ PopularData }: { PopularData: Anime[] })
             </CarouselContent>
 
             {/* Navigation Buttons */}
-            <CarouselPrevious className="absolute top-1/2 -translate-y-1/2 -right-0 lg:hidden flex hover:scale-110 transition-transform" />
-            <CarouselNext className="absolute top-1/2 -translate-y-1/2 -right-0 lg:hidden flex hover:scale-110 transition-transform" />
+            <CarouselPrevious className="absolute top-1/2 -translate-y-1/2 -right-0 p-5  flex hover:scale-110 transition-transform" />
+            <CarouselNext className="absolute top-1/2 -translate-y-1/2 -right-0 p-5  flex hover:scale-110 transition-transform" />
         </Carousel>
     );
 }

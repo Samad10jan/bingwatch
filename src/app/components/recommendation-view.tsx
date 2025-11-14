@@ -32,7 +32,7 @@ export default function Recommendations({ id }: { id: string }) {
             const rating = anime?.rating?.toLowerCase() || "";
             const genres = anime?.genres?.map((g: any) => g.name.toLowerCase()) || [];
 
-            const isNSFW =genres.includes("hentai") || genres.includes("ecchi");
+            const isNSFW = genres.includes("hentai") || genres.includes("ecchi");
 
             return isNSFW ? null : rec;
           })
@@ -85,10 +85,10 @@ export default function Recommendations({ id }: { id: string }) {
                   className="object-cover"
                 />
               </CardContent>
+              <div className="line-clamp-2 pt-4  mx-auto group-hover:scale-110 group-active:scale-110 transition-transform duration-300 px-5">
+                {item.entry.title}
+              </div>
             </Link>
-            <div className="line-clamp-2 mx-auto group-hover:scale-110 group-active:scale-110 transition-transform duration-300 px-5">
-              {item.entry.title}
-            </div>
           </Card>
         ))}
       </div>
