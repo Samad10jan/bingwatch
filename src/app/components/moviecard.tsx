@@ -8,8 +8,9 @@ import { Star } from "lucide-react";
 export default function AnimeCard({ data }: { data: Anime }) {
   return (
     <InfoDrawer infoData={data} >
-      <Card className="relative flex flex-col justify-end items-center w-full aspect-[2/3] rounded-xl overflow-hidden border shadow-lg group cursor-pointer transition-all duration-300 hover:shadow-2xl">
+      <Card className=" relative flex flex-col justify-end items-center w-full aspect-[2/3] rounded-xl overflow-hidden border shadow-lg group cursor-pointer transition-all duration-300 hover:shadow-2xl">
         {/* --- Background Image --- */}
+
         <Image
           src={
             data.images?.jpg?.large_image_url ||
@@ -42,9 +43,10 @@ export default function AnimeCard({ data }: { data: Anime }) {
         {/* Content Overlay */}
 
 
-        <h2 className="text-sm sm:text-base md:text-lg font-bold text-white -mb-4 sm:mb-2 line-clamp-2 drop-shadow-lg md:opacity-0 md:group-hover:opacity-100 transition-all duration-300">
-          {data.title_english ||data.title||data.title_japanese|| "Unknown Title"}
+        <h2 className="text-sm sm:text-base md:text-lg font-bold px-1 text-white -mb-4 sm:mb-2 line-clamp-2 drop-shadow-lg md:opacity-0 md:group-hover:opacity-100 transition-all duration-300">
+          {data.title_english || data.title || data.title_japanese || "Unknown Title"}
         </h2>
+
 
 
         <div className="hidden md:block opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 space-y-1">
@@ -53,6 +55,12 @@ export default function AnimeCard({ data }: { data: Anime }) {
           <p className="text-xs text-white/90">
             {data.type || "Unknown"} • {data.episodes ?? "?"} eps • {data.status || "Unknown"}
           </p>
+          <div className="relative text-yellow-300  px-4 py-2 w-fit mx-auto text-md font-extrabold rounded-lg shadow-lg overflow-hidden">
+         
+            
+           Ranked #{data.rank}
+           
+          </div>
 
           {/* Year + Duration */}
           {(data.year || data.duration) && (
@@ -70,7 +78,7 @@ export default function AnimeCard({ data }: { data: Anime }) {
           )}
         </div>
 
-      
+
 
       </Card>
     </InfoDrawer>

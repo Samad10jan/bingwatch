@@ -5,6 +5,7 @@ export type Anime = {
   title_japanese?: string | null;
   synopsis?: string | null;
   background?: string | null;
+  rank?: string | null;
 
   score?: number;
 
@@ -98,5 +99,5 @@ export type LazySectionProps= {
   title: string;
   url: string;
   type?: string; // for "View All" link
-  limit?: number; // optional limit
+ 
 }

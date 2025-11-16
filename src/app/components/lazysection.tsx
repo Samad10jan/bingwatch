@@ -12,7 +12,7 @@ import LoadingSkeleton from "./laodingskleton";
 
 
 
-export default function LazySection({ title, url, type, limit = 10 }: LazySectionProps) {
+export default function LazySection({ title, url, type }: LazySectionProps) {
     const ref = useRef<HTMLDivElement>(null);
     const [animeList, setAnimeList] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
@@ -28,7 +28,7 @@ export default function LazySection({ title, url, type, limit = 10 }: LazySectio
                     try {
                         const res = await fetch(url);
                         const data = await res.json();
-                        setAnimeList(data.data?.slice(0, limit) || []);
+                        setAnimeList(data.data);
                         setHasLoaded(true);
                     } catch (err) {
                         console.error("Failed to fetch anime:", err);
@@ -42,7 +42,7 @@ export default function LazySection({ title, url, type, limit = 10 }: LazySectio
 
         if (ref.current) observer.observe(ref.current);
         return () => observer.disconnect();
-    }, [hasLoaded, url, limit]);
+    }, [hasLoaded, url]);
 
     return (
         <div ref={ref} >

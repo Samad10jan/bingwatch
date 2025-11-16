@@ -102,12 +102,6 @@ export default async function Home() {
       )}
 
 
-      <LazySection
-        title="Top Ranked "
-        url="https://api.jikan.moe/v4/top/anime?limit=10"
-        type="top"
-      />
-      <Separator className="mt-8" />
 
       <LazySection
         title="Upcoming Anime"
@@ -115,16 +109,13 @@ export default async function Home() {
         type="upcoming"
       />
       <Separator className="mt-8" />
-      <LazySection
-        title="OVA & Specials"
-        url="https://api.jikan.moe/v4/top/anime?type=ova&page=1&limit=10&sfw=1"
-      />
-      <Separator className="mt-8" />
+
       <LazySection
         title="Specials"
         url="https://api.jikan.moe/v4/top/anime?type=special&limit=10&page=1&sfw=1"
         type="special"
       />
+      
 
       <Separator className="mt-8" />
       {/* Footer */}
