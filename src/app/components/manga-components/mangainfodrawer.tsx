@@ -166,7 +166,7 @@ export default function MangaInfoDrawer({
             variant={"secondary"}
             className="rounded-full ring-2 md:text-3xl text-lg font-bold text-center w-fit p-5 ring-emerald-400 hover:ring-3 hover:scale-110 hover:bg-accent active:ring-3 active:scale-110 active:bg-accent transition-all"
           >
-            <Link href={`/manga/mangadetails/${infoData.mal_id}`}>MORE DETAILS</Link>
+            <Link href={`/mangas/manga/${infoData.mal_id}`}>MORE DETAILS</Link>
           </Button>
         </DrawerFooter>
       </DrawerContent>
