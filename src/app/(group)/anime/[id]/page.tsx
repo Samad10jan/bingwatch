@@ -7,10 +7,10 @@ import { Star, Calendar, Tv, Clock, Film } from "lucide-react";
 import type { Anime } from "@/lib/type";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import Recommendations from "@/app/components/recommendation-view";
+import Recommendations from "@/app/components/commons/recommendation-view";
 import Link from "next/link";
 import { genres } from "@/lib/constants";
-import Platforms from "@/app/components/streamingplatforms";
+import Platforms from "@/app/components/anime-components/streamingplatforms";
 
 export default function AnimeDetailPage() {
     const { id } = useParams();
@@ -153,7 +153,7 @@ export default function AnimeDetailPage() {
                                 </h3>
                                 <div className="flex flex-wrap gap-2">
                                     {anime.genres.map((genre) => (
-                                        <Link href={`/genres/${genres.find(g => g.name === genre.name)?.mal_id}`} key={genre.name}>
+                                        <Link href={`/manga/genres/${genres.find(g => g.name === genre.name)?.mal_id}`} key={genre.name}>
                                             <Badge
 
                                                 className="bg-primary/10 text-primary hover:bg-primary/20 border border-primary/20 px-3 py-1"
@@ -219,7 +219,7 @@ export default function AnimeDetailPage() {
                         </CardContent>
                     </Card>
                 )}
-                <Recommendations id={id as string} />
+                <Recommendations id={id as string} type="anime" />
                 <Platforms id={id as string} />
             </div>
 

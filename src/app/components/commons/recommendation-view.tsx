@@ -7,15 +7,15 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Spinner } from "@/components/ui/spinner";
 import type { AnimeRecommendationItem } from "@/lib/type";
 
-export default function Recommendations({ id }: { id: string }) {
+export default function Recommendations({ id ,type}: { id: string, type: "anime" | "manga"; }) {
   const [recs, setRecs] = useState<AnimeRecommendationItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-
+const url = type=="anime"?`https://api.jikan.moe/v4/anime/${id}/recommendations`:`https://api.jikan.moe/v4/manga/${id}/recommendations`
   useEffect(() => {
     const fetchRecs = async () => {
       try {
         // Get recommendations
-        const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/recommendations`);
+        const res = await fetch(url);
         if (!res.ok) throw new Error("Failed to fetch recommendations");
         const json = await res.json();
 
@@ -66,13 +66,13 @@ export default function Recommendations({ id }: { id: string }) {
   return (
     <section className="mt-5 slide-in-from-bottom-50 animate-in duration-300 transition-all">
       <h2 className="text-2xl font-semibold mb-4">Recommendations</h2>
-      <div className="flex flex-wrap   ">
+      <div className="flex flex-wrap ">
         {recs.slice(0, 5).map((item) => (
           <Card
             key={item.entry.mal_id}
-            className="relative group p-0 w-34 md:w-46 cursor-pointer overflow-hidden m-2"
+            className="relative group p-0 w-46 cursor-pointer overflow-hidden m-2"
           >
-            <Link href={`/anime/${item.entry.mal_id}`}>
+            <Link href={type=="anime"?`/anime/${item.entry.mal_id}`:`/manga/mangadetails/${item.entry.mal_id}`}>
               <CardContent className="relative w-full h-50 group-hover:scale-110 transition-transform duration-300">
                 <Image
                   src={

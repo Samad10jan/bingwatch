@@ -4,22 +4,14 @@ import { Separator } from "@/components/ui/separator";
 import { genres } from "@/lib/constants";
 import Link from "next/link";
 import Footer from "../components/footer";
-import HeroSection from "../components/hero-section";
-import LazySection from "../components/lazysection";
-import CarouselAnimeSlide from "../components/slider";
+import HeroSection from "../components/commons/hero-section";
+import LazySection from "../components/commons/lazysection";
+import CarouselAnimeSlide from "../components/commons/slider";
+import { fetchSafe } from "@/lib/helper";
 
 // helper function
 export default async function Home() {
-  const fetchSafe = async (url: string) => {
-    try {
-      const res = await fetch(url, { next: { revalidate: 3600 } });
-      if (!res.ok) return [];
-      const data = await res.json();
-      return data.data || [];
-    } catch {
-      return [];
-    }
-  };
+  
   // only can do 3 request per sec
   const [popularAnime, tvAnime, moviesAnime] = await Promise.all([
     fetchSafe("https://api.jikan.moe/v4/top/anime?type=tv&limit=10&page=1&sfw=1&order_by=bypopularity"),
@@ -44,7 +36,7 @@ export default async function Home() {
       </div>
 
       {/* Hero Section */}
-      {popularAnime.length > 0 && <HeroSection PopularData={popularAnime} />}
+      {popularAnime.length > 0 && <HeroSection data={popularAnime} type="anime" />}
 
       {/* TV Anime */}
       {tvAnime.length > 0 && (
@@ -57,7 +49,7 @@ export default async function Home() {
             </Link>
           </div>
 
-          <CarouselAnimeSlide data={tvAnime} type="tv" />
+          <CarouselAnimeSlide data={tvAnime} type="anime" />
 
           <Separator className="mt-8" />
         </section>
@@ -95,25 +87,24 @@ export default async function Home() {
             </Link>
           </div>
 
-          <CarouselAnimeSlide data={moviesAnime} type="movie" />
+          <CarouselAnimeSlide data={moviesAnime} type="anime" />
 
           <Separator className="mt-8" />
         </section>
       )}
 
 
-
       <LazySection
         title="Upcoming Anime"
         url="https://api.jikan.moe/v4/top/anime?filter=upcoming&page=1&limit=10&sfw=1"
-        type="upcoming"
+        type="anime"
       />
       <Separator className="mt-8" />
 
       <LazySection
         title="Specials"
         url="https://api.jikan.moe/v4/top/anime?type=special&limit=10&page=1&sfw=1"
-        type="special"
+        type="anime"
       />
       
 

@@ -1,18 +1,14 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { Spinner } from "@/components/ui/spinner";
-import { Separator } from "@/components/ui/separator";
-import Image from "next/image";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import LoadingSkeleton from "../laodingskleton";
 import CarouselAnimeSlide from "./slider";
-import { LazySectionProps } from "@/lib/type";
-import LoadingSkeleton from "./laodingskleton";
 
 
 
-export default function LazySection({ title, url, type }: LazySectionProps) {
+export default function LazySection({ title, url, type }: {title:string,url:string, type: "anime" | "manga";}) {
     const ref = useRef<HTMLDivElement>(null);
     const [animeList, setAnimeList] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
@@ -51,7 +47,7 @@ export default function LazySection({ title, url, type }: LazySectionProps) {
                 <LoadingSkeleton cardNumber={4}/>
             )}
 
-            {!loading && animeList.length > 0 && (
+            {!loading && animeList?.length > 0 && (
 
                 <section key={type}>
                     <div className="flex flex-col justify-center">
@@ -62,7 +58,7 @@ export default function LazySection({ title, url, type }: LazySectionProps) {
                         </Link>
                     </div>
 
-                    <CarouselAnimeSlide data={animeList} type={type as string} />
+                    <CarouselAnimeSlide data={animeList} type={type}/>
 
                   
                 </section>

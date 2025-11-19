@@ -7,7 +7,7 @@ import { Star } from "lucide-react";
 
 export default function AnimeCard({ data }: { data: Anime }) {
   return (
-    <InfoDrawer infoData={data} >
+    <InfoDrawer data={data} >
       <Card className=" relative flex flex-col justify-end items-center w-full aspect-[2/3] rounded-xl overflow-hidden border shadow-lg group cursor-pointer transition-all duration-300 hover:shadow-2xl">
         {/* --- Background Image --- */}
 
@@ -55,12 +55,7 @@ export default function AnimeCard({ data }: { data: Anime }) {
           <p className="text-xs text-white/90">
             {data.type || "Unknown"} • {data.episodes ?? "?"} eps • {data.status || "Unknown"}
           </p>
-          <div className="relative text-yellow-300  px-4 py-2 w-fit mx-auto text-md font-extrabold rounded-lg shadow-lg overflow-hidden">
-         
-            
-           Ranked #{data.rank}
-           
-          </div>
+          
 
           {/* Year + Duration */}
           {(data.year || data.duration) && (
@@ -76,6 +71,9 @@ export default function AnimeCard({ data }: { data: Anime }) {
               {data.animeSeason.season} {data.animeSeason.year || ""}
             </p>
           )}
+              <div className="relative text-yellow-300 px-4 py-2 w-fit mx-auto text-md font-extrabold rounded-lg shadow-lg overflow-hidden">
+            Ranked #{data.rank}
+          </div>
         </div>
 
 

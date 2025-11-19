@@ -33,9 +33,7 @@ export default function RootLayout({ children }: {children:React.ReactNode}) {
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
-            
-            
-          >
+            >
             
           
             {children}

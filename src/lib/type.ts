@@ -69,7 +69,7 @@ export type JSONDATA = {
   data: Anime[]
 }
 
-export type AnimeRecommendationItem= {
+export type AnimeRecommendationItem = {
   entry: {
     mal_id: number;
     url: string;
@@ -95,9 +95,98 @@ export type PlatformType = {
   name: string
   url: string
 }
-export type LazySectionProps= {
+export type LazySectionProps = {
   title: string;
   url: string;
-  type?: string; // for "View All" link
- 
+  type?: "anime" | "manga"; // for "View All" link
+
 }
+
+export type Manga = {
+  mal_id: number;
+  url: string;
+  images: {
+    jpg: {
+      image_url: string;
+      small_image_url: string;
+      large_image_url: string;
+    };
+    webp: {
+      image_url: string;
+      small_image_url: string;
+      large_image_url: string;
+    };
+  };
+  approved: boolean;
+  titles: {
+    type: string;
+    title: string;
+  }[];
+  title: string;
+  title_english: string;
+  title_japanese: string;
+  title_synonyms: string[];
+  type: string;
+  chapters: number;
+  volumes: number;
+  status: string;
+  publishing: boolean;
+  published: {
+    from: string | null;
+    to: string | null;
+    prop: {
+      from: {
+        day: number | null;
+        month: number | null;
+        year: number | null;
+      };
+      to: {
+        day: number | null;
+        month: number | null;
+        year: number | null;
+      };
+    };
+    string: string;
+  };
+  score: number;
+  scored: number;
+  scored_by: number;
+  rank: number;
+  popularity: number;
+  members: number;
+  favorites: number;
+  synopsis: string;
+  background: string | null;
+  authors: {
+    mal_id: number;
+    type: string;
+    name: string;
+    url: string;
+  }[];
+  serializations: {
+    mal_id: number;
+    type: string;
+    name: string;
+    url: string;
+  }[];
+  genres: {
+    mal_id: number;
+    type: string;
+    name: string;
+    url: string;
+  }[];
+
+  themes: {
+    mal_id: number;
+    type: string;
+    name: string;
+    url: string;
+  }[];
+
+};
+
+export type CarouselSlideProps = {
+  data: Anime[] | Manga[];
+  type: "anime" | "manga";
+};
+
