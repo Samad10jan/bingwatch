@@ -4,10 +4,12 @@ import AnimeCard from "../anime-components/moviecard"; // anime card
 import MangaCard from "../manga-components/mangacard";  // manga card
 import { useEffect, useState } from "react";
 import { Anime, CarouselSlideProps, Manga } from "@/lib/type";
+import { usePathname } from "next/navigation";
 
-export default function CarouselAnimeSlide({ data, type }: CarouselSlideProps) {
+export default function CarouselAnimeSlide({ data }: CarouselSlideProps) {
   const [chunkSize, setChunkSize] = useState(5);
-
+  const path = usePathname()
+  const isManga = path === "/mangas"
   useEffect(() => {
     function updateChunkSize() {
       const width = window.innerWidth;
@@ -37,7 +39,7 @@ export default function CarouselAnimeSlide({ data, type }: CarouselSlideProps) {
           <CarouselItem key={slideIndex}>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 2xl:grid-cols-6 gap-3 mt-3 w-full">
               {group.map((item, i) =>
-                type === "manga" ? (
+                isManga ? (
                   <MangaCard key={i} data={item as Manga} />
                 ) : (
                   <AnimeCard key={i} data={item as Anime} />

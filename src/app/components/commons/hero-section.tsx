@@ -2,15 +2,16 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Anime, Manga, CarouselSlideProps } from "@/lib/type";
-import { Star, Calendar, Tv, Sparkles } from "lucide-react";
+import { Anime, CarouselSlideProps, Manga } from "@/lib/type";
+import { Calendar, Sparkles, Star, Tv } from "lucide-react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import InfoDrawer from "../anime-components/info-drawer";
-import MangaInfoDrawer from "../manga-components/mangainfodrawer";
 
-export default function CarouselAnime({ data, type }: CarouselSlideProps) {
-    const isManga = type === "manga";
+export default function CarouselAnime({ data }: CarouselSlideProps) {
 
+    const path = usePathname()
+    const isManga = path === "/mangas"
     const renderBadges = (item: any, chaptersOrEpisodes?: number) => (
         <div className="flex flex-wrap items-center sm:justify-center gap-2 sm:gap-2.5">
             {item.score && (
@@ -69,34 +70,6 @@ export default function CarouselAnime({ data, type }: CarouselSlideProps) {
                 {data.map((item, index) => {
                     const chaptersOrEpisodes = isManga ? (item as Manga).chapters : (item as Anime).episodes;
 
-                    if (isManga) {
-                        return (
-                            <CarouselItem
-                                key={index}
-                                className="py-2 sm:py-4 cursor-pointer relative w-full aspect-[16/9] sm:aspect-[21/9] lg:aspect-[2.5/1] mx-4 rounded-xl overflow-hidden border border-white/10 !shadow-none group"
-                            >
-                                <MangaInfoDrawer infoData={item as Manga}>
-                                    <Image
-                                        src={item.images?.jpg?.large_image_url || item.images?.jpg?.image_url || "https://via.placeholder.com/1920x1080?text=No+Image"}
-                                        alt={(item as Manga).title || "Manga"}
-                                        fill
-                                        className="object-cover"
-                                        priority
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
-                                    <div className="absolute inset-0 flex flex-col justify-end items-center p-4 sm:p-6 lg:p-10 mx-auto">
-                                        <div className="max-w-4xl space-y-3 lg:space-y-5 text-center">
-                                            <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-4xl font-extrabold bg-gradient-to-r from-white via-yellow-100 to-pink-200 bg-clip-text text-transparent drop-shadow-2xl">
-                                                {(item as Manga).title_english || (item as Manga).title || "Unknown Title"}
-                                            </h2>
-                                            {renderBadges(item, chaptersOrEpisodes as number)}
-                                            {renderGenres(item)}
-                                        </div>
-                                    </div>
-                                </MangaInfoDrawer>
-                            </CarouselItem>
-                        );
-                    }
 
                     // Anime
                     return (

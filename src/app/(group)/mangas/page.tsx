@@ -23,9 +23,9 @@ export default async function HomeManga() {
     <div className="*:my-5 *:text-center flex flex-col">
       <div className="container mx-auto m-0 p-0 flex items-center md:justify-between justify-center">
         <div className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-indigo-500 blur-xl opacity-50" />
+          <div className="absolute inset-0 dark:bg-gradient-to-r from-emerald-500 to-indigo-500 blur-xl opacity-50" />
           <h1 className="relative text-3xl md:text-4xl font-black bg-gradient-to-r from-emerald-400 via-cyan-400 to-indigo-500 bg-clip-text text-transparent">
-            MangaWatch
+            BingRead
           </h1>
         </div>
         <div className="hidden md:block">
@@ -34,7 +34,7 @@ export default async function HomeManga() {
       </div>
 
       {/* Hero Section */}
-      {popularManga.length > 0 && <HeroSection data={popularManga} type="manga" />}
+      {popularManga.length > 0 && <HeroSection data={popularManga} />}
 
       {/* Top Manga */}
       {topManga.length > 0 && (

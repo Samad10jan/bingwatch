@@ -187,6 +187,6 @@ export type Manga = {
 
 export type CarouselSlideProps = {
   data: Anime[] | Manga[];
-  type: "anime" | "manga";
+  type?: "anime" | "manga";
 };
 
