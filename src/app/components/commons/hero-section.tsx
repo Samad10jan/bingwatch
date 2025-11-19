@@ -35,7 +35,7 @@ export default function CarouselAnime({ data, type }: CarouselSlideProps) {
                 </Badge>
             )}
             {chaptersOrEpisodes && (
-                <Badge className="hidden sm:flex px-3 py-1.5 bg-purple-500/30 text-purple-200 border border-purple-400/40 rounded-full flex items-center gap-1.5 hover:bg-purple-500/40 hover:scale-105">
+                <Badge className="lg:hidden  px-3 py-1.5 bg-purple-500/30 text-purple-200 border border-purple-400/40 rounded-full flex items-center gap-1.5 hover:bg-purple-500/40 hover:scale-105">
                     {chaptersOrEpisodes} {isManga ? "Chapters" : chaptersOrEpisodes === 1 ? "Episode" : "Episodes"}
                 </Badge>
             )}
@@ -58,7 +58,7 @@ export default function CarouselAnime({ data, type }: CarouselSlideProps) {
 
     return (
         <Carousel className="w-full max-w-[95%] lg:max-w-[90%] mx-auto">
-            <Badge className="ml-8 mt-2 absolute flex items-center gap-2 text-yellow-300 z-10 bg-black/70 backdrop-blur-md rounded-full">
+            <Badge className="ml-5 mt-2 absolute flex items-center gap-2 text-yellow-300 z-10 bg-black/70 backdrop-blur-md rounded-full">
                 <Sparkles className="xl:!size-5 size-3" />
                 <span className="text-xs xl:text-xl font-semibold tracking-wider uppercase">
                     Featured {isManga ? "Manga" : "Anime"}
@@ -109,8 +109,8 @@ export default function CarouselAnime({ data, type }: CarouselSlideProps) {
                                     src={
                                         item.images?.jpg?.large_image_url ||
                                         item.images?.jpg?.image_url ||
-                                        (item as any)?.picture ||
-                                        (item as any)?.thumbnail ||
+                                        (item as Anime)?.picture ||
+                                        (item as Anime)?.thumbnail ||
                                         "https://via.placeholder.com/1920x1080?text=No+Image"
                                     }
                                     alt={(item as Anime).title || "Anime"}

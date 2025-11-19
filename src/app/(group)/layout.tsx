@@ -5,7 +5,7 @@ import Footer from "../components/footer";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <SidebarProvider defaultOpen={false} >
+    <SidebarProvider defaultOpen={true} >
       <AppSidebar />
       <SidebarInset>
 

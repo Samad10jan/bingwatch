@@ -25,7 +25,7 @@ export default async function Home() {
       <div className="container mx-auto m-0 p-0 flex items-center md:justify-between justify-center ">
 
         <div className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-indigo-500 blur-xl opacity-50" />
+          <div className="absolute inset-0 dark:bg-gradient-to-r from-emerald-500 to-indigo-500 blur-xl opacity-50" />
           <h1 className="relative text-3xl md:text-4xl font-black bg-gradient-to-r from-emerald-400 via-cyan-400 to-indigo-500 bg-clip-text text-transparent">
             BingWatch
           </h1>
