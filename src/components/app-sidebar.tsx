@@ -124,7 +124,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           height={70}
           className="object-cover rounded-full border-4"
           priority
-          onClick={() => router.push("/")}
+          onClick={() =>{path.startsWith("/mangas")? router.push("/mangas"):router.push("/")}}
         />
         <p className="truncate text-2xl font-bold text-center mr-5 transition-all bg-gradient-to-bl from-emerald-500 to-indigo-500 bg-clip-text text-transparent">
           {path.startsWith("/mangas") ? "BingRead" : "BIngWatcH"}

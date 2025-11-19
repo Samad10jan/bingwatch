@@ -8,10 +8,10 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import InfoDrawer from "../anime-components/info-drawer";
 
-export default function CarouselAnime({ data }: CarouselSlideProps) {
+export default function CarouselAnime({ data,type }: CarouselSlideProps) {
 
     const path = usePathname()
-    const isManga = path === "/mangas"
+    const isManga = type === "manga"
     const renderBadges = (item: any, chaptersOrEpisodes?: number) => (
         <div className="flex flex-wrap items-center sm:justify-center gap-2 sm:gap-2.5">
             {item.score && (
@@ -62,7 +62,7 @@ export default function CarouselAnime({ data }: CarouselSlideProps) {
             <Badge className="ml-5 mt-2 absolute flex items-center gap-2 text-yellow-300 z-10 bg-black/70 backdrop-blur-md rounded-full">
                 <Sparkles className="xl:!size-5 size-3" />
                 <span className="text-xs xl:text-xl font-semibold tracking-wider uppercase">
-                    Featured {isManga ? "Manga" : "Anime"}
+                    Featured Section
                 </span>
             </Badge>
 
@@ -77,7 +77,7 @@ export default function CarouselAnime({ data }: CarouselSlideProps) {
                             key={index}
                             className="py-2 sm:py-4 cursor-pointer relative w-full aspect-[16/9] sm:aspect-[21/9] lg:aspect-[2.5/1] mx-4 rounded-xl overflow-hidden border border-white/10 !shadow-none group"
                         >
-                            <InfoDrawer data={item as Anime}>
+                            <InfoDrawer data={item as Anime|Manga}>
                                 <Image
                                     src={
                                         item.images?.jpg?.large_image_url ||
