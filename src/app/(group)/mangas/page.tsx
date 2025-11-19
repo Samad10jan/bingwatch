@@ -103,8 +103,7 @@ export default async function HomeManga() {
       />
 
       <Separator className="mt-8" />
-      {/* Footer */}
-      <Footer />
+     
     </div>
   );
 }
