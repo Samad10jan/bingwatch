@@ -109,8 +109,7 @@ export default async function Home() {
       
 
       <Separator className="mt-8" />
-      {/* Footer */}
-      <Footer />
+     
     </div>
   );
 }
