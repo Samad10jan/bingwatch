@@ -1,10 +1,10 @@
+import HeroSectionManga from "@/app/components/manga-components/manga-hero-section";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { genres } from "@/lib/constants";
 import { fetchSafe } from "@/lib/helper";
 import Link from "next/link";
-import HeroSection from "../../components/commons/hero-section";
 import LazySection from "../../components/commons/lazysection";
 import CarouselMangaSlide from "../../components/commons/slider";
 
@@ -40,7 +40,7 @@ export default async function HomeManga() {
 
       {/* Hero Section */}
       {popularManga.length > 0 && (
-        <HeroSection data={popularManga} type="manga"  />
+        <HeroSectionManga data={popularManga}/>
       )}
 
       {/* Top Manga */}

@@ -115,7 +115,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
       {/* HEADER CARD */}
       <Card
-        className="ml-2 flex bg-blur !flex-row items-center justify-between rounded-t-4xl border-0 border-t-2 shadow-none p-0 transition-all duration-300 cursor-pointer hover:scale-[1.05]"
+        className="ml-2 flex bg-blur  !flex-row items-center  rounded-t-4xl border-0 border-t-2 shadow-none p-0 transition-all duration-300 cursor-pointer hover:scale-[1.05]"
       >
         <Image
           src={path.startsWith("/mangas") ? "/OIPM.jpg" : "/OIP.png"}
@@ -126,7 +126,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           priority
           onClick={() =>{path.startsWith("/mangas")? router.push("/mangas"):router.push("/")}}
         />
-        <p className="truncate text-2xl font-bold text-center mr-5 transition-all bg-gradient-to-bl from-emerald-500 to-indigo-500 bg-clip-text text-transparent">
+        <p className=" text-2xl font-bold !mr-10 transition-all bg-gradient-to-bl from-emerald-500 to-indigo-500 bg-clip-text text-transparent">
           {path.startsWith("/mangas") ? "BIngeReAd" : "BIngeWatcH"}
         </p>
       </Card>

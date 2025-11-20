@@ -50,7 +50,7 @@ export default function MangaCard({ data }: { data: Manga }) {
           </p>
 
           <div className="relative text-yellow-300 px-4 py-2 w-fit mx-auto text-md font-extrabold rounded-lg shadow-lg overflow-hidden">
-            Ranked #{data.rank}
+            Ranked #{data.rank||"?"}
           </div>
 
           {data.published?.string && (

@@ -152,7 +152,7 @@ export default function MangaInfoDrawer({
               {infoData.synopsis && (
                 <div className="pt-4 border-t border-white/10">
                   <p className="text-sm text-muted-foreground mb-2 -ml-1">| Synopsis</p>
-                  <p className="text-sm leading-relaxed text-zinc-300 line-clamp-3">
+                  <p className="text-sm leading-relaxed  line-clamp-4">
                     {infoData.synopsis}
                   </p>
                 </div>

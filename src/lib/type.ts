@@ -51,7 +51,7 @@ export type Anime = {
 
   tags?: string[];
   studios?: { name: string }[];
-  genres?: { name: string }[];
+  genres: { name: string }[];
   producers?: { name: string }[];
   relatedAnime?: string[];
 };
