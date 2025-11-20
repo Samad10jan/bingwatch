@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Anime, CarouselSlideProps, Manga } from "@/lib/type";
@@ -8,10 +9,21 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import InfoDrawer from "../anime-components/info-drawer";
 
-export default function CarouselAnime({ data}: CarouselSlideProps) {
+export default function CarouselAnime({ data }: CarouselSlideProps) {
 
-    const path = usePathname()
-    const isManga = path.startsWith("/mangas")
+    // to avoid hydration mismatch by waiting for client
+    const [isClient, setIsClient] = useState(false);
+    const path = usePathname();
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    if (!isClient) return null; // Avoid SSR mismatch
+
+    // Now safe to use
+    const isManga = path.startsWith("/mangas");
+
     const renderBadges = (item: any, chaptersOrEpisodes?: number) => (
         <div className="flex flex-wrap items-center sm:justify-center gap-2 sm:gap-2.5">
             {item.score && (
@@ -36,7 +48,7 @@ export default function CarouselAnime({ data}: CarouselSlideProps) {
                 </Badge>
             )}
             {chaptersOrEpisodes && (
-                <Badge className="lg:hidden  px-3 py-1.5 bg-purple-500/30 text-purple-200 border border-purple-400/40 rounded-full flex items-center gap-1.5 hover:bg-purple-500/40 hover:scale-105">
+                <Badge className="lg:hidden px-3 py-1.5 bg-purple-500/30 text-purple-200 border border-purple-400/40 rounded-full flex items-center gap-1.5 hover:bg-purple-500/40 hover:scale-105">
                     {chaptersOrEpisodes} {isManga ? "Chapters" : chaptersOrEpisodes === 1 ? "Episode" : "Episodes"}
                 </Badge>
             )}
@@ -70,14 +82,12 @@ export default function CarouselAnime({ data}: CarouselSlideProps) {
                 {data.map((item, index) => {
                     const chaptersOrEpisodes = isManga ? (item as Manga).chapters : (item as Anime).episodes;
 
-
-                    // Anime
                     return (
                         <CarouselItem
                             key={index}
                             className="py-2 sm:py-4 cursor-pointer relative w-full aspect-[16/9] sm:aspect-[21/9] lg:aspect-[2.5/1] mx-4 rounded-xl overflow-hidden border border-white/10 !shadow-none group"
                         >
-                            <InfoDrawer data={item as Anime|Manga}>
+                            <InfoDrawer data={item as Anime | Manga}>
                                 <Image
                                     src={
                                         item.images?.jpg?.large_image_url ||
@@ -91,12 +101,15 @@ export default function CarouselAnime({ data}: CarouselSlideProps) {
                                     className="object-cover"
                                     priority
                                 />
+
                                 <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
+
                                 <div className="absolute inset-0 flex flex-col justify-end items-center p-4 sm:p-6 lg:p-10 mx-auto">
                                     <div className="max-w-4xl space-y-3 lg:space-y-5 text-center">
                                         <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-4xl font-extrabold bg-gradient-to-r from-white via-yellow-100 to-pink-200 bg-clip-text text-transparent drop-shadow-2xl">
                                             {(item as Anime).title_english || (item as Anime).title || "Unknown Title"}
                                         </h2>
+
                                         {renderBadges(item, chaptersOrEpisodes as number)}
                                         {renderGenres(item)}
                                     </div>
