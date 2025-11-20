@@ -53,7 +53,7 @@ export default function LazySection({ title, url, type }: {title:string,url:stri
                     <div className="flex flex-col justify-center">
 
                         <h2 className="text-2xl font-bold">{title}</h2>
-                        <Link href={`/type/${type}`} className="self-end">
+                        <Link href={type==="manga"?`/mangas/type/${type}`:`/type/${type}`} className="self-end">
                             <Button variant="ghost" className="text-sm">View All →</Button>
                         </Link>
                     </div>

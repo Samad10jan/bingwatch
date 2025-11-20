@@ -31,7 +31,7 @@ export default function Footer() {
                         <h4 className="font-semibold mb-3">Connect</h4>
                         <div className="flex gap-3 mb-4">
                             <Button variant="outline" size="icon" className="hover:bg-primary hover:text-primary-foreground transition-all">
-                                <Github className="w-4 h-4" />
+                                <Github className="w-4 h-4" href="https://github.com/Samad10jan"/>
                             </Button>
                             <Button variant="outline" size="icon" className="hover:bg-primary hover:text-primary-foreground transition-all">
                                 𝕏

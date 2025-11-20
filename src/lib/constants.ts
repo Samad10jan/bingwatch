@@ -25,8 +25,6 @@ export const genres = [
   { mal_id: 57, name: "Gag Humor" },
   { mal_id: 58, name: "Gore" },
   { mal_id: 13, name: "Historical" },
-  { mal_id: 60, name: "Idols (Female)" },
-  { mal_id: 61, name: "Idols (Male)" },
   { mal_id: 62, name: "Isekai" },
   { mal_id: 63, name: "Iyashikei" },
   { mal_id: 64, name: "Love Polygon" },

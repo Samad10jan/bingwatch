@@ -104,7 +104,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const router = useRouter();
   const path = usePathname();
 
-  // Switch between ANIME MODE & MANGA MODE
+
   const activeData = path.startsWith("/mangas") ? mangaData : animeData;
 
   return (
@@ -127,7 +127,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           onClick={() =>{path.startsWith("/mangas")? router.push("/mangas"):router.push("/")}}
         />
         <p className="truncate text-2xl font-bold text-center mr-5 transition-all bg-gradient-to-bl from-emerald-500 to-indigo-500 bg-clip-text text-transparent">
-          {path.startsWith("/mangas") ? "BingRead" : "BIngWatcH"}
+          {path.startsWith("/mangas") ? "BIngeReAd" : "BIngeWatcH"}
         </p>
       </Card>
 

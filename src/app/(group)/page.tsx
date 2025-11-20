@@ -27,7 +27,7 @@ export default async function Home() {
         <div className="relative">
           <div className="absolute inset-0 dark:bg-gradient-to-r from-emerald-500 to-indigo-500 blur-xl opacity-50" />
           <h1 className="relative text-3xl md:text-4xl font-black bg-gradient-to-r from-emerald-400 via-cyan-400 to-indigo-500 bg-clip-text text-transparent">
-            BingWatch
+            BingeWatch
           </h1>
         </div>
         <div className="hidden md:block">
