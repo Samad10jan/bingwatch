@@ -1,5 +1,4 @@
 
-
 import { Badge } from "@/components/ui/badge";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Anime, CarouselSlideProps, Manga } from "@/lib/type";
@@ -26,12 +25,12 @@ export default function HeroSection({ data, type }: CarouselSlideProps) {
                     {item.status}
                 </Badge>
             )}
-            {item.year && (
+            {item?.year && (
                 <Badge className="px-3 py-1.5 bg-white/20 text-white border border-white/30 rounded-full flex items-center gap-1.5 hover:bg-white/30 hover:scale-105">
                     <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> {item.year}
                 </Badge>
             )}
-            {item.type && (
+            {item?.type && (
                 <Badge className="px-3 py-1.5 bg-blue-500/30 text-blue-200 border border-blue-400/40 rounded-full flex items-center gap-1.5 hover:bg-blue-500/40 hover:scale-105">
                     <Tv className="w-3 h-3 sm:w-3.5 sm:h-3.5" /> {item.type}
                 </Badge>
@@ -81,11 +80,13 @@ export default function HeroSection({ data, type }: CarouselSlideProps) {
                                     src={
                                         item.images?.jpg?.large_image_url ||
                                         item.images?.jpg?.image_url ||
-                                        (item as Anime)?.picture ||
-                                        (item as Anime)?.thumbnail ||
+                                        item.images?.webp?.large_image_url ||
+                                        item.images?.webp?.image_url ||
+
                                         "https://via.placeholder.com/1920x1080?text=No+Image"
                                     }
-                                    alt={(item as Anime).title || "Anime"}
+
+                                    alt={(item as Anime)?.title || "Anime"}
                                     fill
                                     className="object-cover"
                                     priority
@@ -95,8 +96,12 @@ export default function HeroSection({ data, type }: CarouselSlideProps) {
 
                                 <div className="absolute inset-0 flex flex-col justify-end items-center p-4 sm:p-6 lg:p-10 mx-auto">
                                     <div className="max-w-4xl space-y-3 lg:space-y-5 text-center">
-                                        <h2 className="text-xl sm:text-3xl md:text-4xl lg:text-4xl font-extrabold bg-gradient-to-r from-white via-yellow-100 to-pink-200 bg-clip-text text-transparent drop-shadow-2xl">
-                                            {(item as Anime).title_english || (item as Anime).title || "Unknown Title"}
+                                        <h2 className="...">
+                                            {item.title_english ||
+                                                item.title ||
+                                                item.title_japanese ||
+                                               
+                                                "Unknown Title"}
                                         </h2>
 
                                         {renderBadges(item, chaptersOrEpisodes as number)}
