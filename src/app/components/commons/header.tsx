@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { SidebarTrigger } from "@/components/ui/sidebar"
 import { Spinner } from "@/components/ui/spinner"
-import { Anime } from "@/lib/type"
+import { Anime, Manga } from "@/lib/type"
 import { HomeIcon, Moon, SearchIcon, Sun, X } from "lucide-react"
 import { useTheme } from "next-themes"
 import Image from "next/image"
@@ -63,17 +63,17 @@ export function Header() {
             ? `https://api.jikan.moe/v4/anime?q=${q}&${hasFilter}=${type}&limit=8&sfw=1`
             : `https://api.jikan.moe/v4/anime?q=${q}&limit=8&sfw=1`
         }
-
+      
         const url = path.startsWith("/mangas") ? urlObj.mangaUrl : urlObj.animeUrl
-
-
 
         const res = await fetch(url)
         const { data } = await res.json()
         setSugg(data || [])
+
       } catch (err) {
         console.error("Error fetching suggestions:", err)
         setSugg([])
+        
       } finally {
         setIsLoading(false)
       }
@@ -150,7 +150,7 @@ export function Header() {
                     <div >
                       {sugg.map((anime, i) => (
                         <Link
-                          href={`/anime/${anime.mal_id}`}
+                          href={path.startsWith("/mangas") ? `/manga/${anime.mal_id}` : `/anime/${anime.mal_id}`}
                           onClick={() => {
                             setQ("")
                             setIsSearchOpen(false)
@@ -180,11 +180,14 @@ export function Header() {
                             <p className="text-md font-semibold  transition-colors line-clamp-2">
                               {anime?.title_english || anime?.title_japanese || anime?.title}
                             </p>
-                            {anime?.type && (
-                              <p className="text-sm text-muted-foreground mt-1">
-                                {anime.type} {anime?.episodes && `• ${anime.episodes} episodes`}
-                              </p>
-                            )}
+
+                            {
+                              anime.type &&
+                              (
+                                <p className="text-sm text-muted-foreground mt-1">
+                                  {anime.type} {anime?.rank || anime && `• ${anime.year} `}
+                                </p>
+                              )}
                           </div>
 
 
