@@ -1,15 +1,14 @@
 "use client";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import AnimeCard from "../anime-components/moviecard"; // anime card
-import MangaCard from "../manga-components/mangacard";  // manga card
-import { useEffect, useState } from "react";
 import { Anime, CarouselSlideProps, Manga } from "@/lib/type";
-import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import AnimeCard from "../anime-components/moviecard"; // anime card
+import MangaCard from "../manga-components/mangacard"; // manga card
 
-export default function CarouselAnimeSlide({ data }: CarouselSlideProps) {
+export default function CarouselSlide({ data, type }: CarouselSlideProps) {
   const [chunkSize, setChunkSize] = useState(5);
-  const path = usePathname()
-  const isManga = path === "/mangas"
+
+  const isManga = type === "manga"
   useEffect(() => {
     function updateChunkSize() {
       const width = window.innerWidth;

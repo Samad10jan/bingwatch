@@ -1,28 +1,17 @@
-"use client";
 
-import { useEffect, useState } from "react";
+
 import { Badge } from "@/components/ui/badge";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Anime, CarouselSlideProps, Manga } from "@/lib/type";
 import { Calendar, Sparkles, Star, Tv } from "lucide-react";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 import InfoDrawer from "../anime-components/info-drawer";
 
-export default function CarouselAnime({ data }: CarouselSlideProps) {
+export default function HeroSection({ data, type }: CarouselSlideProps) {
 
     // to avoid hydration mismatch by waiting for client
-    const [isClient, setIsClient] = useState(false);
-    const path = usePathname();
 
-    useEffect(() => {
-        setIsClient(true);
-    }, []);
-
-    if (!isClient) return null; // Avoid SSR mismatch
-
-
-    const isManga = path.startsWith("/mangas");
+    const isManga = type === "manga"
 
     const renderBadges = (item: any, chaptersOrEpisodes?: number) => (
         <div className="flex flex-wrap items-center sm:justify-center gap-2 sm:gap-2.5">

@@ -27,6 +27,7 @@ export function Header() {
 
   // Close search on outside click
   useEffect(() => {
+    
     function handleClickOutside(event: MouseEvent) {
       if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
         setIsSearchOpen(false)
@@ -150,7 +151,7 @@ export function Header() {
                     <div >
                       {sugg.map((anime, i) => (
                         <Link
-                          href={path.startsWith("/mangas") ? `/manga/${anime.mal_id}` : `/anime/${anime.mal_id}`}
+                          href={path.startsWith("/mangas") ? `/mangas/manga/${anime.mal_id}` : `/anime/${anime.mal_id}`}
                           onClick={() => {
                             setQ("")
                             setIsSearchOpen(false)
