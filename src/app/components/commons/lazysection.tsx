@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import LoadingSkeleton from "../laodingskleton";
+import LoadingSkeleton from "./laodingskleton";
 import CarouselAnimeSlide from "./slider";
 
 

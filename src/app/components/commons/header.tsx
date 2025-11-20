@@ -48,11 +48,25 @@ export function Header() {
     setIsLoading(true)
     const debounceTimeout = setTimeout(async () => {
       try {
-        const hasType = ["tv", "movie", "ova", "upcoming", "special"].includes(type as string)
+        const hasAnimeType = ["tv", "movie", "ova", "upcoming", "special"].includes(type as string)
         const hasFilter = type === "upcoming" ? "filter" : "type"
-        const url = hasType
-          ? `https://api.jikan.moe/v4/anime?q=${q}&${hasFilter}=${type}&limit=10&sfw=1`
-          : `https://api.jikan.moe/v4/anime?q=${q}&limit=10&sfw=1`
+
+        const hasMangaType = ["manhwa", "lightnovel", "oneshot", "manhua", "novel", "manga"].includes(type as string)
+
+
+        const urlObj = {
+          mangaUrl: hasMangaType
+            ? `https://api.jikan.moe/v4/manga?q=${q}&type=${type}&limit=8&sfw=1`
+            : `https://api.jikan.moe/v4/manga?q=${q}&limit=8&sfw=1`,
+
+          animeUrl: hasAnimeType
+            ? `https://api.jikan.moe/v4/anime?q=${q}&${hasFilter}=${type}&limit=8&sfw=1`
+            : `https://api.jikan.moe/v4/anime?q=${q}&limit=8&sfw=1`
+        }
+
+        const url = path.startsWith("/mangas") ? urlObj.mangaUrl : urlObj.animeUrl
+
+
 
         const res = await fetch(url)
         const { data } = await res.json()
@@ -151,7 +165,7 @@ export function Header() {
                               src={anime.images?.jpg?.large_image_url ||
                                 anime.picture ||
                                 anime.thumbnail ||
-                             
+
                                 "/no-img.png"
                               }
                               fill

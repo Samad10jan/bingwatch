@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { genres } from "@/lib/constants";
 import Link from "next/link";
-import Footer from "../components/footer";
+import Footer from "../components/commons/footer";
 import HeroSection from "../components/commons/hero-section";
 import LazySection from "../components/commons/lazysection";
 import CarouselAnimeSlide from "../components/commons/slider";

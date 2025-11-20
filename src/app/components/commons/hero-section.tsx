@@ -21,7 +21,7 @@ export default function CarouselAnime({ data }: CarouselSlideProps) {
 
     if (!isClient) return null; // Avoid SSR mismatch
 
-    // Now safe to use
+
     const isManga = path.startsWith("/mangas");
 
     const renderBadges = (item: any, chaptersOrEpisodes?: number) => (

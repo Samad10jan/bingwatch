@@ -1,6 +1,6 @@
 "use client";
 
-import LoadingSkeleton from "@/app/components/laodingskleton";
+import LoadingSkeleton from "@/app/components/commons/laodingskleton";
 import MangaCard from "@/app/components/manga-components/mangacard";
 import AnimeCard from "@/app/components/anime-components/moviecard";
 import { PaginationComponent } from "@/app/components/commons/pagenation";

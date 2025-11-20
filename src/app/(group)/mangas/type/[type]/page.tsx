@@ -1,6 +1,6 @@
 "use client";
 
-import LoadingSkeleton from "@/app/components/laodingskleton";
+import LoadingSkeleton from "@/app/components/commons/laodingskleton";
 import AnimeCard from "@/app/components/anime-components/moviecard";
 import { PaginationComponent } from "@/app/components/commons/pagenation";
 import { Anime, JSONDATA, Manga } from "@/lib/type";
@@ -12,9 +12,9 @@ export default function H() {
 
   const { type } = useParams();
   const router = useRouter()
-  // if (!["manhwa","lightnovel","oneshot","manhua","novel","manga"].includes((type as string).toLowerCase())) {
-  //   router.replace("/404");
-  // }
+  if (!["manhwa","lightnovel","oneshot","manhua","novel","manga"].includes((type as string).toLowerCase())) {
+    router.replace("/404");
+  }
 
   const search = useSearchParams();
   const page = Number(search.get("page")) || 1;

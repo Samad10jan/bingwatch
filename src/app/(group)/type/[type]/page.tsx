@@ -1,6 +1,6 @@
 "use client";
 
-import LoadingSkeleton from "@/app/components/laodingskleton";
+import LoadingSkeleton from "@/app/components/commons/laodingskleton";
 import AnimeCard from "@/app/components/anime-components/moviecard";
 import { PaginationComponent } from "@/app/components/commons/pagenation";
 import { Anime, JSONDATA } from "@/lib/type";

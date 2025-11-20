@@ -1,7 +1,7 @@
 import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { Header } from "../components/header";
-import Footer from "../components/footer";
+import { Header } from "../components/commons/header";
+import Footer from "../components/commons/footer";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
