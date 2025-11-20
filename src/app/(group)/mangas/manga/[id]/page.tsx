@@ -127,7 +127,7 @@ export default function MangaDetailPage() {
                 <h3 className="text-sm font-semibold text-muted-foreground mb-2">GENRES</h3>
                 <div className="flex flex-wrap gap-2">
                   {manga.genres.map((genre) => (
-                    <Link href={`/genres/${genre.mal_id}`} key={genre.mal_id}>
+                    <Link href={`/mangas/genres/${genre.mal_id}`} key={genre.mal_id}>
                       <Badge className="bg-primary/10 text-primary hover:bg-primary/20 border border-primary/20 px-3 py-1">
                         {genre.name}
                       </Badge>

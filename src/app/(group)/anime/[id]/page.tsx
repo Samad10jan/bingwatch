@@ -153,7 +153,7 @@ export default function AnimeDetailPage() {
                                 </h3>
                                 <div className="flex flex-wrap gap-2">
                                     {anime.genres.map((genre) => (
-                                        <Link href={`/manga/genres/${genres.find(g => g.name === genre.name)?.mal_id}`} key={genre.name}>
+                                        <Link href={`/genres/${genres.find(g => g.name === genre.name)?.mal_id}`} key={genre.name}>
                                             <Badge
 
                                                 className="bg-primary/10 text-primary hover:bg-primary/20 border border-primary/20 px-3 py-1"
