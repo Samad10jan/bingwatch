@@ -72,7 +72,7 @@ const url = type=="anime"?`https://api.jikan.moe/v4/anime/${id}/recommendations`
             key={item.entry.mal_id}
             className="relative group p-0 w-46 cursor-pointer overflow-hidden m-2"
           >
-            <Link href={type=="anime"?`/anime/${item.entry.mal_id}`:`/manga/mangadetails/${item.entry.mal_id}`}>
+            <Link href={type=="anime"?`/anime/${item.entry.mal_id}`:`/mangas/manga/${item.entry.mal_id}`}>
               <CardContent className="relative w-full h-50 group-hover:scale-110 transition-transform duration-300">
                 <Image
                   src={

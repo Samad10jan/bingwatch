@@ -8,10 +8,10 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import InfoDrawer from "../anime-components/info-drawer";
 
-export default function CarouselAnime({ data,type }: CarouselSlideProps) {
+export default function CarouselAnime({ data}: CarouselSlideProps) {
 
     const path = usePathname()
-    const isManga = type === "manga"
+    const isManga = path.startsWith("/mangas")
     const renderBadges = (item: any, chaptersOrEpisodes?: number) => (
         <div className="flex flex-wrap items-center sm:justify-center gap-2 sm:gap-2.5">
             {item.score && (
