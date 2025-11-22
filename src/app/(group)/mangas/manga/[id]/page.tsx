@@ -63,12 +63,13 @@ export default function MangaDetailPage() {
           <div className="flex-shrink-0 mx-auto md:mx-0">
             <div className="relative group">
               <Image
-                src={manga.images?.webp?.large_image_url || manga.images?.jpg?.large_image_url ||manga.images?.jpg?.small_image_url|| "/OIPM.jpg"}
+                src={manga.images?.jpg?.large_image_url ||manga.images?.jpg?.small_image_url||"/OIPM.jpg"}
                 alt={manga.title}
                 width={280}
                 height={400}
                 className="rounded-2xl shadow-2xl object-cover border-4 border-background transition-transform duration-300 group-hover:scale-105"
                 priority
+                fetchPriority="high"
               />
               {manga.score && (
                 <div className="absolute top-4 right-4 bg-yellow-400 text-yellow-950 rounded-full px-3 py-2 font-bold shadow-lg flex items-center gap-1">
