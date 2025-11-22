@@ -1,5 +1,5 @@
 
-# 🎬 BingWatch
+# 🎬 BingeWatch
 
 ![Next.js](https://img.shields.io/badge/Next.js-14+-black?style=for-the-badge&logo=next.js)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
@@ -8,10 +8,10 @@
 ![Vercel](https://img.shields.io/badge/Vercel-black?style=for-the-badge&logo=vercel)
 
 
-**BingWatch** is a modern anime information platform built with **Next.js**, helping you discover and explore your favorite anime series and movies with ease.
+**BingeWatch** is a modern anime information platform built with **Next.js**, helping you discover and explore your favorite anime series and movies with ease.
 ---
 
-## 🌐 Live Demo : **([BingWatch](https://bingwatch-snowy.vercel.app/))**
+## 🌐 Live Demo : **([BingeWatch](https://bingwatch-snowy.vercel.app/))**
 ---
 
 ## ✨ Features
