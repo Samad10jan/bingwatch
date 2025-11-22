@@ -32,11 +32,11 @@ export default function MangaDetailPage() {
         const json = await res.json();
 
         const genres = json.data.genres?.map((g: any) => g.name.toLowerCase()) || [];
-        const isNSFW = genres.includes("hentai") || genres.includes("ecchi");
-        if (isNSFW) {
-          router.replace("/404"); // block NSFW content
-          return;
-        }
+        // // const isNSFW = genres.includes("hentai") || genres.includes("ecchi");
+        // if (isNSFW) {
+        //   router.replace("/404"); // block NSFW content
+        //   return;
+        // }
 
         setManga(json.data || null);
       } catch (err) {
