@@ -10,7 +10,9 @@ import type { AnimeRecommendationItem } from "@/lib/type";
 export default function Recommendations({ id, type }: { id: string, type: "anime" | "manga"; }) {
   const [recs, setRecs] = useState<AnimeRecommendationItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  
   const url = type == "anime" ? `https://api.jikan.moe/v4/anime/${id}/recommendations` : `https://api.jikan.moe/v4/manga/${id}/recommendations`
+  
   useEffect(() => {
     const fetchRecs = async () => {
       try {

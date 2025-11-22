@@ -58,7 +58,7 @@ export default function LazySection({ title, url, type }: {title:string,url:stri
                         </Link>
                     </div>
 
-                    <CarouselAnimeSlide data={animeList} />
+                    <CarouselAnimeSlide data={animeList} type={type} />
 
                   
                 </section>

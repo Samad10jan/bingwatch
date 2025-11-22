@@ -24,7 +24,6 @@ export default function MangaDetailPage() {
       setLoading(true);
       try {
         const res = await fetch(`https://api.jikan.moe/v4/manga/${id}`, { next: { revalidate: 30 } });
-console.log(res);
 
         if (!res.ok) {
           router.replace("/404"); // redirect to custom 404 page
@@ -85,7 +84,7 @@ console.log(res);
           <div className="flex-1 flex flex-col gap-4">
             {/* Title Section */}
             <div>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">{manga.title}</h1>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">{manga.title_english||manga.title}</h1>
               {manga.title_japanese && (
                 <p className="text-lg md:text-xl text-muted-foreground mt-2 font-medium">{manga.title_japanese}</p>
               )}
