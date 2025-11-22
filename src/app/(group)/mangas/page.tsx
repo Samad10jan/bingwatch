@@ -7,6 +7,7 @@ import { fetchSafe } from "@/lib/helper";
 import Link from "next/link";
 import LazySection from "../../components/commons/lazysection";
 import CarouselMangaSlide from "../../components/commons/slider";
+export const dynamic = "force-dynamic";
 
 export default async function HomeManga() {
   const [popularManga, topManga] = await Promise.all([
