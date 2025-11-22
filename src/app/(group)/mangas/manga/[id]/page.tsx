@@ -24,6 +24,7 @@ export default function MangaDetailPage() {
       setLoading(true);
       try {
         const res = await fetch(`https://api.jikan.moe/v4/manga/${id}`, { next: { revalidate: 30 } });
+console.log(res);
 
         if (!res.ok) {
           router.replace("/404"); // redirect to custom 404 page
