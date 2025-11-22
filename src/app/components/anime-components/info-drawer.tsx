@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -32,7 +34,7 @@ export default function InfoDrawerUnified({
   const path = usePathname();
 
   // Detect if Manga or Anime
-  const isManga = path ==="/mangas"
+  const isManga = path === "/mangas"
 
   return (
     <Drawer>
@@ -93,27 +95,27 @@ export default function InfoDrawerUnified({
               {/* Anime: episodes | Manga: chapters */}
               {isManga
                 ? data.chapters && (
-                    <div className="bg-gradient-to-br from-blue-500/10 to-blue-600/10 rounded-lg p-4 border border-blue-500/20">
-                      <div className="flex items-center gap-2 text-blue-400 mb-1">
-                        <TrendingUp className="h-4 w-4" />
-                        <span className="text-xs font-medium uppercase">
-                          Chapters
-                        </span>
-                      </div>
-                      <p className="font-semibold text-lg">{data.chapters}</p>
+                  <div className="bg-gradient-to-br from-blue-500/10 to-blue-600/10 rounded-lg p-4 border border-blue-500/20">
+                    <div className="flex items-center gap-2 text-blue-400 mb-1">
+                      <TrendingUp className="h-4 w-4" />
+                      <span className="text-xs font-medium uppercase">
+                        Chapters
+                      </span>
                     </div>
-                  )
+                    <p className="font-semibold text-lg">{data.chapters}</p>
+                  </div>
+                )
                 : data.episodes && (
-                    <div className="bg-gradient-to-br from-blue-500/10 to-blue-600/10 rounded-lg p-4 border border-blue-500/20">
-                      <div className="flex items-center gap-2 text-blue-400 mb-1">
-                        <TrendingUp className="h-4 w-4" />
-                        <span className="text-xs font-medium uppercase">
-                          Episodes
-                        </span>
-                      </div>
-                      <p className="font-semibold text-lg">{data.episodes}</p>
+                  <div className="bg-gradient-to-br from-blue-500/10 to-blue-600/10 rounded-lg p-4 border border-blue-500/20">
+                    <div className="flex items-center gap-2 text-blue-400 mb-1">
+                      <TrendingUp className="h-4 w-4" />
+                      <span className="text-xs font-medium uppercase">
+                        Episodes
+                      </span>
                     </div>
-                  )}
+                    <p className="font-semibold text-lg">{data.episodes}</p>
+                  </div>
+                )}
 
               {/* Manga: volumes */}
               {isManga && data.volumes && (
@@ -160,25 +162,25 @@ export default function InfoDrawerUnified({
               {/* Anime: Studios; Manga: Authors */}
               {isManga
                 ? data.authors?.length > 0 && (
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-2">
-                        Authors
-                      </p>
-                      <p className="font-medium text-sm">
-                        {data.authors.map((a: any) => a.name).join(", ")}
-                      </p>
-                    </div>
-                  )
+                  <div>
+                    <p className="text-sm text-muted-foreground mb-2">
+                      Authors
+                    </p>
+                    <p className="font-medium text-sm">
+                      {data.authors.map((a: any) => a.name).join(", ")}
+                    </p>
+                  </div>
+                )
                 : data.studios?.length > 0 && (
-                    <div>
-                      <p className="text-sm text-muted-foreground mb-2">
-                        Studios
-                      </p>
-                      <p className="font-medium text-sm">
-                        {data.studios.map((s: any) => s.name).join(", ")}
-                      </p>
-                    </div>
-                  )}
+                  <div>
+                    <p className="text-sm text-muted-foreground mb-2">
+                      Studios
+                    </p>
+                    <p className="font-medium text-sm">
+                      {data.studios.map((s: any) => s.name).join(", ")}
+                    </p>
+                  </div>
+                )}
 
               {/* Genres */}
               {data.genres && data.genres.length > 0 && (
@@ -213,7 +215,7 @@ export default function InfoDrawerUnified({
           </div>
         </div>
 
-        
+
         <DrawerFooter className="border-t flex justify-center items-center">
           <Button
             variant={"secondary"}

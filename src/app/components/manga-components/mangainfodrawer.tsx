@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -9,7 +11,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import { Manga } from "@/lib/type"; // ✅ use Manga type
+import { Manga } from "@/lib/type"; // use Manga type
 import Image from "next/image";
 import { X, Calendar, Star, Clock, TrendingUp, Film } from "lucide-react";
 import Link from "next/link";
