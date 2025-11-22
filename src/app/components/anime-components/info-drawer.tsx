@@ -1,4 +1,5 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -11,30 +12,17 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import Image from "next/image";
-import {
-  X,
-  Calendar,
-  Film,
-  Star,
-  Clock,
-  TrendingUp,
-} from "lucide-react";
+import { X, Calendar, Film, Star, Clock, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import { ReactNode } from "react";
-import { usePathname } from "next/navigation";
 
-export default function InfoDrawerUnified({
+export default function InfoDrawerAnime({
   data,
   children,
 }: {
-  data: any; // Anime or Manga
+  data: any; // Anime only
   children: ReactNode;
 }) {
-  const path = usePathname();
-
-  // Detect if Manga or Anime
-  const isManga = path === "/mangas"
-
   return (
     <Drawer>
       <DrawerTrigger>{children}</DrawerTrigger>
@@ -58,8 +46,8 @@ export default function InfoDrawerUnified({
               <Image
                 src={
                   data.images?.jpg?.large_image_url ||
-                  data.images?.jpg?.image_url || "/OIP.png"||
-                  "https://via.placeholder.com/400x600?text=No+Image"
+                  data.images?.jpg?.image_url ||
+                  "/OIP.png"
                 }
                 alt={data.title}
                 fill
@@ -79,7 +67,6 @@ export default function InfoDrawerUnified({
           <div className="flex-1 space-y-6">
             {/* Stats Grid */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-
               {/* TYPE */}
               {data.type && (
                 <div className="bg-gradient-to-br from-purple-500/10 to-purple-600/10 rounded-lg p-4 border border-purple-500/20">
@@ -91,45 +78,20 @@ export default function InfoDrawerUnified({
                 </div>
               )}
 
-              {/* Anime: episodes | Manga: chapters */}
-              {isManga
-                ? data.chapters && (
-                  <div className="bg-gradient-to-br from-blue-500/10 to-blue-600/10 rounded-lg p-4 border border-blue-500/20">
-                    <div className="flex items-center gap-2 text-blue-400 mb-1">
-                      <TrendingUp className="h-4 w-4" />
-                      <span className="text-xs font-medium uppercase">
-                        Chapters
-                      </span>
-                    </div>
-                    <p className="font-semibold text-lg">{data.chapters}</p>
-                  </div>
-                )
-                : data.episodes && (
-                  <div className="bg-gradient-to-br from-blue-500/10 to-blue-600/10 rounded-lg p-4 border border-blue-500/20">
-                    <div className="flex items-center gap-2 text-blue-400 mb-1">
-                      <TrendingUp className="h-4 w-4" />
-                      <span className="text-xs font-medium uppercase">
-                        Episodes
-                      </span>
-                    </div>
-                    <p className="font-semibold text-lg">{data.episodes}</p>
-                  </div>
-                )}
-
-              {/* Manga: volumes */}
-              {isManga && data.volumes && (
-                <div className="bg-gradient-to-br from-orange-500/10 to-orange-600/10 rounded-lg p-4 border border-orange-500/20">
-                  <div className="flex items-center gap-2 text-orange-400 mb-1">
-                    <Clock className="h-4 w-4" />
+              {/* EPISODES */}
+              {data.episodes && (
+                <div className="bg-gradient-to-br from-blue-500/10 to-blue-600/10 rounded-lg p-4 border border-blue-500/20">
+                  <div className="flex items-center gap-2 text-blue-400 mb-1">
+                    <TrendingUp className="h-4 w-4" />
                     <span className="text-xs font-medium uppercase">
-                      Volumes
+                      Episodes
                     </span>
                   </div>
-                  <p className="font-semibold text-lg">{data.volumes}</p>
+                  <p className="font-semibold text-lg">{data.episodes}</p>
                 </div>
               )}
 
-              {/* Status */}
+              {/* STATUS */}
               {data.status && (
                 <div className="bg-gradient-to-br from-emerald-500/10 to-emerald-600/10 rounded-lg p-4 border border-emerald-500/20">
                   <div className="flex items-center gap-2 text-emerald-400 mb-1">
@@ -143,46 +105,29 @@ export default function InfoDrawerUnified({
 
             {/* Extra Details */}
             <div className="space-y-4">
-              {/* YEAR or PUBLISHED */}
-              {(data.year || data.published?.string) && (
+              {/* YEAR */}
+              {data.year && (
                 <div className="flex items-start gap-3">
                   <Calendar className="h-5 w-5 text-cyan-400 mt-0.5" />
                   <div>
-                    <p className="text-sm text-muted-foreground">
-                      {isManga ? "Published" : "Year"}
-                    </p>
-                    <p className="font-medium capitalize">
-                      {isManga ? data.published?.string : data.year}
-                    </p>
+                    <p className="text-sm text-muted-foreground">Year</p>
+                    <p className="font-medium capitalize">{data.year}</p>
                   </div>
                 </div>
               )}
 
-              {/* Anime: Studios; Manga: Authors */}
-              {isManga
-                ? data.authors?.length > 0 && (
-                  <div>
-                    <p className="text-sm text-muted-foreground mb-2">
-                      Authors
-                    </p>
-                    <p className="font-medium text-sm">
-                      {data.authors.map((a: any) => a.name).join(", ")}
-                    </p>
-                  </div>
-                )
-                : data.studios?.length > 0 && (
-                  <div>
-                    <p className="text-sm text-muted-foreground mb-2">
-                      Studios
-                    </p>
-                    <p className="font-medium text-sm">
-                      {data.studios.map((s: any) => s.name).join(", ")}
-                    </p>
-                  </div>
-                )}
+              {/* STUDIOS */}
+              {data.studios?.length > 0 && (
+                <div>
+                  <p className="text-sm text-muted-foreground mb-2">Studios</p>
+                  <p className="font-medium text-sm">
+                    {data.studios.map((s: any) => s.name).join(", ")}
+                  </p>
+                </div>
+              )}
 
-              {/* Genres */}
-              {data.genres && data.genres.length > 0 && (
+              {/* GENRES */}
+              {data.genres?.length > 0 && (
                 <div>
                   <p className="text-sm text-muted-foreground mb-3">Genres</p>
                   <div className="flex flex-wrap gap-2">
@@ -199,7 +144,7 @@ export default function InfoDrawerUnified({
                 </div>
               )}
 
-              {/* Synopsis */}
+              {/* SYNOPSIS */}
               {data.synopsis && (
                 <div className="pt-4 border-t border-white/10">
                   <p className="text-sm text-muted-foreground mb-2 -ml-1">
@@ -214,21 +159,12 @@ export default function InfoDrawerUnified({
           </div>
         </div>
 
-
         <DrawerFooter className="border-t flex justify-center items-center">
           <Button
             variant={"secondary"}
             className="rounded-full ring-2 md:text-3xl text-lg font-bold text-center w-fit p-5 ring-emerald-400 hover:scale-110 transition-all"
           >
-            <Link
-              href={
-                isManga
-                  ? `/mangas/manga/${data.mal_id}`
-                  : `/anime/${data.mal_id}`
-              }
-            >
-              MORE DETAILS
-            </Link>
+            <Link href={`/anime/${data.mal_id}`}>MORE DETAILS</Link>
           </Button>
         </DrawerFooter>
       </DrawerContent>

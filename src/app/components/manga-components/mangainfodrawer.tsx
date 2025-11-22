@@ -44,8 +44,7 @@ export default function MangaInfoDrawer({
               <Image
                 src={
                   infoData.images?.jpg?.large_image_url ||
-                  infoData.images?.jpg?.image_url|| "/OIPM.jpg" ||
-                  "https://via.placeholder.com/400x600?text=No+Image"
+                  infoData.images?.jpg?.image_url|| "/OIPM.jpg"
                 }
                 alt={infoData.title || "Unknown Title"}
                 fill
