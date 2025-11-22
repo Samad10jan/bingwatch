@@ -9,16 +9,14 @@ import LazySection from "../../components/commons/lazysection";
 import CarouselMangaSlide from "../../components/commons/slider";
 
 export default async function HomeManga() {
-  const [popularManga, topManga, novel] = await Promise.all([
+  const [popularManga, topManga] = await Promise.all([
     fetchSafe(
       "https://api.jikan.moe/v4/top/manga?type=manga&limit=10&page=1&order_by=popularity&sfw=1"
     ),
     fetchSafe(
       "https://api.jikan.moe/v4/top/manga?type=manga&limit=10&page=1&order_by=score"
     ),
-    fetchSafe(
-      "https://api.jikan.moe/v4/top/manga?type=lightnovel&limit=10&page=1&order_by=popularity"
-    ),
+    
   ]);
 
   return (
@@ -81,21 +79,13 @@ export default async function HomeManga() {
       </section>
 
       {/* Light Novels */}
-      {novel.length > 0 && (
-        <section>
-          <div className="flex flex-col justify-center">
-            <h2 className="text-2xl font-bold">Top Light Novels</h2>
-            <Link href="/mangas/type/novel" className="self-end">
-              <Button variant="ghost" className="text-sm">
-                View All →
-              </Button>
-            </Link>
-          </div>
+       <LazySection
+        title="Top Light Novels"
+        url="https://api.jikan.moe/v4/top/manga?type=lightnovel&limit=10&page=1&order_by=popularity"
+        type="manga"
+      />
 
-          <CarouselMangaSlide data={novel} type="manga" />
-          <Separator className="mt-8" />
-        </section>
-      )}
+      <Separator className="mt-8" />
 
       {/* Completed Manga */}
       <LazySection

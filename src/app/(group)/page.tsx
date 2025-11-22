@@ -10,10 +10,9 @@ import CarouselAnimeSlide from "../components/commons/slider";
 
 export default async function Home() {
 
-  const [popularAnime, tvAnime, moviesAnime] = await Promise.all([
+  const [popularAnime, tvAnime] = await Promise.all([
     fetchSafe("https://api.jikan.moe/v4/top/anime?type=tv&limit=10&page=1&sfw=1&order_by=bypopularity"),
     fetchSafe("https://api.jikan.moe/v4/top/anime?type=tv&limit=10&page=1&sfw=1&order_by=popularity"),
-    fetchSafe("https://api.jikan.moe/v4/top/anime?type=movie&limit=10&page=1&sfw=1&order_by=popularity"),
   ]);
 
   return (
@@ -69,20 +68,15 @@ export default async function Home() {
       </section>
 
       {/* Movies */}
-      {moviesAnime.length > 0 && (
-        <section>
-          <div className="flex flex-col justify-center">
-            <h2 className="text-2xl font-bold">Top Movies</h2>
-            <Link href="/type/movie" className="self-end">
-              <Button variant="ghost" className="text-sm">View All →</Button>
-            </Link>
-          </div>
 
-          <CarouselAnimeSlide data={moviesAnime} type="anime" />
+       <LazySection
+        title="Top Movies"
+        url="https://api.jikan.moe/v4/top/anime?type=movie&limit=10&page=1&sfw=1&order_by=popularity"
+        type="anime"
+      />
 
-          <Separator className="mt-8" />
-        </section>
-      )}
+      <Separator className="mt-8" />
+      
 
       {/* Lazy Sections */}
       <LazySection
