@@ -67,13 +67,13 @@ const url = type=="anime"?`https://api.jikan.moe/v4/anime/${id}/recommendations`
     <section className="mt-5 slide-in-from-bottom-50 animate-in duration-300 transition-all">
       <h2 className="text-2xl font-semibold mb-4">Recommendations</h2>
       <div className="flex flex-wrap ">
-        {recs.slice(0, 5).map((item) => (
+        {recs.slice(0, 6).map((item) => (
           <Card
             key={item.entry.mal_id}
-            className="relative group p-0 w-46 cursor-pointer overflow-hidden m-2"
+            className="relative p-0 w-46 cursor-pointer overflow-hidden m-2 shadow-2xs hover:shadow-amber-300 active:shadow-amber-300  transition-all"
           >
             <Link href={type=="anime"?`/anime/${item.entry.mal_id}`:`/mangas/manga/${item.entry.mal_id}`}>
-              <CardContent className="relative w-full h-50 group-hover:scale-110 transition-transform duration-300">
+              <CardContent className="relative w-full h-50 transition-transform duration-300">
                 <Image
                   src={
                     item.entry.images.webp.large_image_url ||
@@ -85,7 +85,7 @@ const url = type=="anime"?`https://api.jikan.moe/v4/anime/${id}/recommendations`
                   className="object-cover"
                 />
               </CardContent>
-              <div className="line-clamp-2 pt-4  mx-auto group-hover:scale-110 group-active:scale-110 transition-transform duration-300 px-5">
+              <div className="line-clamp-2 pt-4 mx-auto transition-transform duration-300 px-5">
                 {item.entry.title}
               </div>
             </Link>

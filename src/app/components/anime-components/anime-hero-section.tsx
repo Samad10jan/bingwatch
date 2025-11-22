@@ -65,7 +65,7 @@ export default function HeroSection({ data }: { data: Anime[] }) {
             <Badge className="ml-5 mt-2 absolute flex items-center gap-2 text-yellow-300 z-10 bg-black/70 backdrop-blur-md rounded-full">
                 <Sparkles className="xl:!size-5 size-3" />
                 <span className="text-xs xl:text-xl font-semibold tracking-wider uppercase">
-                    Featured Section
+                    Featured Anime
                 </span>
             </Badge>
 

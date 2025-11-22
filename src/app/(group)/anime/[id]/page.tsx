@@ -98,7 +98,7 @@ export default function AnimeDetailPage() {
                         {/* Title Section */}
                         <div>
                             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
-                                {anime.title}
+                                {anime?.title_english||anime.title}
                             </h1>
                             {anime.title_japanese && (
                                 <p className="text-lg md:text-xl text-muted-foreground mt-2 font-medium">
