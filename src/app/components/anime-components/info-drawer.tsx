@@ -1,5 +1,4 @@
 "use client";
-
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -59,7 +58,7 @@ export default function InfoDrawerUnified({
               <Image
                 src={
                   data.images?.jpg?.large_image_url ||
-                  data.images?.jpg?.image_url ||
+                  data.images?.jpg?.image_url || "/OIP.png"||
                   "https://via.placeholder.com/400x600?text=No+Image"
                 }
                 alt={data.title}

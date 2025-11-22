@@ -75,7 +75,7 @@ export default function AnimeDetailPage() {
                             <Image
                                 src={
                                     anime.images?.webp?.large_image_url ||
-                                    anime.images?.jpg?.large_image_url ||
+                                    anime.images?.jpg?.large_image_url|| "/OIP.png" ||
                                     "/placeholder.jpg"
                                 }
                                 alt={anime.title}

@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -64,7 +63,7 @@ export default function MangaDetailPage() {
           <div className="flex-shrink-0 mx-auto md:mx-0">
             <div className="relative group">
               <Image
-                src={manga.images?.webp?.large_image_url || manga.images?.jpg?.large_image_url ||"/OIP.png"|| "/placeholder.jpg"}
+                src={manga.images?.webp?.large_image_url || manga.images?.jpg?.large_image_url ||manga.images?.jpg?.small_image_url|| "/OIPM.jpg"}
                 alt={manga.title}
                 width={280}
                 height={400}
