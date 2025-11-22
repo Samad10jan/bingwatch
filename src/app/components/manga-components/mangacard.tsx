@@ -14,7 +14,7 @@ export default function MangaCard({ data }: { data: Manga }) {
         <Image
           src={
             data.images?.jpg?.large_image_url ||
-            data.images?.jpg?.image_url|| "/OIPM.jpg" ||
+            data.images?.jpg?.image_url ||
             "https://via.placeholder.com/400x600?text=No+Image"
           }
           alt={data.title || "Unknown Title"}

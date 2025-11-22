@@ -16,7 +16,7 @@ export default function AnimeCard({ data }: { data: Anime }) {
             data.images?.jpg?.large_image_url ||
             data.images?.jpg?.image_url ||
             data.picture ||
-            data.thumbnail|| "/OIP.png" ||
+            data.thumbnail ||
             "https://via.placeholder.com/400x600?text=No+Image"
           }
           alt={data.title || "Unknown Title"}

@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -32,11 +33,11 @@ export default function MangaDetailPage() {
         const json = await res.json();
 
         const genres = json.data.genres?.map((g: any) => g.name.toLowerCase()) || [];
-        // // const isNSFW = genres.includes("hentai") || genres.includes("ecchi");
-        // if (isNSFW) {
-        //   router.replace("/404"); // block NSFW content
-        //   return;
-        // }
+        const isNSFW = genres.includes("hentai") || genres.includes("ecchi");
+        if (isNSFW) {
+          router.replace("/404"); // block NSFW content
+          return;
+        }
 
         setManga(json.data || null);
       } catch (err) {
@@ -63,13 +64,12 @@ export default function MangaDetailPage() {
           <div className="flex-shrink-0 mx-auto md:mx-0">
             <div className="relative group">
               <Image
-                src={manga.images?.jpg?.large_image_url ||manga.images?.jpg?.small_image_url||"/OIPM.jpg"}
+                src={manga.images?.webp?.large_image_url || manga.images?.jpg?.large_image_url || "/placeholder.jpg"}
                 alt={manga.title}
                 width={280}
                 height={400}
                 className="rounded-2xl shadow-2xl object-cover border-4 border-background transition-transform duration-300 group-hover:scale-105"
                 priority
-                fetchPriority="high"
               />
               {manga.score && (
                 <div className="absolute top-4 right-4 bg-yellow-400 text-yellow-950 rounded-full px-3 py-2 font-bold shadow-lg flex items-center gap-1">

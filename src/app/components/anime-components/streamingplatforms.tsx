@@ -58,7 +58,7 @@ export default function Platforms({ id }: {
                                     src={getLogoDevUrl(platform.name)}
                                     alt={`${platform.name} logo`}
                                     fill
-                                    className=" object-cover rounded-full ring-accent-foreground ring-1 hover:ring-3  active:ring-3  transition-all duration-200"
+                                    className=" object-cover rounded-full hover:scale-110 active:scale-110  transition-all duration-200"
                                 />
                             </div>
                           

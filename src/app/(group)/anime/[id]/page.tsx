@@ -75,7 +75,7 @@ export default function AnimeDetailPage() {
                             <Image
                                 src={
                                     anime.images?.webp?.large_image_url ||
-                                    anime.images?.jpg?.large_image_url|| "/OIP.png" ||
+                                    anime.images?.jpg?.large_image_url ||
                                     "/placeholder.jpg"
                                 }
                                 alt={anime.title}
@@ -98,7 +98,7 @@ export default function AnimeDetailPage() {
                         {/* Title Section */}
                         <div>
                             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
-                                {anime?.title_english||anime.title}
+                                {anime.title}
                             </h1>
                             {anime.title_japanese && (
                                 <p className="text-lg md:text-xl text-muted-foreground mt-2 font-medium">

@@ -1,4 +1,5 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -10,7 +11,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import { Manga } from "@/lib/type"; // use Manga type
+import { Manga } from "@/lib/type"; // ✅ use Manga type
 import Image from "next/image";
 import { X, Calendar, Star, Clock, TrendingUp, Film } from "lucide-react";
 import Link from "next/link";
@@ -44,11 +45,11 @@ export default function MangaInfoDrawer({
               <Image
                 src={
                   infoData.images?.jpg?.large_image_url ||
-                  infoData.images?.jpg?.image_url|| "/OIPM.jpg"
+                  infoData.images?.jpg?.image_url ||
+                  "https://via.placeholder.com/400x600?text=No+Image"
                 }
                 alt={infoData.title || "Unknown Title"}
                 fill
-                priority
                 className="object-cover transition-transform duration-500"
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
               />

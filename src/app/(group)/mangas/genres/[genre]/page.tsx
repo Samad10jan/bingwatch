@@ -48,7 +48,7 @@ export default function Genre() {
 
     return (
         <div className="p-6">
-            <h1 className="text-2xl font-bold mb-4 capitalize">{genreName} Manga</h1>
+            <h1 className="text-2xl font-bold mb-4 capitalize">{genreName}</h1>
 
             {loading ? (
                 <LoadingSkeleton cardNumber={5} />

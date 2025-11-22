@@ -21,7 +21,7 @@ export function PaginationComponent({
     // Number of middle pages shown (max page to show )
     const pagesToShow = 3;
 
-    // we show before , current page , nextpage so current page-1 is for before page, at first we currentPage - 1 = 0 so choose 1
+    // we show before , current page , nextpage so current page-1 is for before page, at first we currentPage - 1 =0 so choose 1
     const startPage = Math.max(1, currentPage - 1);
     //start page + show page = 4 pages so -1 at end, at last we startPage + pagesToShow - 1 =more  so chose lastpage
     const endPage = Math.min(lastPage, startPage + pagesToShow - 1);
