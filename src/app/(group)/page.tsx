@@ -2,12 +2,11 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { genres } from "@/lib/constants";
+import { fetchSafe } from "@/lib/helper";
 import Link from "next/link";
-import Footer from "../components/commons/footer";
 import HeroSection from "../components/anime-components/anime-hero-section";
 import LazySection from "../components/commons/lazysection";
 import CarouselAnimeSlide from "../components/commons/slider";
-import { fetchSafe } from "@/lib/helper";
 
 export default async function Home() {
 
@@ -34,7 +33,7 @@ export default async function Home() {
       </div>
 
       {/* Hero Section */}
-      {popularAnime.length > 0 && <HeroSection data={popularAnime} />}
+       <HeroSection data={popularAnime} />
 
       {/* TV Anime */}
       {tvAnime.length > 0 && (

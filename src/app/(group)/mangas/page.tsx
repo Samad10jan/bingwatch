@@ -39,9 +39,9 @@ export default async function HomeManga() {
       </div>
 
       {/* Hero Section */}
-      {popularManga.length > 0 && (
+    
         <HeroSectionManga data={popularManga}/>
-      )}
+      
 
       {/* Top Manga */}
       {topManga.length > 0 && (

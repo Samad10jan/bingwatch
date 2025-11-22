@@ -64,7 +64,7 @@ export default function MangaDetailPage() {
           <div className="flex-shrink-0 mx-auto md:mx-0">
             <div className="relative group">
               <Image
-                src={manga.images?.webp?.large_image_url || manga.images?.jpg?.large_image_url || "/placeholder.jpg"}
+                src={manga.images?.webp?.large_image_url || manga.images?.jpg?.large_image_url ||"/OIP.png"|| "/placeholder.jpg"}
                 alt={manga.title}
                 width={280}
                 height={400}
