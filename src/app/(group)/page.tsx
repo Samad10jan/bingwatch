@@ -32,8 +32,9 @@ export default async function Home() {
       </div>
 
       {/* Hero Section */}
+      {popularAnime.length > 0 && (
        <HeroSection data={popularAnime} />
-
+      )}
       {/* TV Anime */}
       {tvAnime.length > 0 && (
         <section>
