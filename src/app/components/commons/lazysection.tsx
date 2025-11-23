@@ -8,7 +8,7 @@ import CarouselAnimeSlide from "./slider";
 
 
 
-export default function LazySection({ title, url, type }: {title:string,url:string, type: "anime" | "manga";}) {
+export default function LazySection({ title, url, type,typeName }: {title:string,url:string, type: "anime" | "manga",typeName:string}) {
     const ref = useRef<HTMLDivElement>(null);
     const [animeList, setAnimeList] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
@@ -53,7 +53,7 @@ export default function LazySection({ title, url, type }: {title:string,url:stri
                     <div className="flex flex-col justify-center">
 
                         <h2 className="text-2xl font-bold">{title}</h2>
-                        <Link href={type==="manga"?`/mangas/type/${type}`:`/type/${type}`} className="self-end">
+                        <Link href={type==="manga"?`/mangas/type/${typeName}`:`/type/${typeName}`} className="self-end">
                             <Button variant="ghost" className="text-sm">View All →</Button>
                         </Link>
                     </div>

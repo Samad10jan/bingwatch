@@ -42,7 +42,7 @@ export default function InfoDrawerAnime({
         <div className="relative flex flex-col md:flex-row gap-6 p-6 overflow-y-auto max-h-[calc(95vh-160px)]">
           {/* LEFT IMAGE */}
           <div className="w-full md:w-80 flex-shrink-0">
-            <div className="relative w-full aspect-[6/4] md:aspect-[3/6] rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10">
+            <div className="relative w-full aspect-[6/4] md:aspect-[3/5] rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10">
               <Image
                 src={
                   data.images?.jpg?.large_image_url ||

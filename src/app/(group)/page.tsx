@@ -74,6 +74,7 @@ export default async function Home() {
         title="Top Movies"
         url="https://api.jikan.moe/v4/top/anime?type=movie&limit=10&page=1&sfw=1&order_by=popularity"
         type="anime"
+        typeName="movie"
       />
 
       <Separator className="mt-8" />
@@ -84,6 +85,7 @@ export default async function Home() {
         title="Upcoming Anime"
         url="https://api.jikan.moe/v4/top/anime?filter=upcoming&page=1&limit=10&sfw=1"
         type="anime"
+         typeName="upcoming"
       />
 
       <Separator className="mt-8" />
@@ -92,6 +94,7 @@ export default async function Home() {
         title="Specials"
         url="https://api.jikan.moe/v4/top/anime?type=special&limit=10&page=1&sfw=1"
         type="anime"
+         typeName="special"
       />
 
       <Separator className="mt-8" />

@@ -40,7 +40,7 @@ export default function AnimeDetailPage() {
                 const isNSFW = genres.includes("hentai") || genres.includes("ecchi");
 
                 if (isNSFW) {
-                    router.replace("/404"); // redirect to custom 404 page on nfw
+                    router.replace("/404"); // redirect to custom 404 page on nsfw
                     return;
                 }
 

@@ -84,6 +84,7 @@ export default async function HomeManga() {
         title="Top Light Novels"
         url="https://api.jikan.moe/v4/top/manga?type=lightnovel&limit=10&page=1&order_by=popularity"
         type="manga"
+        typeName="lightnovel"
       />
 
       <Separator className="mt-8" />
@@ -93,6 +94,7 @@ export default async function HomeManga() {
         title="Completed Manga"
         url="https://api.jikan.moe/v4/manga?type=manga&status=complete&page=1&limit=10&order_by=popularity"
         type="manga"
+        typeName="manga"
       />
 
       <Separator className="mt-8" />
@@ -102,6 +104,7 @@ export default async function HomeManga() {
         title="Completed Manhwa"
         url="https://api.jikan.moe/v4/manga?type=manhwa&status=complete&limit=10&order_by=popularity"
         type="manga"
+        typeName="manhwa"
       />
 
       <Separator className="mt-8" />

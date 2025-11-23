@@ -55,7 +55,7 @@ export default function Recommendations({ id, type }: { id: string, type: "anime
         {recs.map((item) => (
           <Card
             key={item.entry.mal_id}
-            className="relative p-0 w-46 cursor-pointer overflow-hidden m-2 border-b-2 hover:border-b-amber-300 active:shadow-amber-300  transition-all"
+            className="relative p-0 w-36 cursor-pointer overflow-hidden m-2 border-b-2 hover:border-b-amber-300 active:shadow-amber-300  transition-all"
           >
             <Link href={type == "anime" ? `/anime/${item.entry.mal_id}` : `/mangas/manga/${item.entry.mal_id}`}>
               <CardContent className="relative w-full h-50 transition-transform duration-300">

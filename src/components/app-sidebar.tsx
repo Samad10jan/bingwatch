@@ -1,31 +1,16 @@
 "use client";
-import {
-  AtomIcon,
-  Book,
-  BookOpen,
-  Frame,
-  GalleryVerticalEnd,
-  Laugh,
-  Tv,
-} from "lucide-react";
+import { Book, BookOpen, Laugh, Tv } from "lucide-react";
 import * as React from "react";
-
 import { NavMain } from "@/components/nav-main";
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarRail,
-  SidebarTrigger,
-} from "@/components/ui/sidebar";
+import { Sidebar, SidebarContent, SidebarFooter, SidebarRail, SidebarTrigger } from "@/components/ui/sidebar";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { Card } from "./ui/card";
 import { NavProjects } from "./nav-projects";
+import { Card } from "./ui/card";
 
 // ------------------ ANIME NAV ------------------
 const animeData = {
-  
+
   navMain: [
     {
       title: "Anime Types",
@@ -55,7 +40,7 @@ const animeData = {
 
   projects: [
     {
-      name: "BingRead",
+      name: "BingeRead",
       url: "/mangas",
       icon: Book,
     },
@@ -64,7 +49,7 @@ const animeData = {
 
 // ------------------ MANGA NAV ------------------
 const mangaData = {
-  
+
   navMain: [
     {
       title: "Manga Types",
@@ -93,9 +78,9 @@ const mangaData = {
 
   projects: [
     {
-      name: "BingWatch",
+      name: "BingeWatch",
       url: "/",
-      icon: AtomIcon,
+      icon: Tv,
     },
   ],
 };
@@ -124,7 +109,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           height={70}
           className="object-cover rounded-full border-4"
           priority
-          onClick={() =>{path.startsWith("/mangas")? router.push("/mangas"):router.push("/")}}
+          onClick={() => { path.startsWith("/mangas") ? router.push("/mangas") : router.push("/") }}
         />
         <p className=" text-2xl font-bold !mr-10 transition-all bg-gradient-to-bl from-emerald-500 to-indigo-500 bg-clip-text text-transparent">
           {path.startsWith("/mangas") ? "BIngeReAd" : "BIngeWatcH"}
