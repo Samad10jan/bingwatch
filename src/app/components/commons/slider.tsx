@@ -50,8 +50,8 @@ export default function CarouselSlide({ data, type }: CarouselSlideProps) {
         ))}
       </CarouselContent>
 
-      <CarouselPrevious className="absolute top-1/2 h-[80%]  -translate-y-1/2 -left-0 lg:hidden flex p-4" />
-      <CarouselNext className="absolute top-1/2  h-[80%]  -translate-y-1/2 -right-0 lg:hidden flex p-4" />
+      <CarouselPrevious className="absolute top-1/2 h-[50%]  -translate-y-1/2 -left-0 lg:hidden flex p-5" />
+      <CarouselNext className="absolute top-1/2  h-[50%]  -translate-y-1/2 -right-0 lg:hidden flex p-5" />
     </Carousel>
   );
 }

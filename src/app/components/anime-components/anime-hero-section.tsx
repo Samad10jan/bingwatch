@@ -114,8 +114,8 @@ export default function HeroSection({ data }: { data: Anime[] }) {
         ))}
       </CarouselContent>
 
-      <CarouselPrevious className="absolute top-1/2 h-[40%] -translate-y-1/2 -left-0 p-6" />
-      <CarouselNext className="absolute top-1/2 h-[40%] -translate-y-1/2 -right-0 p-6" />
+      <CarouselPrevious className="absolute top-1/2 h-[40%] -translate-y-1/2 -left-0 p-5" />
+      <CarouselNext className="absolute top-1/2 h-[40%] -translate-y-1/2 -right-0 p-5" />
     </Carousel>
   );
 }
