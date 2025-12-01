@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
-import { Spinner } from "@/components/ui/spinner";
+import { Card, CardContent } from "@/shadcncomponents/ui/card";
+import { Spinner } from "@/shadcncomponents/ui/spinner";
 import type { AnimeRecommendationItem } from "@/lib/type";
 
 export default function Recommendations({ id, type }: { id: string, type: "anime" | "manga"; }) {

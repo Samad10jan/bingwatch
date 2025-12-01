@@ -1,8 +1,8 @@
 "use client";
 import { Book, BookOpen, Laugh, Tv } from "lucide-react";
 import * as React from "react";
-import { NavMain } from "@/components/nav-main";
-import { Sidebar, SidebarContent, SidebarFooter, SidebarRail, SidebarTrigger } from "@/components/ui/sidebar";
+import { NavMain } from "@/shadcncomponents/nav-main";
+import { Sidebar, SidebarContent, SidebarFooter, SidebarRail, SidebarTrigger } from "@/shadcncomponents/ui/sidebar";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { NavProjects } from "./nav-projects";

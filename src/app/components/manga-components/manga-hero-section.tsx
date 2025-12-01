@@ -1,5 +1,5 @@
-import { Badge } from "@/components/ui/badge";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, } from "@/components/ui/carousel";
+import { Badge } from "@/shadcncomponents/ui/badge";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, } from "@/shadcncomponents/ui/carousel";
 import { Manga } from "@/lib/type";
 import { Book, Calendar, Sparkles, Star } from "lucide-react";
 import Image from "next/image";
@@ -97,8 +97,8 @@ export default function HeroSectionManga({ data }: { data: Manga[] }) {
                 })}
             </CarouselContent>
 
-            <CarouselPrevious className="absolute top-1/2 -translate-y-1/2 -left-0 p-5" />
-            <CarouselNext className="absolute top-1/2 -translate-y-1/2 -right-0 p-5" />
+            <CarouselPrevious className="absolute top-1/2  h-[40%]  -translate-y-1/2 -left-0 p-5" />
+            <CarouselNext className="absolute top-1/2 -translate-y-1/2   h-[40%]  -right-0 p-5" />
         </Carousel>
     );
 }

@@ -1,6 +1,6 @@
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/shadcncomponents/ui/badge";
+import { Button } from "@/shadcncomponents/ui/button";
+import { Separator } from "@/shadcncomponents/ui/separator";
 import { genres } from "@/lib/constants";
 import { fetchSafe } from "@/lib/helper";
 import Link from "next/link";

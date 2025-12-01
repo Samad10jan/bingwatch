@@ -1,5 +1,5 @@
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Badge } from "@/shadcncomponents/ui/badge";
+import { Button } from "@/shadcncomponents/ui/button";
 import { Github, Linkedin } from "lucide-react";
 import Link from "next/link";
 
@@ -31,7 +31,9 @@ export default function Footer() {
                         <h4 className="font-semibold mb-3">Connect</h4>
                         <div className="flex gap-3 mb-4">
                             <Button variant="outline" size="icon" className="hover:bg-primary hover:text-primary-foreground transition-all">
-                                <Github className="w-4 h-4" href="https://github.com/Samad10jan"/>
+                                <Link href="https://github.com/Samad10jan" target="_blank">
+                                <Github className="w-4 h-4" />
+                                </Link>
                             </Button>
                             <Button variant="outline" size="icon" className="hover:bg-primary hover:text-primary-foreground transition-all">
                                 𝕏

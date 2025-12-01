@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { Button } from "@/shadcncomponents/ui/button";
+import { Badge } from "@/shadcncomponents/ui/badge";
 import {
   Drawer,
   DrawerClose,
@@ -10,7 +10,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/drawer";
+} from "@/shadcncomponents/ui/drawer";
 import Image from "next/image";
 import { X, Calendar, Film, Star, Clock, TrendingUp } from "lucide-react";
 import Link from "next/link";

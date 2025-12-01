@@ -1,4 +1,4 @@
-import { Skeleton } from "@/components/ui/skeleton";
+import { Skeleton } from "@/shadcncomponents/ui/skeleton";
 
 export default function LoadingSkeleton({ cardNumber }: { cardNumber: number }) {
     return (

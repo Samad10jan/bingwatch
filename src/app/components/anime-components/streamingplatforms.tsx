@@ -1,4 +1,4 @@
-import { Spinner } from "@/components/ui/spinner";
+import { Spinner } from "@/shadcncomponents/ui/spinner";
 import { PlatformType } from "@/lib/type";
 import Image from "next/image";
 import Link from "next/link";

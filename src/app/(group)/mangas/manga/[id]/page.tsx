@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/shadcncomponents/ui/badge";
+import { Card, CardContent } from "@/shadcncomponents/ui/card";
 import { Star, Calendar, Film } from "lucide-react";
 import type { Manga } from "@/lib/type";
 import { useParams, useRouter } from "next/navigation";

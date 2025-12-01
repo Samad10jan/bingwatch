@@ -3,7 +3,7 @@
 import {
     Pagination, PaginationContent, PaginationItem,
     PaginationLink, PaginationNext, PaginationPrevious, PaginationEllipsis
-} from "@/components/ui/pagination";
+} from "@/shadcncomponents/ui/pagination";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 export function PaginationComponent({

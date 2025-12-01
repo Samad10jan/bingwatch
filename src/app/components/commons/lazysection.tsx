@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/shadcncomponents/ui/button";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import LoadingSkeleton from "./laodingskleton";

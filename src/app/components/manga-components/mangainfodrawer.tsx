@@ -1,6 +1,6 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { Button } from "@/shadcncomponents/ui/button";
+import { Badge } from "@/shadcncomponents/ui/badge";
 import {
   Drawer,
   DrawerClose,
@@ -9,7 +9,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/drawer";
+} from "@/shadcncomponents/ui/drawer";
 import { Manga } from "@/lib/type"; // use Manga type
 import Image from "next/image";
 import { X, Calendar, Star, Clock, TrendingUp, Film } from "lucide-react";

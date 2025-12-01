@@ -1,8 +1,8 @@
-import { Card } from "@/components/ui/card";
+import { Card } from "@/shadcncomponents/ui/card";
 import MangaInfoDrawer from "./mangainfodrawer";
 import { Manga } from "@/lib/type";
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/shadcncomponents/ui/badge";
 import { Star } from "lucide-react";
 
 export default function MangaCard({ data }: { data: Manga }) {
@@ -49,9 +49,9 @@ export default function MangaCard({ data }: { data: Manga }) {
             {data.type || "Unknown"} • {data.chapters ?? "?"} chapters • {data.status || "Unknown"}
           </p>
 
-          <div className="relative text-yellow-300 px-4 py-2 w-fit mx-auto text-md font-extrabold rounded-lg shadow-lg overflow-hidden">
+         {data.rank &&  <div className="relative text-yellow-300 px-4 py-2 w-fit mx-auto text-md font-extrabold rounded-lg shadow-lg overflow-hidden">
             Ranked #{data.rank||"?"}
-          </div>
+          </div>}
 
           {data.published?.string && (
             <p className="text-xs text-white/80">{data.published.string}</p>

@@ -1,5 +1,5 @@
 "use client";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/shadcncomponents/ui/carousel";
 import { Anime, CarouselSlideProps, Manga } from "@/lib/type";
 import { useEffect, useState } from "react";
 import AnimeCard from "../anime-components/moviecard"; // anime card
@@ -16,6 +16,7 @@ export default function CarouselSlide({ data, type }: CarouselSlideProps) {
       if (width < 640) setChunkSize(2);
       else if (width < 768) setChunkSize(3);
       else if (width < 1024) setChunkSize(4);
+      else if(width< 1150) setChunkSize(4);
       else if (width < 1280) setChunkSize(5);
       else if (width < 1536) setChunkSize(10);
       else setChunkSize(12);
@@ -49,8 +50,8 @@ export default function CarouselSlide({ data, type }: CarouselSlideProps) {
         ))}
       </CarouselContent>
 
-      <CarouselPrevious className="absolute top-1/2 -translate-y-1/2 -left-0 lg:hidden flex p-5" />
-      <CarouselNext className="absolute top-1/2 -translate-y-1/2 -right-0 lg:hidden flex p-5" />
+      <CarouselPrevious className="absolute top-1/2 h-[80%]  -translate-y-1/2 -left-0 lg:hidden flex p-4" />
+      <CarouselNext className="absolute top-1/2  h-[80%]  -translate-y-1/2 -right-0 lg:hidden flex p-4" />
     </Carousel>
   );
 }
