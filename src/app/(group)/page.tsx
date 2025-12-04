@@ -47,7 +47,7 @@ export default async function Home() {
 
           <CarouselAnimeSlide data={tvAnime} type="anime" />  
 
-          <Separator className="mt-8" />
+          {/* <Separator className="mt-8" /> */}
         </section>
       )}
 
@@ -77,7 +77,7 @@ export default async function Home() {
         typeName="movie"
       />
 
-      <Separator className="mt-8" />
+      {/* <Separator className="mt-8" /> */}
       
 
       {/* Lazy Sections */}
@@ -88,7 +88,7 @@ export default async function Home() {
          typeName="upcoming"
       />
 
-      <Separator className="mt-8" />
+      {/* <Separator className="mt-8" /> */}
 
       <LazySection
         title="Specials"
@@ -97,7 +97,7 @@ export default async function Home() {
          typeName="special"
       />
 
-      <Separator className="mt-8" />
+      {/* <Separator className="mt-8" /> */}
 
     </div>
   );

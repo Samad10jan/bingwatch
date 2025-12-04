@@ -17,12 +17,12 @@ export default function Loading() {
             </div>
 
            
-            <Badge className="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 text-white px-4 py-3 text-lg md:text-xl shadow-2xl animate-pulse z-10">
+            <Badge className="flex items-center gap-3  backdrop-blur-md border px-4 py-3 text-lg md:text-xl shadow-2xl animate-pulse z-10">
                 <span className="font-bold tracking-wider">待って！</span>
             </Badge>
 
           
-            <p className="text-white/50 text-sm mt-4 z-10 font-light tracking-wide">
+            <p className=" text-sm mt-4 z-10 font-light tracking-wide">
                 読み込み中...
             </p>
         </div>

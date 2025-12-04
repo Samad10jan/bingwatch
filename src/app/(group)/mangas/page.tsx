@@ -55,7 +55,7 @@ export default async function HomeManga() {
           </div>
 
           <CarouselMangaSlide data={topManga} type="manga" />
-          <Separator className="mt-8" />
+          {/* <Separator className="mt-8" /> */}
         </section>
       )}
 
@@ -87,7 +87,7 @@ export default async function HomeManga() {
         typeName="lightnovel"
       />
 
-      <Separator className="mt-8" />
+      {/* <Separator className="mt-8" /> */}
 
       {/* Completed Manga */}
       <LazySection
@@ -97,7 +97,7 @@ export default async function HomeManga() {
         typeName="manga"
       />
 
-      <Separator className="mt-8" />
+      {/* <Separator className="mt-8" /> */}
 
       {/* Completed Manhwa */}
       <LazySection
@@ -107,7 +107,7 @@ export default async function HomeManga() {
         typeName="manhwa"
       />
 
-      <Separator className="mt-8" />
+      {/* <Separator className="mt-8" /> */}
     </div>
   );
 }

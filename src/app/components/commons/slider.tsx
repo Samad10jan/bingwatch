@@ -4,6 +4,7 @@ import { Anime, CarouselSlideProps, Manga } from "@/lib/type";
 import { useEffect, useState } from "react";
 import AnimeCard from "../anime-components/moviecard"; // anime card
 import MangaCard from "../manga-components/mangacard"; // manga card
+import { Separator } from "@/shadcncomponents/ui/separator";
 
 export default function CarouselSlide({ data, type }: CarouselSlideProps) {
   const [chunkSize, setChunkSize] = useState(5);
@@ -52,6 +53,7 @@ export default function CarouselSlide({ data, type }: CarouselSlideProps) {
 
       <CarouselPrevious className="absolute top-1/2 h-[50%]  -translate-y-1/2 -left-0 lg:hidden flex p-5" />
       <CarouselNext className="absolute top-1/2  h-[50%]  -translate-y-1/2 -right-0 lg:hidden flex p-5" />
+       <Separator className="mt-8" />
     </Carousel>
   );
 }

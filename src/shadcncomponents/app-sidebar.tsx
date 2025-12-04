@@ -111,7 +111,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           priority
           onClick={() => { path.startsWith("/mangas") ? router.push("/mangas") : router.push("/") }}
         />
-        <p className=" text-2xl font-bold !mr-10 transition-all bg-gradient-to-bl from-emerald-500 to-indigo-500 bg-clip-text text-transparent">
+        <p className=" text-xl font-bold !mr-10 transition-all bg-gradient-to-bl from-emerald-500 to-indigo-500 bg-clip-text text-transparent">
           {path.startsWith("/mangas") ? "BIngeReAd" : "BIngeWatcH"}
         </p>
       </Card>
