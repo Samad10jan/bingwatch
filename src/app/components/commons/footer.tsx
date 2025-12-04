@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <footer className="bg-gradient-to-t rounded-b-4xl from-accent  mt-16 pt-8 px-4 sm:px-6 lg:px-8 ">
+        <footer className="bg-gradient-to-t rounded-b-4xl from-accent  mt-16 py-8 px-4 sm:px-6 lg:px-8 ">
             <div className="max-w-7xl mx-auto">
                 <div className="flex justify-between gap-8 mb-8">
 

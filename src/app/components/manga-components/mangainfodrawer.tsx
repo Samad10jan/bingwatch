@@ -30,7 +30,7 @@ export default function MangaInfoDrawer({
       <DrawerContent className="max-h-[90vh]">
         <DrawerHeader className="relative border-b pb-4">
           <DrawerTitle className="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent pr-8">
-            {infoData.title || "Unknown Title"}
+            {infoData.title_english||infoData.title_japanese||infoData.title || "Unknown Title"}
           </DrawerTitle>
           <DrawerClose className="absolute right-4 top-4 rounded-full p-2 hover:bg-accent transition-colors">
             <X className="h-5 w-5" />

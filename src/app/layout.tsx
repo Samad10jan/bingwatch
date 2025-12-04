@@ -1,14 +1,11 @@
-import { AppSidebar } from "@/shadcncomponents/app-sidebar";
 import { ThemeProvider } from "@/shadcncomponents/theme-provider";
-import { SidebarInset, SidebarProvider } from "@/shadcncomponents/ui/sidebar";
 import type { Metadata } from "next";
-import { Header } from "./components/commons/header";
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "BingeWatch",
   description: "All About Anime",
-
+  
   openGraph: {
     title: "BingeWatch",
     description: "All About Anime",
@@ -25,28 +22,21 @@ export const metadata: Metadata = {
 };
 
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: {children:React.ReactNode}) {
   return (
     <>
       <html lang="en" suppressHydrationWarning>
         <head />
         <body className="">
-
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
-          >
-
-            <SidebarProvider defaultOpen={true}  >
-              <AppSidebar />
-              <SidebarInset>
-                <Header/>
-                {children}
-                {/* <Footer/> */}
-              </SidebarInset>
-            </SidebarProvider>
+            >
+            
+          
+            {children}
           </ThemeProvider>
         </body>
       </html>

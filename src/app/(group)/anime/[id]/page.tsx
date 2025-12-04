@@ -11,6 +11,7 @@ import Recommendations from "@/app/components/commons/recommendation-view";
 import Link from "next/link";
 import { genres } from "@/lib/constants";
 import Platforms from "@/app/components/anime-components/streamingplatforms";
+import { Spinner } from "@/shadcncomponents/ui/spinner";
 
 export default function AnimeDetailPage() {
     const { id } = useParams();
@@ -37,7 +38,7 @@ export default function AnimeDetailPage() {
 
                 const json = await res.json();
                 const genres = json.data.genres?.map((g: any) => g.name.toLowerCase()) || [];
-                const isNSFW = genres.includes("hentai") || genres.includes("ecchi");
+                const isNSFW = genres.includes("hentai")
 
                 if (isNSFW) {
                     router.replace("/404"); // redirect to custom 404 page on nsfw
@@ -58,9 +59,9 @@ export default function AnimeDetailPage() {
         fetchAnime();
     }, [id, router]);
 
-    if (loading) return <div className="p-6 text-center text-xl">Thinking...</div>;
+    if (loading) return <div className="p-6 text-center text-xl h-[90%] mx-auto"><Spinner className="mx-auto size-8"/></div>;
 
-    if (!anime) return <div className="p-6 text-center text-xl"></div>
+    if (!anime) return <div className="p-6 text-center text-xl">Not Found</div>
 
     return (
         <div className="min-h-screen">
@@ -222,9 +223,6 @@ export default function AnimeDetailPage() {
                 <Recommendations id={id as string} type="anime" />
                 <Platforms id={id as string} />
             </div>
-
-
-
         </div>
     );
 }

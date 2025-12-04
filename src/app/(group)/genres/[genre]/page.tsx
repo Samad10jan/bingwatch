@@ -5,7 +5,7 @@ import AnimeCard from "@/app/components/anime-components/moviecard";
 import { PaginationComponent } from "@/app/components/commons/pagenation";
 import { genres } from "@/lib/constants";
 import { Anime, JSONDATA } from "@/lib/type";
-import { useParams, useSearchParams } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Genre() {
@@ -21,10 +21,11 @@ export default function Genre() {
     const [loading, setLoading] = useState<boolean>(false);
     const params = useParams();
     const genreId = Number(params.genre);
+    const router = useRouter();
 
-    const url = `https://api.jikan.moe/v4/anime?genres=${genreId}&page=${page}&order_by=popularity&sort=asc`
+    const url = `https://api.jikan.moe/v4/anime?genres=${genreId}&page=${page}&order_by=popularity&sort=asc&sfw=1`
 
-    const genreName = genres.find(g => g.mal_id === genreId)?.name || "Unknown";
+    const genreName = genres.find(g => g.mal_id === genreId)?.name || "";
 
 
     useEffect(() => {
@@ -33,7 +34,16 @@ export default function Genre() {
             try {
                 const res = await fetch(url, { next: { revalidate: 3600 } });
                 const jsonData = await res.json();
+                if (jsonData.data.length == 0) {
+                    router.replace("/404"); 
+                    return;
+                }
                 setJsonData(jsonData);
+
+                if (jsonData.data.length == 0) {
+                    router.replace("/404"); 
+                    return;
+                }
                 setData(jsonData.data || []);
             } catch (err) {
                 console.error("Error fetching anime:", err);
@@ -44,6 +54,7 @@ export default function Genre() {
 
         getData();
     }, [url]);
+
 
     return (
         <div className="p-6">

@@ -1,12 +1,11 @@
 "use client";
 
 import LoadingSkeleton from "@/app/components/commons/laodingskleton";
-import MangaCard from "@/app/components/manga-components/mangacard";
-import AnimeCard from "@/app/components/anime-components/moviecard";
 import { PaginationComponent } from "@/app/components/commons/pagenation";
+import MangaCard from "@/app/components/manga-components/mangacard";
 import { genres } from "@/lib/constants";
-import { Anime, JSONDATA, Manga } from "@/lib/type";
-import { useParams, useSearchParams } from "next/navigation";
+import { JSONDATA, Manga } from "@/lib/type";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Genre() {
@@ -22,10 +21,11 @@ export default function Genre() {
     const [loading, setLoading] = useState<boolean>(false);
     const params = useParams();
     const genreId = Number(params.genre);
+     const router = useRouter();
 
-    const url = `https://api.jikan.moe/v4/manga?genres=${genreId}&page=${page}&order_by=popularity&sort=asc`
+    const url = `https://api.jikan.moe/v4/manga?genres=${genreId}&page=${page}&order_by=popularity&sort=asc&sfw=1`
 
-    const genreName = genres.find(g => g.mal_id === genreId)?.name || "Unknown";
+    const genreName = genres.find(g => g.mal_id === genreId)?.name || "";
 
 
     useEffect(() => {
@@ -34,6 +34,10 @@ export default function Genre() {
             try {
                 const res = await fetch(url, { next: { revalidate: 3600 } });
                 const jsonData = await res.json();
+                if (jsonData.data.length === 0) {
+                    router.replace("/404"); 
+                    return;
+                }
                 setJsonData(jsonData);
                 setData(jsonData.data || []);
             } catch (err) {

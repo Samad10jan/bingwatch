@@ -1,26 +1,25 @@
+import { AppSidebar } from "@/shadcncomponents/app-sidebar";
+import { SidebarInset, SidebarProvider } from "@/shadcncomponents/ui/sidebar";
+import { Header } from "../components/commons/header";
 import Footer from "../components/commons/footer";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    // <SidebarProvider defaultOpen={true}  >
-    //   <AppSidebar />
-    //   <SidebarInset>
-        <div>
+    <SidebarProvider defaultOpen={true}  >
+      <AppSidebar />
+      <SidebarInset>
+
+        <Header />
 
 
-          {/* <Header /> */}
-
-
-          <main className="flex flex-1 flex-col pt-0 ">
-
-            <div className="w-full  mx-auto">
-              {children}
-            </div>
-          </main>
-          <Footer />
-        </div>
-        // 
-    //   </SidebarInset>
-    // </SidebarProvider>
+        <main className="flex flex-1 flex-col pt-0 ">
+          
+          <div className="w-full  mx-auto">
+            {children}
+          </div>
+        </main>
+        <Footer/>
+      </SidebarInset>
+    </SidebarProvider>
   );
 }

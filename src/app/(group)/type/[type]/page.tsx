@@ -10,13 +10,13 @@ import { useEffect, useState } from "react";
 export default function H() {
 
   const { type } = useParams();
-  const router= useRouter()
-  if (!["tv", "movie", "ova", "upcoming","special"].includes((type as string).toLowerCase())) {
-   router.replace("/404");
+  const router = useRouter()
+  if (!["tv", "movie", "ova", "upcoming", "special"].includes((type as string).toLowerCase())) {
+    router.replace("/404");
   }
 
   const search = useSearchParams();
-  const page = Number(search.get("page")) || 1; 
+  const page = Number(search.get("page")) || 1;
 
   const [data, setData] = useState<Anime[]>([]);
   const [jsonData, setJsonData] = useState<JSONDATA | null>(null);
@@ -31,8 +31,12 @@ export default function H() {
     async function getData() {
       setLoading(true);
       try {
-        const res = await fetch(url,{next:{revalidate:3600}});
+        const res = await fetch(url, { next: { revalidate: 3600 } });
         const jsonData = await res.json();
+        if (jsonData.data.length === 0) {
+          router.replace("/404");
+          return;
+        }
         setJsonData(jsonData);
         setData(jsonData.data || []);
       } catch (err) {

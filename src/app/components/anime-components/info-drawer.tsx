@@ -15,12 +15,13 @@ import Image from "next/image";
 import { X, Calendar, Film, Star, Clock, TrendingUp } from "lucide-react";
 import Link from "next/link";
 import { ReactNode } from "react";
+import { Anime } from "@/lib/type";
 
 export default function InfoDrawerAnime({
   data,
   children,
 }: {
-  data: any; // Anime only
+  data: Anime; // Anime only
   children: ReactNode;
 }) {
   return (
@@ -30,7 +31,7 @@ export default function InfoDrawerAnime({
       <DrawerContent className="max-h-[90vh]">
         <DrawerHeader className="relative border-b pb-4">
           <DrawerTitle className="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent pr-8">
-            {data.title || "Unknown Title"}
+             {data.title_english||data.title_japanese||data.title || "Unknown Title"}
           </DrawerTitle>
 
           <DrawerClose className="absolute right-4 top-4 rounded-full p-2 hover:bg-accent transition-colors">
@@ -117,11 +118,11 @@ export default function InfoDrawerAnime({
               )}
 
               {/* STUDIOS */}
-              {data.studios?.length > 0 && (
+              {data?.studios && (
                 <div>
                   <p className="text-sm text-muted-foreground mb-2">Studios</p>
                   <p className="font-medium text-sm">
-                    {data.studios.map((s: any) => s.name).join(", ")}
+                    {data?.studios.map((s: any) => s.name).join(", ")}
                   </p>
                 </div>
               )}

@@ -12,7 +12,7 @@ export default function H() {
 
   const { type } = useParams();
   const router = useRouter()
-  if (!["manhwa","lightnovel","oneshot","manhua","novel","manga"].includes((type as string).toLowerCase())) {
+  if (!["manhwa", "lightnovel", "oneshot", "manhua", "novel", "manga"].includes((type as string).toLowerCase())) {
     router.replace("/404");
   }
 
@@ -23,14 +23,18 @@ export default function H() {
   const [jsonData, setJsonData] = useState<JSONDATA | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const url =`https://api.jikan.moe/v4/top/manga?type=${type}&page=${page}&sfw=1`
- 
+  const url = `https://api.jikan.moe/v4/top/manga?type=${type}&page=${page}&sfw=1`
+
   useEffect(() => {
     async function getData() {
       setLoading(true);
       try {
         const res = await fetch(url, { next: { revalidate: 3600 } });
         const jsonData = await res.json();
+        if (jsonData.data.length === 0) {
+          router.replace("/404");
+          return;
+        }
         setJsonData(jsonData);
         setData(jsonData.data || []);
       } catch (err) {

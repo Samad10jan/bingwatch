@@ -9,6 +9,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Recommendations from "@/app/components/commons/recommendation-view";
 import Link from "next/link";
+import { Spinner } from "@/shadcncomponents/ui/spinner";
 
 export default function MangaDetailPage() {
   const { id } = useParams();
@@ -33,7 +34,7 @@ export default function MangaDetailPage() {
         const json = await res.json();
 
         const genres = json.data.genres?.map((g: any) => g.name.toLowerCase()) || [];
-        const isNSFW = genres.includes("hentai") || genres.includes("ecchi");
+        const isNSFW = genres.includes("hentai")
         if (isNSFW) {
           router.replace("/404"); // block NSFW content
           return;
@@ -51,7 +52,7 @@ export default function MangaDetailPage() {
     fetchManga();
   }, [id, router]);
 
-  if (loading) return <div className="p-6 text-center text-xl">Thinking...</div>;
+   if (loading) return <div className="p-6 text-center text-xl h-[90%] mx-auto"><Spinner className="mx-auto size-8"/></div>;
   if (!manga) return <div className="p-6 text-center text-xl">Manga not found.</div>;
 
   return (
