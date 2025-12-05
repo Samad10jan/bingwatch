@@ -37,6 +37,7 @@ export default function Genre() {
                 if (jsonData.data.length === 0) {
                     router.replace("/404"); 
                     return;
+                    
                 }
                 setJsonData(jsonData);
                 setData(jsonData.data || []);
