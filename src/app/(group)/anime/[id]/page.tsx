@@ -66,11 +66,11 @@ export default function AnimeDetailPage() {
     return (
         <div className="min-h-screen">
 
-            {/* Main Content */}
+           
             <div className="max-w-7xl mx-auto px-4 relative ">
-                {/* Hero Section */}
+                
                 <div className="flex flex-col md:flex-row gap-6 md:gap-8">
-                    {/* Poster */}
+                  
                     <div className="flex-shrink-0 mx-auto md:mx-0">
                         <div className="relative group">
                             <Image
@@ -94,9 +94,9 @@ export default function AnimeDetailPage() {
                         </div>
                     </div>
 
-                    {/* Anime Info */}
+                 
                     <div className="flex-1 flex flex-col gap-4">
-                        {/* Title Section */}
+                        
                         <div>
                             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
                                 {anime.title_english||anime.title}
@@ -108,7 +108,7 @@ export default function AnimeDetailPage() {
                             )}
                         </div>
 
-                        {/* Quick Stats */}
+                      
                         <div className="flex flex-wrap items-center gap-2">
                             {anime.year && (
                                 <Badge variant="outline" className="gap-1 px-3 py-1">
@@ -146,7 +146,7 @@ export default function AnimeDetailPage() {
                             )}
                         </div>
 
-                        {/* Genres */}
+                       
                         {anime.genres && anime.genres.length > 0 && (
                             <div>
                                 <h3 className="text-sm font-semibold text-muted-foreground mb-2">
@@ -167,7 +167,7 @@ export default function AnimeDetailPage() {
                             </div>
                         )}
 
-                        {/* Studios */}
+                     
                         {anime.studios && anime.studios.length > 0 && (
                             <div>
                                 <h3 className="text-sm font-semibold text-muted-foreground mb-1">
@@ -179,7 +179,7 @@ export default function AnimeDetailPage() {
                             </div>
                         )}
 
-                        {/* Season Info */}
+                       
                         {anime?.animeSeason?.season && anime.year && (
                             <div>
                                 <h3 className="text-sm font-semibold text-muted-foreground mb-1">
@@ -193,7 +193,7 @@ export default function AnimeDetailPage() {
                     </div>
                 </div>
 
-                {/* Synopsis Section */}
+                
                 <Card className="mt-8 border-2">
                     <CardContent className="p-6 md:p-8">
                         <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
@@ -206,7 +206,7 @@ export default function AnimeDetailPage() {
                     </CardContent>
                 </Card>
 
-                {/* Background Section */}
+               
                 {anime.background && (
                     <Card className="mt-6 border-2 mb-8">
                         <CardContent className="p-6 md:p-8">

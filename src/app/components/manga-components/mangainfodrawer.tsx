@@ -38,7 +38,7 @@ export default function MangaInfoDrawer({
         </DrawerHeader>
 
         <div className="relative flex flex-col md:flex-row gap-6 p-6 overflow-y-auto max-h-[calc(95vh-160px)]">
-          {/* --- Left: Manga Image --- */}
+          
           <div className="w-full md:w-80 flex-shrink-0">
             <div className="relative w-full aspect-[6/4] md:aspect-[3/6] rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10">
               <Image
@@ -151,7 +151,7 @@ export default function MangaInfoDrawer({
               {infoData.synopsis && (
                 <div className="pt-4 border-t border-white/10">
                   <p className="text-sm text-muted-foreground mb-2 -ml-1">| Synopsis</p>
-                  <p className="text-sm leading-relaxed  line-clamp-4">
+                  <p className="text-sm leading-relaxed  line-clamp-3">
                     {infoData.synopsis}
                   </p>
                 </div>

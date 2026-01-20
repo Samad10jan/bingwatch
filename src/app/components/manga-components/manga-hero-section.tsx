@@ -42,14 +42,14 @@ export default function HeroSectionManga({ data }: { data: Manga[] }) {
 
                                 <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
 
-                                {/* Title + details */}
+                                {/* Details */}
                                 <div className="absolute inset-0 flex flex-col justify-end items-center p-4 sm:p-6 lg:p-10 mx-auto">
                                     <div className="max-w-4xl space-y-3 lg:space-y-5 text-center">
                                         <h2 className="text-white text-xl sm:text-3xl lg:text-4xl font-bold drop-shadow-xl">
                                             {item.title_english || item.title || "Unknown Title"}
                                         </h2>
 
-                                        {/* Badges */}
+                                       
                                         <div className="flex flex-wrap items-center sm:justify-center gap-2 sm:gap-2.5">
                                             {item.score && (
                                                 <Badge className="flex items-center gap-1.5 px-3 py-1.5 bg-yellow-400/30 rounded-full border border-yellow-300/40 shadow-lg">
@@ -76,7 +76,7 @@ export default function HeroSectionManga({ data }: { data: Manga[] }) {
                                             )}
                                         </div>
 
-                                        {/* Genres */}
+                                       
                                         {item.genres?.length > 0 && (
                                             <div className="hidden lg:flex flex-wrap gap-2 justify-center">
                                                 {item.genres.slice(0, 5).map((genre, i) => (

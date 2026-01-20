@@ -9,7 +9,7 @@ export default function AnimeCard({ data }: { data: Anime }) {
   return (
     <InfoDrawer data={data} >
       <Card className=" relative flex flex-col justify-end items-center w-full aspect-[2/3] rounded-xl overflow-hidden border shadow-lg group cursor-pointer transition-all duration-300 hover:shadow-2xl">
-        {/* --- Background Image --- */}
+        {/* Image */}
 
         <Image
           src={
@@ -26,10 +26,9 @@ export default function AnimeCard({ data }: { data: Anime }) {
           className="object-cover transition-transform duration-500 group-hover:scale-110"
         />
 
-        {/*Always  Overlay on Mobile) */}
+        {/*  Overlay on Mobile) */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300" />
 
-        {/*  Score Badge */}
         {data.score && (
           <Badge
             variant="secondary"
@@ -40,7 +39,6 @@ export default function AnimeCard({ data }: { data: Anime }) {
           </Badge>
         )}
 
-        {/* Content Overlay */}
 
 
         <h2 className="text-sm sm:text-base md:text-lg font-bold px-1 text-white -mb-4 sm:mb-2 line-clamp-2 drop-shadow-lg md:opacity-0 md:group-hover:opacity-100 transition-all duration-300">
@@ -51,13 +49,11 @@ export default function AnimeCard({ data }: { data: Anime }) {
 
         <div className="hidden md:block opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 space-y-1">
 
-          {/* Type, Episodes, Status */}
           <p className="text-xs text-white/90">
             {data.type || "Unknown"} • {data.episodes ?? "?"} eps • {data.status || "Unknown"}
           </p>
           
 
-          {/* Year + Duration */}
           {(data.year || data.duration) && (
             <p className="text-xs text-white/80">
               {data.year || "N/A"}
@@ -65,7 +61,6 @@ export default function AnimeCard({ data }: { data: Anime }) {
             </p>
           )}
 
-          {/* Season Info */}
           {data.animeSeason?.season && (
             <p className="text-xs text-white/70 capitalize">
               {data.animeSeason.season} {data.animeSeason.year || ""}

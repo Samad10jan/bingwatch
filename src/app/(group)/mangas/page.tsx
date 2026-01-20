@@ -59,7 +59,7 @@ export default async function HomeManga() {
         </section>
       )}
 
-      {/* Browse by Genre */}
+      {/* Genre */}
       <section>
         <h2 className="text-2xl font-bold mb-4 mx-auto">Browse by Genre</h2>
 
@@ -79,7 +79,6 @@ export default async function HomeManga() {
         <Separator className="mt-8" />
       </section>
 
-      {/* Light Novels */}
        <LazySection
         title="Top Light Novels"
         url="https://api.jikan.moe/v4/top/manga?type=lightnovel&limit=10&page=1&order_by=popularity"
@@ -89,7 +88,6 @@ export default async function HomeManga() {
 
       {/* <Separator className="mt-8" /> */}
 
-      {/* Completed Manga */}
       <LazySection
         title="Completed Manga"
         url="https://api.jikan.moe/v4/manga?type=manga&status=complete&page=1&limit=10&order_by=popularity"
@@ -99,7 +97,6 @@ export default async function HomeManga() {
 
       {/* <Separator className="mt-8" /> */}
 
-      {/* Completed Manhwa */}
       <LazySection
         title="Completed Manhwa"
         url="https://api.jikan.moe/v4/manga?type=manhwa&status=complete&limit=10&order_by=popularity"

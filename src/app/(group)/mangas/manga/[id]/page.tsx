@@ -57,11 +57,9 @@ export default function MangaDetailPage() {
 
   return (
     <div className="min-h-screen">
-      {/* Main Content */}
+    
       <div className="max-w-7xl mx-auto px-4 relative">
-        {/* Hero Section */}
         <div className="flex flex-col md:flex-row gap-6 md:gap-8">
-          {/* Poster */}
           <div className="flex-shrink-0 mx-auto md:mx-0">
             <div className="relative group">
               <Image
@@ -81,9 +79,7 @@ export default function MangaDetailPage() {
             </div>
           </div>
 
-          {/* Manga Info */}
           <div className="flex-1 flex flex-col gap-4">
-            {/* Title Section */}
             <div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">{manga.title_english||manga.title}</h1>
               {manga.title_japanese && (
@@ -91,7 +87,6 @@ export default function MangaDetailPage() {
               )}
             </div>
 
-            {/* Quick Stats */}
             <div className="flex flex-wrap items-center gap-2">
               {manga.published?.from && (
                 <Badge variant="outline" className="gap-1 px-3 py-1">
@@ -122,7 +117,6 @@ export default function MangaDetailPage() {
               )}
             </div>
 
-            {/* Genres */}
             {manga.genres && manga.genres.length > 0 && (
               <div>
                 <h3 className="text-sm font-semibold text-muted-foreground mb-2">GENRES</h3>
@@ -138,7 +132,6 @@ export default function MangaDetailPage() {
               </div>
             )}
 
-            {/* Authors */}
             {manga.authors && manga.authors.length > 0 && (
               <div>
                 <h3 className="text-sm font-semibold text-muted-foreground mb-1">AUTHOR(S)</h3>
@@ -148,7 +141,6 @@ export default function MangaDetailPage() {
           </div>
         </div>
 
-        {/* Synopsis Section */}
         <Card className="mt-8 border-2">
           <CardContent className="p-6 md:p-8">
             <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
@@ -161,7 +153,6 @@ export default function MangaDetailPage() {
           </CardContent>
         </Card>
 
-        {/* Background Section */}
         {manga.background && (
           <Card className="mt-6 border-2 mb-8">
             <CardContent className="p-6 md:p-8">

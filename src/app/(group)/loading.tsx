@@ -22,7 +22,7 @@ export default function Loading() {
             </Badge>
 
           
-            <p className=" text-sm mt-4 z-10 font-light tracking-wide">
+            <p className=" text-sm mt-4 z-10 font-light ">
                 読み込み中...
             </p>
         </div>

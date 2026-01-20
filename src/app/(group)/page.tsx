@@ -31,11 +31,9 @@ export default async function Home() {
         </div>
       </div>
 
-      {/* Hero Section */}
       {popularAnime.length > 0 && (
        <HeroSection data={popularAnime} />
       )}
-      {/* TV Anime */}
       {tvAnime.length > 0 && (
         <section>
           <div className="flex flex-col justify-center">
@@ -80,7 +78,6 @@ export default async function Home() {
       {/* <Separator className="mt-8" /> */}
       
 
-      {/* Lazy Sections */}
       <LazySection
         title="Upcoming Anime"
         url="https://api.jikan.moe/v4/top/anime?filter=upcoming&page=1&limit=10&sfw=1"

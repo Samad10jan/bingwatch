@@ -22,7 +22,7 @@ export default function Recommendations({ id, type }: { id: string, type: "anime
         const json = await res.json();
 
         const allRecs = json.data || [];
-        const topRecs = allRecs.slice(0, 6); // limit to avoid rate limit
+        const topRecs = allRecs.slice(0, 6); 
 
   
         setRecs(topRecs as AnimeRecommendationItem[]);

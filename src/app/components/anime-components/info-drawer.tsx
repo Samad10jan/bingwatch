@@ -21,7 +21,7 @@ export default function InfoDrawerAnime({
   data,
   children,
 }: {
-  data: Anime; // Anime only
+  data: Anime; 
   children: ReactNode;
 }) {
   return (
@@ -39,9 +39,9 @@ export default function InfoDrawerAnime({
           </DrawerClose>
         </DrawerHeader>
 
-        {/* MAIN CONTENT */}
+     
         <div className="relative flex flex-col md:flex-row gap-6 p-6 overflow-y-auto max-h-[calc(95vh-160px)]">
-          {/* LEFT IMAGE */}
+       
           <div className="w-full md:w-80 flex-shrink-0">
             <div className="relative w-full aspect-[6/4] md:aspect-[3/5] rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10">
               <Image
@@ -64,11 +64,11 @@ export default function InfoDrawerAnime({
             </div>
           </div>
 
-          {/* RIGHT DETAILS */}
+        
           <div className="flex-1 space-y-6">
-            {/* Stats Grid */}
+         
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {/* TYPE */}
+            
               {data.type && (
                 <div className="bg-gradient-to-br from-purple-500/10 to-purple-600/10 rounded-lg p-4 border border-purple-500/20">
                   <div className="flex items-center gap-2 text-purple-400 mb-1">
@@ -79,7 +79,6 @@ export default function InfoDrawerAnime({
                 </div>
               )}
 
-              {/* EPISODES */}
               {data.episodes && (
                 <div className="bg-gradient-to-br from-blue-500/10 to-blue-600/10 rounded-lg p-4 border border-blue-500/20">
                   <div className="flex items-center gap-2 text-blue-400 mb-1">
@@ -92,7 +91,7 @@ export default function InfoDrawerAnime({
                 </div>
               )}
 
-              {/* STATUS */}
+            
               {data.status && (
                 <div className="bg-gradient-to-br from-emerald-500/10 to-emerald-600/10 rounded-lg p-4 border border-emerald-500/20">
                   <div className="flex items-center gap-2 text-emerald-400 mb-1">
@@ -104,9 +103,9 @@ export default function InfoDrawerAnime({
               )}
             </div>
 
-            {/* Extra Details */}
+           
             <div className="space-y-4">
-              {/* YEAR */}
+             
               {data.year && (
                 <div className="flex items-start gap-3">
                   <Calendar className="h-5 w-5 text-cyan-400 mt-0.5" />
@@ -117,7 +116,7 @@ export default function InfoDrawerAnime({
                 </div>
               )}
 
-              {/* STUDIOS */}
+          
               {data?.studios && (
                 <div>
                   <p className="text-sm text-muted-foreground mb-2">Studios</p>
@@ -127,7 +126,7 @@ export default function InfoDrawerAnime({
                 </div>
               )}
 
-              {/* GENRES */}
+             
               {data.genres?.length > 0 && (
                 <div>
                   <p className="text-sm text-muted-foreground mb-3">Genres</p>
@@ -145,13 +144,13 @@ export default function InfoDrawerAnime({
                 </div>
               )}
 
-              {/* SYNOPSIS */}
+            
               {data.synopsis && (
                 <div className="pt-4 border-t border-white/10">
                   <p className="text-sm text-muted-foreground mb-2 -ml-1">
                     | Synopsis
                   </p>
-                  <p className="text-sm leading-relaxed text-zinc-300 line-clamp-3">
+                  <p className="text-sm leading-relaxed text-zinc-300 line-clamp-2">
                     {data.synopsis}
                   </p>
                 </div>
