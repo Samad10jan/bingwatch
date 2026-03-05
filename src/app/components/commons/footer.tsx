@@ -11,15 +11,15 @@ export default function Footer() {
 
                     <div className="flex flex-col ">
                         <h3 className="text-2xl self-start font-extrabold bg-gradient-to-r from-emerald-500 to-indigo-500 bg-clip-text text-transparent mb-3">
-                            BingWatch
+                            BingeWatch
                         </h3>
 
                         <div className=" text-sm flex flex-wrap ">
 
-                            <Badge variant={"secondary"} className="cursor-pointer  transition-colors">
+                            <Badge  variant={"secondary"} className="cursor-pointer  transition-colors opacity-50">
                                 About Us
                             </Badge>
-                            <Badge variant={"secondary"} className="cursor-pointer   transition-colors">
+                            <Badge variant={"secondary"} className="cursor-pointer   transition-colors opacity-50">
                                 Contact
                             </Badge>
 
@@ -35,11 +35,11 @@ export default function Footer() {
                                 <Github className="w-4 h-4" />
                                 </Link>
                             </Button>
-                            <Button variant="outline" size="icon" className="hover:bg-primary hover:text-primary-foreground transition-all">
+                            <Button variant="outline" disabled size="icon" className="hover:bg-primary hover:text-primary-foreground transition-all disabled:opacity-50">
                                 𝕏
                             </Button>
 
-                            <Button variant="outline" size="icon" className="hover:bg-primary hover:text-primary-foreground transition-all">
+                            <Button variant="outline" disabled size="icon" className="hover:bg-primary hover:text-primary-foreground transition-all disabled:opacity-50">
                                 <Linkedin/>
                             </Button>
 

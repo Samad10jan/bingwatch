@@ -160,12 +160,12 @@ export default function InfoDrawerAnime({
         </div>
 
         <DrawerFooter className="border-t flex justify-center items-center">
-          <Button
+          <Badge
             variant={"secondary"}
-            className="rounded-full ring-2 md:text-3xl text-lg font-bold text-center w-fit p-5 ring-emerald-400 hover:scale-110 transition-all"
+            className="rounded-full ring-2 md:text-3xl active:scale-110 text-lg font-bold text-center ring-emerald-400 hover:scale-110 transition-all duration-300"
           >
             <Link href={`/anime/${data.mal_id}`}>MORE DETAILS</Link>
-          </Button>
+          </Badge>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
