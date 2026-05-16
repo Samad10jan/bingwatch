@@ -1,7 +1,7 @@
 "use client";
 
-import LoadingSkeleton from "@/app/components/commons/laodingskleton";
 import AnimeCard from "@/app/components/anime-components/moviecard";
+import LoadingSkeleton from "@/app/components/commons/loadingskeleton";
 import { PaginationComponent } from "@/app/components/commons/pagenation";
 import { Anime, JSONDATA } from "@/lib/type";
 import { useParams, useRouter, useSearchParams } from "next/navigation";

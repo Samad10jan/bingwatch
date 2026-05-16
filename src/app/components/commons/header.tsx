@@ -84,7 +84,7 @@ export function Header() {
   }, [q, type])
 
   return (
-    <header className="sticky  flex justify-between gap-2 top-0 z-50 md:h-16 shrink-0 items-center transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 md:p-8 p-5  ">
+    <header className="sticky  flex justify-between gap-2 top-3 z-50 md:h-16 shrink-0 items-center transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 md:p-8 p-5  ">
       {/* Mobile Sidebar Trigger */}
       <div className="flex items-center md:hidden lg:hidden xl:hidden gap-3 ">
         <SidebarTrigger className="rounded-full border p-6  transition size-10 bg-accent h-[1.2rem] w-[1.2rem] " />

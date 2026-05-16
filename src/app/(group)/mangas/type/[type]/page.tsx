@@ -1,12 +1,11 @@
 "use client";
 
-import LoadingSkeleton from "@/app/components/commons/laodingskleton";
-import AnimeCard from "@/app/components/anime-components/moviecard";
+import LoadingSkeleton from "@/app/components/commons/loadingskeleton";
 import { PaginationComponent } from "@/app/components/commons/pagenation";
-import { Anime, JSONDATA, Manga } from "@/lib/type";
+import MangaCard from "@/app/components/manga-components/mangacard";
+import { JSONDATA, Manga } from "@/lib/type";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import MangaCard from "@/app/components/manga-components/mangacard";
 
 export default function H() {
 

@@ -1,7 +1,7 @@
 "use client";
 
-import LoadingSkeleton from "@/app/components/commons/laodingskleton";
 import AnimeCard from "@/app/components/anime-components/moviecard";
+import LoadingSkeleton from "@/app/components/commons/loadingskeleton";
 import { PaginationComponent } from "@/app/components/commons/pagenation";
 import { genres } from "@/lib/constants";
 import { Anime, JSONDATA } from "@/lib/type";
@@ -35,13 +35,13 @@ export default function Genre() {
                 const res = await fetch(url, { next: { revalidate: 3600 } });
                 const jsonData = await res.json();
                 if (jsonData.data.length == 0) {
-                    router.replace("/404"); 
+                    router.replace("/404");
                     return;
                 }
                 setJsonData(jsonData);
 
                 if (jsonData.data.length == 0) {
-                    router.replace("/404"); 
+                    router.replace("/404");
                     return;
                 }
                 setData(jsonData.data || []);

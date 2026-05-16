@@ -1,6 +1,6 @@
 "use client";
 
-import LoadingSkeleton from "@/app/components/commons/laodingskleton";
+import LoadingSkeleton from "@/app/components/commons/loadingskeleton";
 import { PaginationComponent } from "@/app/components/commons/pagenation";
 import MangaCard from "@/app/components/manga-components/mangacard";
 import { genres } from "@/lib/constants";
@@ -21,7 +21,7 @@ export default function Genre() {
     const [loading, setLoading] = useState<boolean>(false);
     const params = useParams();
     const genreId = Number(params.genre);
-     const router = useRouter();
+    const router = useRouter();
 
     const url = `https://api.jikan.moe/v4/manga?genres=${genreId}&page=${page}&order_by=popularity&sort=asc&sfw=1`
 
@@ -35,9 +35,9 @@ export default function Genre() {
                 const res = await fetch(url, { next: { revalidate: 3600 } });
                 const jsonData = await res.json();
                 if (jsonData.data.length === 0) {
-                    router.replace("/404"); 
+                    router.replace("/404");
                     return;
-                    
+
                 }
                 setJsonData(jsonData);
                 setData(jsonData.data || []);

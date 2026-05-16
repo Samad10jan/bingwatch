@@ -1,10 +1,10 @@
 "use client";
-import { Book, BookOpen, Laugh, Tv } from "lucide-react";
-import * as React from "react";
 import { NavMain } from "@/shadcncomponents/nav-main";
 import { Sidebar, SidebarContent, SidebarFooter, SidebarRail, SidebarTrigger } from "@/shadcncomponents/ui/sidebar";
+import { Book, BookOpen, Laugh, Tv, Wand2 } from "lucide-react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
+import * as React from "react";
 import { NavProjects } from "./nav-projects";
 import { Card } from "./ui/card";
 
@@ -33,7 +33,16 @@ const animeData = {
         { title: "Adventure", url: "/genres/2" },
         { title: "Drama", url: "/genres/8" },
         { title: "Fantasy", url: "/genres/10" },
-        { title: "Horror", url: "/genres/14" },
+        { title: "View More →", url: "/genres/all" },
+      ],
+    },
+    {
+      title: "Explore",
+      url: "#",
+      icon: Wand2,
+      items: [
+        { title: "Characters", url: "/characters" },
+        { title: "Staff & People", url: "/people" },
       ],
     },
   ],
@@ -72,6 +81,16 @@ const mangaData = {
         { title: "Adventure", url: "/mangas/genres/2" },
         { title: "Drama", url: "/mangas/genres/8" },
         { title: "Horror", url: "/mangas/genres/14" },
+        { title: "View More →", url: "/mangas/genres/all" },
+      ],
+    },
+    {
+      title: "Explore",
+      url: "#",
+      icon: Wand2,
+      items: [
+        { title: "Characters", url: "/characters" },
+        { title: "Staff & People", url: "/people" },
       ],
     },
   ],

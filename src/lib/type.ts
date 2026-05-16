@@ -99,7 +99,86 @@ export type LazySectionProps = {
   title: string;
   url: string;
   type?: "anime" | "manga"; // for "View All" link
+}
 
+export type CarouselSlideProps = {
+  data: Anime[] | Manga[];
+  type: "anime" | "manga";
+}
+
+export type Character = {
+  mal_id: number;
+  url: string;
+  images: {
+    jpg: {
+      image_url: string;
+      small_image_url?: string;
+    };
+    webp?: {
+      image_url: string;
+      small_image_url?: string;
+    };
+  };
+  name: string;
+  name_kanji?: string;
+  nicknames?: string[];
+  favorites: number;
+  about?: string;
+}
+
+export type CharacterWithRole = {
+  character: Character;
+  role: string;
+  voice_actors?: Array<{
+    person: {
+      mal_id: number;
+      url: string;
+      images?: { jpg?: { image_url: string } };
+      name: string;
+    };
+    language: string;
+  }>;
+}
+
+export type Person = {
+  mal_id: number;
+  url: string;
+  images?: { jpg?: { image_url: string; small_image_url?: string } };
+  name: string;
+  given_name?: string;
+  family_name?: string;
+  alternate_names?: string[];
+  birthday?: string;
+  favorites: number;
+  about?: string;
+}
+
+export type APIResponse<T> = {
+  data: T;
+  pagination?: {
+    last_visible_page: number;
+    has_next_page: boolean;
+    current_page: number;
+    items: {
+      count: number;
+      total: number;
+      per_page: number;
+    };
+  };
+}
+
+export type APIListResponse<T> = {
+  data: T[];
+  pagination: {
+    last_visible_page: number;
+    has_next_page: boolean;
+    current_page: number;
+    items: {
+      count: number;
+      total: number;
+      per_page: number;
+    };
+  };
 }
 
 export type Manga = {
@@ -185,8 +264,8 @@ export type Manga = {
 
 };
 
-export type CarouselSlideProps = {
-  data: Anime[] | Manga[];
-  type?: "anime" | "manga";
-};
+// export type CarouselSlideProps = {
+//   data: Anime[] | Manga[];
+//   type?: "anime" | "manga";
+// };
 

@@ -3,7 +3,7 @@
 import { Button } from "@/shadcncomponents/ui/button";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import LoadingSkeleton from "./laodingskleton";
+import LoadingSkeleton from "./loadingskeleton";
 import CarouselAnimeSlide from "./slider";
 
 

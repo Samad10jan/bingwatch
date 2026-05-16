@@ -1,11 +1,12 @@
 import { ThemeProvider } from "@/shadcncomponents/theme-provider";
 import type { Metadata } from "next";
+//@ts-ignore
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: "BingeWatch",
   description: "All About Anime",
-  
+
   openGraph: {
     title: "BingeWatch",
     description: "All About Anime",
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
 };
 
 
-export default function RootLayout({ children }: {children:React.ReactNode}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <html lang="en" suppressHydrationWarning>
@@ -33,9 +34,9 @@ export default function RootLayout({ children }: {children:React.ReactNode}) {
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
-            >
-            
-          
+          >
+
+
             {children}
           </ThemeProvider>
         </body>

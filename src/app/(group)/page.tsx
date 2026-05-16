@@ -7,6 +7,8 @@ import Link from "next/link";
 import HeroSection from "../components/anime-components/anime-hero-section";
 import LazySection from "../components/commons/lazysection";
 import CarouselAnimeSlide from "../components/commons/slider";
+import Loading from "./loading";
+import LoadingSkeleton from "../components/commons/loadingskeleton";
 
 export default async function Home() {
 
@@ -32,7 +34,7 @@ export default async function Home() {
       </div>
 
       {popularAnime.length > 0 && (
-       <HeroSection data={popularAnime} />
+        <HeroSection data={popularAnime} />
       )}
       {tvAnime.length > 0 && (
         <section>
@@ -43,7 +45,7 @@ export default async function Home() {
             </Link>
           </div>
 
-          <CarouselAnimeSlide data={tvAnime} type="anime" />  
+          <CarouselAnimeSlide data={tvAnime} type="anime" />
 
           {/* <Separator className="mt-8" /> */}
         </section>
@@ -68,7 +70,7 @@ export default async function Home() {
 
       {/* Movies */}
 
-       <LazySection
+      <LazySection
         title="Top Movies"
         url="https://api.jikan.moe/v4/top/anime?type=movie&limit=10&page=1&sfw=1&order_by=popularity"
         type="anime"
@@ -76,13 +78,13 @@ export default async function Home() {
       />
 
       {/* <Separator className="mt-8" /> */}
-      
+
 
       <LazySection
         title="Upcoming Anime"
         url="https://api.jikan.moe/v4/top/anime?filter=upcoming&page=1&limit=10&sfw=1"
         type="anime"
-         typeName="upcoming"
+        typeName="upcoming"
       />
 
       {/* <Separator className="mt-8" /> */}
@@ -91,11 +93,11 @@ export default async function Home() {
         title="Specials"
         url="https://api.jikan.moe/v4/top/anime?type=special&limit=10&page=1&sfw=1"
         type="anime"
-         typeName="special"
+        typeName="special"
       />
 
       {/* <Separator className="mt-8" /> */}
-
+      {/* <LoadingSkeleton cardNumber={5} /> */}
     </div>
   );
 }
