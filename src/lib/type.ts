@@ -264,6 +264,53 @@ export type Manga = {
 
 };
 
+// ---- Types ----
+
+export interface PersonImage {
+    jpg?: { image_url?: string };
+    webp?: { image_url?: string };
+}
+
+export interface PersonAnimeEntry {
+    position: string;
+    anime?: {
+        title?: string;
+        images?: { jpg?: { image_url?: string } };
+    };
+}
+
+export interface PersonMangaEntry {
+    position: string;
+    manga?: {
+        title?: string;
+        images?: { jpg?: { image_url?: string } };
+    };
+}
+
+export interface PersonVoiceEntry {
+    role?: string;
+    anime?: { title?: string };
+    character?: {
+        name?: string;
+        images?: { jpg?: { image_url?: string } };
+    };
+}
+
+export interface PersonDetails {
+    mal_id: number;
+    name: string;
+    family_name?: string;
+    given_name?: string;
+    alternate_names?: string[];
+    birthday?: string;
+    favorites: number;
+    about?: string;
+    website_url?: string;
+    images?: PersonImage;
+    anime?: PersonAnimeEntry[];
+    manga?: PersonMangaEntry[];
+    voices?: PersonVoiceEntry[];
+}
 // export type CarouselSlideProps = {
 //   data: Anime[] | Manga[];
 //   type?: "anime" | "manga";

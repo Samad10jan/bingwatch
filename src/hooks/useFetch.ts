@@ -1,4 +1,5 @@
 import { jikanAPI } from "@/lib/api";
+import { PersonDetails } from "@/lib/type";
 import { useEffect, useState } from "react";
 
 export interface UseFetchState<T> {
@@ -187,4 +188,38 @@ export function useIntersectionObserver(ref: React.RefObject<HTMLElement>, callb
             observer.disconnect();
         };
     }, [ref, callback]);
+}
+
+
+
+
+// ---- Hook ----
+
+export function usePersonDetails(id: string) {
+    const [data, setData] = useState<PersonDetails | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (!id) return;
+
+        const fetchPerson = async () => {
+            try {
+                setLoading(true);
+                setError(null);
+                const response = await fetch(`https://api.jikan.moe/v4/people/${id}/full`);
+                if (!response.ok) throw new Error("Failed to fetch person");
+                const json = await response.json();
+                setData(json.data);
+            } catch (err) {
+                setError(err instanceof Error ? err.message : "Unknown error");
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchPerson();
+    }, [id]);
+
+    return { data, loading, error };
 }

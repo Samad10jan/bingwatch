@@ -124,9 +124,9 @@ class JikanAPI {
         return this.fetch<APIResponse<Anime>>(`/anime/${id}`);
     }
 
-    async searchAnime(query: string, type?: string, page = 1, limit = 10) {
+    async searchAnime(q: string, type?: string, page = 1, limit = 10) {
         return this.fetch<APIListResponse<Anime>>("/anime", {
-            query,
+            q,
             type,
             page,
             limit,
@@ -184,9 +184,9 @@ class JikanAPI {
         return this.fetch<APIResponse<Manga>>(`/manga/${id}`);
     }
 
-    async searchManga(query: string, type?: string, page = 1, limit = 10) {
+    async searchManga(q: string, type?: string, page = 1, limit = 10) {
         return this.fetch<APIListResponse<Manga>>("/manga", {
-            query,
+            q,
             type,
             page,
             limit,
@@ -207,9 +207,9 @@ class JikanAPI {
         return this.fetch<APIResponse<Character>>(`/characters/${id}`);
     }
 
-    async searchCharacters(query: string, page = 1, limit = 10) {
+    async searchCharacters(q: string, page = 1, limit = 10) {
         return this.fetch<APIListResponse<Character>>("/characters", {
-            query,
+            q,
             page,
             limit,
             order_by: "favorites",
@@ -222,9 +222,9 @@ class JikanAPI {
         return this.fetch<APIResponse<Person>>(`/people/${id}`);
     }
 
-    async searchPeople(query: string, page = 1, limit = 10) {
+    async searchPeople(q: string, page = 1, limit = 10) {
         return this.fetch<APIListResponse<Person>>("/people", {
-            query,
+            q,
             page,
             limit,
             order_by: "favorites",
